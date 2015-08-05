@@ -1,0 +1,5 @@
+# homebrew cask
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+# custom python modules
+export PYTHONPATH=$HOME/python

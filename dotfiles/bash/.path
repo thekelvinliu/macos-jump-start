@@ -1,0 +1,11 @@
+# Add Homebrew `/usr/local/bin`
+PATH=/usr/local/bin:$PATH
+
+# Add User `~/bin`
+PATH=$HOME/bin:$PATH
+
+# Add npm `/usr/local/share/npm/bin`
+PATH=/usr/local/share/npm/bin:$PATH
+
+# Export these paths
+export PATH
