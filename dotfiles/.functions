@@ -12,7 +12,7 @@ function sour {
 function relink {
     script=$HOME/osx-jump-start/scripts/linker.sh
     if [ -r $script ]; then
-        . $script
+        $script
         sour
     else
         echo "Could not find linker.sh"
