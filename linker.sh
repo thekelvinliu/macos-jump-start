@@ -14,6 +14,3 @@ for file in ./dotfiles/bash/.[^.]*; do
     fi
 done
 unset file
-
-# Source ~/.bash_profile
-. $HOME/.bash_profile
