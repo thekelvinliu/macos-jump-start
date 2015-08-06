@@ -25,3 +25,8 @@ function up {
     echo "===== NPM ====="
     npm update -g
 }
+
+# Expand a path to an absolute path
+function realpath {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
