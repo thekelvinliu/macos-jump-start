@@ -1,0 +1,4 @@
+# Creates a directory and immediately cd's into it
+function mkcd {
+    mkdir -p $1 && cd $1
+}

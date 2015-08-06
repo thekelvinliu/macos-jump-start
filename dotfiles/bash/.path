@@ -7,5 +7,8 @@ PATH=$HOME/bin:$PATH
 # Add npm `/usr/local/share/npm/bin`
 PATH=/usr/local/share/npm/bin:$PATH
 
+# Add sshd `/usr/local/sbin`
+PATH=/usr/local/sbin:$PATH
+
 # Export these paths
 export PATH
