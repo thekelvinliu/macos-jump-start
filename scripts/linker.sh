@@ -7,7 +7,7 @@ function realpath {
 }
 
 # loop through bash-related dotfiles
-for file in ./dotfiles/.[^.]*; do
+for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
     if [ -r $file ]; then
         file=$(realpath $file)
         (cd $HOME && ln -Ffs $file)
