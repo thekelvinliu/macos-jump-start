@@ -14,3 +14,4 @@ for file in ./dotfiles/.[^.]*; do
     fi
 done
 unset file
+echo $PURPLE"linked dotfiles"$RESET

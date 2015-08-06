@@ -8,6 +8,17 @@ function sour {
     . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
 }
 
+# Quickly symlink dotfiles
+function relink {
+    script=$HOME/osx-jump-start/scripts/linker.sh
+    if [ -r $script ]; then
+        . $script
+        sour
+    else
+        echo "Could not find linker.sh"
+    fi
+}
+
 # Update and upgrade all package managers
 function up {
     echo "===== HOMEBREW ====="
