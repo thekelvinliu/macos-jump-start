@@ -2,3 +2,8 @@
 function mkcd {
     mkdir -p $1 && cd $1
 }
+
+# Quickly source ~/.bash_profile
+function sour {
+    . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
+}
