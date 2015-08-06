@@ -7,3 +7,21 @@ function mkcd {
 function sour {
     . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
 }
+
+# Update and upgrade all package managers
+function up {
+    echo "===== HOMEBREW ====="
+    brew update
+    brew upgrade --all
+    brew cleanup
+    brew doctor
+
+    echo "===== PIP ====="
+    pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+
+    echo "===== PIP3 ====="
+    pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+
+    echo "===== NPM ====="
+    npm update -g
+}
