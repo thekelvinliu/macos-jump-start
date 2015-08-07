@@ -5,7 +5,8 @@ scripts and dotfiles for a happy development environment
 A collections of useful scripts and configurations to make development easier.
 
 ## Installation
-    cd ~
-    git clone https://github.com/thekelvinliu/osx-jump-start.git
-    cd osx-jump-start
-    ./setup.sh
+ - Install the latest version of xcode
+ - Open terminal and execute the following:
+
+        $ cd ~
+        $ bash <(curl -s https://raw.githubusercontent.com/thekelvinliu/osx-jump-start/master/setup.sh)
