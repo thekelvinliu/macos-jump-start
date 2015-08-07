@@ -3,20 +3,24 @@ function mkcd {
     mkdir -p $1 && cd $1
 }
 
-# Quickly source ~/.bash_profile
-function sour {
-    . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
+# Expand a path to an absolute path
+function realpath {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
 # Quickly symlink dotfiles
 function relink {
     script=$HOME/osx-jump-start/scripts/linker.sh
     if [ -r $script ]; then
-        $script
-        sour
+        exec $script
     else
         echo "Could not find linker.sh"
     fi
+}
+
+# Quickly source ~/.bash_profile
+function sour {
+    . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
 }
 
 # Update and upgrade all package managers
@@ -35,9 +39,4 @@ function up {
 
     echo "===== NPM ====="
     npm update -g
-}
-
-# Expand a path to an absolute path
-function realpath {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }

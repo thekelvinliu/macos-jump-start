@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # linker.sh - script to symlink bash-related dotfiles in this repo to ~/
 
-# Expand a path to an absolute path
-function realpath {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
-}
+# Source functions dotfile to get realpath, sour
+. $HOME/osx-jump-start/dotfiles/.functions
 
 # loop through bash-related dotfiles
 for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
@@ -14,4 +12,5 @@ for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
     fi
 done
 unset file
-echo $PURPLE"linked dotfiles"$RESET
+echo $PURPLE"dotfiles linked."$RESET
+exec bash -l
