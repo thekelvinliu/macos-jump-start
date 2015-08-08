@@ -13,4 +13,3 @@ for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
 done
 unset file
 echo $PURPLE"dotfiles linked."$RESET
-exec bash -l
