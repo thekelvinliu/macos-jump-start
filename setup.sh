@@ -12,7 +12,7 @@ else
 fi
 
 #loop through scripts
-for file in $HOME/osx-jump-start/scripts/{linker.sh,ssh.sh,install_homebrew.sh,osx.sh}; do
+for file in $HOME/osx-jump-start/scripts/{linker.sh,ssh.sh,homebrew.sh,pip.sh,osx.sh}; do
     [ -r "$file" ] && . "$file"
 done
 unset file
