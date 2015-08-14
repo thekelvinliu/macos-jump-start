@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # ssh.sh - creates ssh keys if none exist
 
-ssh_path=~/.ssh/id_rsa
-if [ ! -e $ssh_path ]; then
-    ssh-keygen -t rsa -b 4096 -C "kelvin@thekelvinliu.com" -N "" -f $ssh_path -q
+if [[ ! -e $SSH_KEY ]]; then
+    ssh-keygen -t rsa -b 4096 -C $email -N "" -f $SSH_KEY -q
     eval "$(ssh-agent -s)"
-    ssh-add $ssh_path
-    # pbcopy < $ssh_path
+    ssh-add $SSH_KEY
+    # pbcopy < $SSH_KEY
     # open https://github.com/settings/ssh
+else
+    echo $SSH_KEY already exists.
 fi
-unset $ssh_path

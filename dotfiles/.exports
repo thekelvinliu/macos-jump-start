@@ -7,3 +7,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # custom python modules
 export PYTHONPATH=$HOME/python
+
+# primary ssh public key
+export SSH_KEY=$HOME/.ssh/id_rsa
