@@ -29,4 +29,4 @@ function pip3_installed {
     pip3 list | fgrep -q $1
 }
 
-pip_install Flask
+# pip_install Flask
