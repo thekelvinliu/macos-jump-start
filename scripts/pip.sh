@@ -12,7 +12,7 @@ function pip_install {
 
 # Checks whether given library is already installed
 function pip_installed {
-    pip list | fgrep -q $1
+    pip freeze --local | fgrep -q $1
 }
 
 # Installs a library via pip3
@@ -26,7 +26,21 @@ function pip3_install {
 
 # Checks whether given library is already installed
 function pip3_installed {
-    pip3 list | fgrep -q $1
+    pip3 freeze --local | fgrep -q $1
 }
 
-# pip_install Flask
+#ipython
+if pip_installed ipython; then
+    echo "$GREEN"ipython"$RESET" is already installed.
+else
+    pip install ipython[zmq,qtconsole,notebook,test]
+fi
+if pip_installed ipython; then
+    echo "$GREEN"ipython"$RESET" is already installed.
+else
+    pip install ipython[zmq,qtconsole,notebook,test]
+fi
+pip_install requests && pip3_install requests
+pip_install beautifulsoup4 && pip3_install beautifulsoup4
+pip_install Flask
+
