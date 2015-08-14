@@ -38,11 +38,11 @@
 
 # Personal settings
 [user]
-  name = thekelvinliu
-  email = kelvin@thekelvinliu.com
+  name = _un
+  email = _email
 [push]
   default = simple
 [core]
-  excludesfile = /Users/kelvinliu/.gitignore
+  excludesfile = _HOME/.gitignore
 [credential]
   helper = osxkeychain
