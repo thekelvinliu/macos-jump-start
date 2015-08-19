@@ -16,4 +16,5 @@ for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
     fi
 done
 unset file
+. $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
 echo $PURPLE"dotfiles linked."$RESET
