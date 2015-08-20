@@ -32,7 +32,7 @@ if [[ $SHELL != $brew_bash_path ]]; then
     fi
     chsh -s $brew_bash_path
 else
-    echo
+    echo "The login shell is already homebrew's bash"
 fi
 
 #clean things up
