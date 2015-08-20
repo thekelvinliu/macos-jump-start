@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # cask.sh - script to install homebrew cask and apps
+# Assumes homebrew is already installed. If not, run 04_homebrew.sh
 
 # Installs a homebrew cask formula
 function brew_cask_install {
@@ -27,7 +28,7 @@ brew_cask_install java
 brew_cask_install xquartz
 brew_cask_install google-chrome
 brew_cask_install iterm2
-# brew_cask_install sublime-text3
+brew_cask_install sublime-text3
 brew_cask_install flux
 brew_cask_install sequel-pro
 brew_cask_install robomongo
