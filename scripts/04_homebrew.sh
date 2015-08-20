@@ -51,18 +51,20 @@ brew_tap caskroom/versions
 brew_install coreutils
 brew_install findutils
 brew_install git
-brew_install htop
+brew_install htop-osx
 brew_install tree
 brew_install ffmpeg
 brew_install imagemagick
 
 #python
 brew_install python
+brew linkapps python
 brew_install python3
-brew linkapps
+brew linkapps python3
 brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
+brew_install "pillow --with-python3"
 brew_install "pygame --with-python3"
 
 #web
