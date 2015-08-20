@@ -10,7 +10,7 @@ function realpath {
 
 # Quickly symlink dotfiles
 function relink {
-    script=$HOME/osx-jump-start/scripts/linker.sh
+    script=$HOME/osx-jump-start/scripts/02_linker.sh
     if [ -r $script ]; then
         . $script
     else

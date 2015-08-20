@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
-# linker.sh - script to symlink bash-related dotfiles in this repo to ~/
+# 02_linker.sh - script to symlink bash-related dotfiles in this repo to ~/
 
-# Source functions dotfile to get realpath, sour
-. $HOME/osx-jump-start/dotfiles/.functions
+# Expand a path to an absolute path
+function realpath {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
 
 # loop through bash-related dotfiles
 for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
     if [ -r "$file" ]; then
         file=$(realpath $file)
+        #insert username and email into gitconfig
         if [[ $file =~ .gitconfig ]]; then
             cat $file | sed "s#_un#$un#g;s#_email#$email#g;s#_HOME#$HOME#g" > $HOME/.gitconfig
+        #otherwise, just symlink
         else
             (cd $HOME && ln -Ffs $file)
         fi

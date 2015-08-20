@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# homebrew.sh - script to install hombrew and basic tools
+# 05_vim.sh - script to install vim, pathogen, and some plugins
 
 # Installs a homebrew formula
 function brew_install {
@@ -47,19 +47,14 @@ brew_tap homebrew/python
 brew_tap caskroom/cask
 brew_tap caskroom/versions
 
-#general stuff
+#basics
 brew_install coreutils
 brew_install findutils
 brew_install git
-
-#bash
-
-#vim
-brew_install vim
-mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
-curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
-git clone https://github.com/jiangmiao/auto-pairs.git $HOME/.vim/bundle/auto-pairs
+brew_install htop
+brew_install tree
+brew_install ffmpeg
+brew_install imagemagick
 
 #python
 brew_install python
@@ -68,7 +63,7 @@ brew linkapps
 brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
-# brew_install "pygame --with-python3"
+brew_install "pygame --with-python3"
 
 #web
 brew_install node

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# prompt.sh - sets up scripts and dotfiles for a happy development environment
+# 01_prompt.sh - script to get github username and email
 
-#get github username, email
 while true; do
     read -p "Enter your github username: " un
     read -p "Your github username is $GREEN$un$RESET. Is this correct-- yes or no? " yn
