@@ -1,19 +1,5 @@
 #!/usr/bin/env bash
-# homebrew.sh - script to install hombrew and tools + homebrew cask and apps
-
-# Installs a homebrew cask formula
-function brew_cask_install {
-    if brew_cask_installed $1; then
-        echo "$GREEN$1$RESET is already installed."
-    else
-        brew cask install $1
-    fi
-}
-
-# Checks whether given app is already installed
-function brew_cask_installed {
-    brew cask list -1 | fgrep -qx $1
-}
+# homebrew.sh - script to install hombrew and basic tools
 
 # Installs a homebrew formula
 function brew_install {
@@ -62,12 +48,23 @@ brew_tap caskroom/cask
 brew_tap caskroom/versions
 
 #general stuff
+brew_install coreutils
+brew_install findutils
 brew_install git
+
+#bash
+
+#vim
 brew_install vim
+mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle
+curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
+git clone https://github.com/jiangmiao/auto-pairs.git $HOME/.vim/bundle/auto-pairs
 
 #python
 brew_install python
 brew_install python3
+brew linkapps
 brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
@@ -79,24 +76,5 @@ brew_install heroku-toolbelt
 brew_install mysql
 brew_install mongodb
 
-#homebrew cask
-brew_install brew-cask
-# brew_cask_install java
-brew_cask_install xquartz
-brew_cask_install google-chrome
-brew_cask_install iterm2
-# brew_cask_install sublime-text3
-brew_cask_install flux
-brew_cask_install sequel-pro
-brew_cask_install robomongo
-brew_cask_install javafx-scene-builder
-brew_cask_install appcleaner
-brew_cask_install disk-inventory-x
-brew_cask_install coconutbattery
-brew_cask_install skype
-brew_cask_install cyberduck
-brew_cask_install handbrake
-brew_cask_install filebot
-brew_cask_install transmission
-brew_cask_install vlc
-brew_cask_install steam
+#clean things up
+brew cleanup
