@@ -72,6 +72,7 @@ brew_install node
 brew_install heroku-toolbelt
 brew_install mysql
 brew_install mongodb
+brew_install ngrok
 
 #clean things up
 brew cleanup
