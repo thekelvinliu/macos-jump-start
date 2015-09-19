@@ -1,3 +1,11 @@
+# Convert audio files in current directory to mp3
+function aconvert {
+    mkdir output
+    for file in *.$1; do
+        ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
+    done
+}
+
 # Creates a directory and immediately cd's into it
 function mkcd {
     mkdir -p $1 && cd $1
