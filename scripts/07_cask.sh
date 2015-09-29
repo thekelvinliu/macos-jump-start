@@ -29,6 +29,9 @@ brew_cask_install xquartz
 brew_cask_install google-chrome
 brew_cask_install iterm2
 brew_cask_install sublime-text3
+brew_cask_install virtualbox
+brew_cask_install virtualbox-extension-pack
+brew_cask_install vagrant
 brew_cask_install flux
 brew_cask_install sequel-pro
 brew_cask_install robomongo
