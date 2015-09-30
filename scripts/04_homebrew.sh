@@ -74,5 +74,8 @@ brew_install mysql
 brew_install mongodb
 brew_install ngrok
 
+#other
+brew_install r
+
 #clean things up
 brew cleanup
