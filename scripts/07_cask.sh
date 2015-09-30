@@ -26,6 +26,7 @@ brew cask update
 #install apps!
 brew_cask_install java
 brew_cask_install xquartz
+brew_cask_install dropbox
 brew_cask_install google-chrome
 brew_cask_install iterm2
 brew_cask_install sublime-text3
@@ -41,12 +42,17 @@ brew_cask_install appcleaner
 brew_cask_install disk-inventory-x
 brew_cask_install coconutbattery
 brew_cask_install skype
+brew_cask_install slack
 brew_cask_install cyberduck
 brew_cask_install handbrake
 brew_cask_install filebot
 brew_cask_install transmission
 brew_cask_install vlc
 brew_cask_install steam
+brew_cask_install evernote
+brew_cask_install tunnelblick
+brew_cask_install the-unarchiver
+brew_cask_install rstudio
 
 #clean things up
 brew cask cleanup
