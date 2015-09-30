@@ -29,6 +29,7 @@ brew_cask_install xquartz
 brew_cask_install google-chrome
 brew_cask_install iterm2
 brew_cask_install sublime-text3
+brew_cask_install skim
 brew_cask_install virtualbox
 brew_cask_install virtualbox-extension-pack
 brew_cask_install vagrant
