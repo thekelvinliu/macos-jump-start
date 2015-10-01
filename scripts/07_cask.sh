@@ -53,6 +53,10 @@ brew_cask_install evernote
 brew_cask_install tunnelblick
 brew_cask_install the-unarchiver
 brew_cask_install rstudio
+brew_cask_install minecraft
+brew_cask_install silverlight
+brew_cask_install imageoptim
+brew_cask_install imagealpha
 
 #clean things up
 brew cask cleanup
