@@ -55,6 +55,7 @@ brew_install htop-osx
 brew_install tree
 brew_install ffmpeg
 brew_install imagemagick
+brew_install cmake
 
 #python
 brew_install python
@@ -76,6 +77,9 @@ brew_install ngrok
 
 #other
 brew_install r
+brew_install gnupg
+brew_install gpg-agent
+brew_install pass
 
 #clean things up
 brew cleanup
