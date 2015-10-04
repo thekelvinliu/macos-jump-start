@@ -50,11 +50,10 @@ brew_cask_install transmission
 brew_cask_install vlc
 brew_cask_install steam
 brew_cask_install evernote
-brew_cask_install tunnelblick
+#brew_cask_install tunnelblick cask version is a bit screwed up
 brew_cask_install the-unarchiver
 brew_cask_install rstudio
 brew_cask_install minecraft
-brew_cask_install silverlight
 brew_cask_install imageoptim
 brew_cask_install imagealpha
 
