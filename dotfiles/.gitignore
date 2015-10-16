@@ -15,10 +15,15 @@ Thumbs.db
 # Compiled Python files
 *.pyc
 
+# Compiled Java files
+*.class
+
 # Application specific files
 venv
 node_modules
 .sass-cache
+.gradle
+build
 
 # other
 .gitignore
