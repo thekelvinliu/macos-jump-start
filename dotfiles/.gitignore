@@ -12,18 +12,24 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
-# Compiled Python files
+# Python files
+.Python
 *.pyc
-
-# Compiled Java files
-*.class
-
-# Application specific files
 venv
-node_modules
-.sass-cache
+bin
+include
+lib
+pyvenv.cfg
+pip-selfcheck.json
+
+# Java files
+*.class
 .gradle
 build
 
+# Node files
+node_modules
+
 # other
 .gitignore
+.sass-cache
