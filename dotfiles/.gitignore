@@ -18,7 +18,10 @@ Thumbs.db
 venv
 bin
 include
+Include
 lib
+Lib
+Scripts
 pyvenv.cfg
 pip-selfcheck.json
 
