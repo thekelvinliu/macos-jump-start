@@ -6,6 +6,12 @@ function realpath {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
+#check for $un and $email, if either is undefined, run 01_prompt.sh
+if [[ -z $un || -z $email ]]; then
+    echo Missing username and/or password!
+    . $HOME/osx-jump-start/scripts/01_prompt.sh
+fi
+
 # loop through bash-related dotfiles
 for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
     if [ -r "$file" ]; then
