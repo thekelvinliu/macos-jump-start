@@ -1,0 +1,17 @@
+{
+    "bootstrapped": true,
+    "in_process_packages":
+    [
+    ],
+    "installed_packages":
+    [
+        "Gradle_Language",
+        "HTMLBeautify",
+        "Jade",
+        "LaTeXTools",
+        "Markdown Preview",
+        "Minify",
+        "Package Control",
+        "Pretty JSON"
+    ]
+}
