@@ -18,9 +18,7 @@ Thumbs.db
 venv
 bin
 include
-Include
 lib
-Lib
 pyvenv.cfg
 pip-selfcheck.json
 
@@ -33,5 +31,4 @@ build
 node_modules
 
 # other
-.gitignore
 .sass-cache
