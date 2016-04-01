@@ -73,7 +73,7 @@ brew_install node
 brew_install heroku-toolbelt
 brew_install mysql
 brew_install mongodb
-brew_install ngrok
+brew_install homebrew/binary/ngrok2
 
 #other
 brew_install r
