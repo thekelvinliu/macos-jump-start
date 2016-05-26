@@ -77,8 +77,9 @@ nvm install v6
 nvm alias latest v6
 nvm alias node default
 nvm alias stable default
-nvm use default
-npm i -g bower gulp localtunnel npm-check-updates yo
+alias qi='npm i -g bower gulp localtunnel npm-check-updates yo'
+nvm use latest && qi
+nvm use default && qi
 
 #web
 brew_install heroku-toolbelt
