@@ -68,12 +68,22 @@ brew_install "matplotlib --with-python3"
 brew_install "pillow --with-python3"
 brew_install "pygame --with-python3"
 
+#node
+brew_install nvm
+mkdir -p "$HOME/.nvm"
+nvm install v5
+nvm alias default v5
+nvm install v6
+nvm alias latest v6
+nvm alias node default
+nvm alias stable default
+nvm use default
+npm i -g bower gulp localtunnel npm-check-updates yo
+
 #web
-brew_install node
 brew_install heroku-toolbelt
 brew_install mysql
 brew_install mongodb
-brew_install homebrew/binary/ngrok2
 
 #other
 brew_install r

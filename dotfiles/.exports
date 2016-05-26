@@ -10,3 +10,7 @@ export PYTHONPATH=$HOME/python
 
 # primary ssh public key
 export SSH_KEY=$HOME/.ssh/id_rsa
+
+# nvm
+export NVM_DIR=$HOME/.nvm
+. $(brew --prefix nvm)/nvm.sh
