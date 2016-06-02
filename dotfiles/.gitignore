@@ -1,34 +1,35 @@
-# Adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.gitignore
-
-# Folder view configuration files
+# adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.gitignore
+# folder view configs
 .DS_Store
 Desktop.ini
 
-# Thumbnail cache files
+# thumbnail cache
 ._*
 Thumbs.db
 
-# Files that might appear on external disks
+# files that might appear on external disks
 .Spotlight-V100
 .Trashes
 
-# Python files
+# build directories
+build
+dist
+
+# python
 .Python
 *.pyc
 venv
-bin
-include
-lib
-pyvenv.cfg
-pip-selfcheck.json
 
-# Java files
+# java
 *.class
 .gradle
-build
 
-# Node files
+# node
 node_modules
 
+# bower
+bower_components
+
 # other
+assets
 .sass-cache
