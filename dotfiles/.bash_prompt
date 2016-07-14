@@ -44,8 +44,11 @@ export WHITE
 export BOLD
 export RESET
 
+#better function for git 2.9.1
 function parse_git_dirty() {
-  [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+  status=$(git status 2> /dev/null)
+  [[ "$status" != *"up-to-date"* || "$status" != *"clean"* ]] && echo "*"
+  unset status
 }
 
 function parse_git_branch() {
