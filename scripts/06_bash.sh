@@ -19,8 +19,9 @@ function brew_installed {
 # update formulae
 brew update
 
-# install bash
+# install bashf and bash-completion
 brew_install bash
+brew_install bash-completion
 brew_bash_path=$(which bash)
 
 # set login shell to /usr/local/bin/bash if it isn't
