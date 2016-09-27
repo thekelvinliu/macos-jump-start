@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # 04_homebrew.sh - script to install hombrew, basic tools, python, and web stuff
 
-# enable functions
-. $HOME/osx-jump-start/dotfiles/.functions
+# enable install functions
+. $HOME/osx-jump-start/scripts/00_install-functions.sh
 
 # check for homebrew and install if necessary
 if [[ -n $(which brew) ]]; then

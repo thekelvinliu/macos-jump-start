@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# cask.sh - script to install homebrew cask and apps
+# 07_cask.sh - script to install homebrew cask and apps
 # note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
 
-# enable functions
-. $HOME/osx-jump-start/dotfiles/.functions
+# enable install functions
+. $HOME/osx-jump-start/scripts/00_install-functions.sh
 
 # ensure things are up-to-date
 brew update

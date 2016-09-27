@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
 # 05_vim.sh - script to install vim, pathogen, and some plugins
-# Assumes homebrew is already installed. If not, run 04_homebrew.sh
+# note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
 
-# Installs a homebrew formula
-function brew_install {
-    if brew_installed $1; then
-        echo "$GREEN$1$RESET is already installed."
-    else
-        brew install $1
-    fi
-}
-
-# Checks whether given formula is already installed
-function brew_installed {
-    brew list -1 | fgrep -qx $1
-}
+# enable install functions
+. $HOME/osx-jump-start/scripts/00_install-functions.sh
 
 # update formulae
 brew update
