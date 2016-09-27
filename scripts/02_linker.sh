@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 02_linker.sh - script to symlink bash-related dotfiles in this repo to ~/
 
-# enable aliases and functions
+# enable functions
 . $HOME/osx-jump-start/dotfiles/.functions
 
 # check for $un and $email, if either is undefined, run 01_prompt.sh
