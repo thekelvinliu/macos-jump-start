@@ -8,8 +8,9 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # custom python modules
 export PYTHONPATH=$HOME/python
 
-# primary ssh public key
-export SSH_KEY=$HOME/.ssh/id_rsa
+# primary ssh key pair
+export SSH_PRIVATE_KEY=$HOME/.ssh/id_ed25519
+export SSH_PUBLIC_KEY=$HOME/.ssh/id_ed25519.pub
 
 # gopath
 export GOPATH=$HOME/go
