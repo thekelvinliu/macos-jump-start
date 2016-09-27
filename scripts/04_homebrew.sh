@@ -36,18 +36,18 @@ else
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-#check doctor
+# check doctor
 brew doctor
 
-#update formulae
+# update formulae
 brew update
 
-#add other repos
+# add other repos
 brew_tap homebrew/python
 brew_tap caskroom/cask
 brew_tap caskroom/versions
 
-#basics
+# basics
 brew_install coreutils
 brew_install findutils
 brew_install git
@@ -57,7 +57,7 @@ brew_install ffmpeg
 brew_install imagemagick
 brew_install cmake
 
-#python
+# python
 brew_install python
 brew linkapps python
 brew_install python3
@@ -66,9 +66,9 @@ brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
 brew_install "pillow --with-python3"
-brew_install "pygame --with-python3"
+# brew_install "pygame --with-python3"
 
-#node
+# node
 brew_install nvm
 mkdir -p "$HOME/.nvm"
 nvm install v5
@@ -77,20 +77,20 @@ nvm install v6
 nvm alias latest v6
 nvm alias node default
 nvm alias stable default
-alias qi='npm i -g bower gulp localtunnel npm-check-updates yo'
-nvm use latest && qi
-nvm use default && qi
+alias node_install_globals='npm i -g bower gulp npm-check-updates yo'
+nvm use latest && node_install_globals
+nvm use default && node_install_globals
 
-#web
+# web
 brew_install heroku-toolbelt
 brew_install mysql
 brew_install mongodb
 
-#other
+# other
 brew_install r
 brew_install gnupg
 brew_install gpg-agent
 brew_install pass
 
-#clean things up
+# clean things up
 brew cleanup

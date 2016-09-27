@@ -16,14 +16,14 @@ function brew_installed {
     brew list -1 | fgrep -qx $1
 }
 
-#update formulae
+# update formulae
 brew update
 
-#install bash
+# install bash
 brew_install bash
 brew_bash_path=$(which bash)
 
-#set login shell to /usr/local/bin/bash if it isn't
+# set login shell to /usr/local/bin/bash if it isn't
 if [[ $SHELL != $brew_bash_path ]]; then
     if cat /etc/shells | grep -q $brew_bash_path; then
         echo /etc/shells already has $brew_bash_path
@@ -35,5 +35,5 @@ else
     echo "The login shell is already homebrew's bash"
 fi
 
-#clean things up
+# clean things up
 brew cleanup

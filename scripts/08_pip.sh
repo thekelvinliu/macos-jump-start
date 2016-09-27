@@ -29,18 +29,8 @@ function pip3_installed {
     pip3 freeze --local | fgrep -q $1
 }
 
-#ipython
-if pip_installed ipython; then
-    echo "$GREEN"ipython"$RESET" is already installed.
-else
-    pip install ipython[zmq,qtconsole,notebook,test]
-fi
-if pip_installed ipython; then
-    echo "$GREEN"ipython"$RESET" is already installed.
-else
-    pip install ipython[zmq,qtconsole,notebook,test]
-fi
+pip_install ipython && pip3_install ipython
 pip_install requests && pip3_install requests
-pip_install beautifulsoup4 && pip3_install beautifulsoup4
-pip_install Flask
+# pip_install beautifulsoup4 && pip3_install beautifulsoup4
+# pip_install Flask
 

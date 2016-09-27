@@ -1,13 +1,13 @@
 # Adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt
 
-#set TERM environment variable
+# set TERM environment variable
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
   export TERM=gnome-256color
 elif infocmp xterm-256color >/dev/null 2>&1; then
   export TERM=xterm-256color
 fi
 
-#set colors for max compatibility
+# set colors for max compatibility
 if tput setaf 1 &> /dev/null; then
   tput sgr0
   BLACK=$(tput setaf 0)
@@ -44,7 +44,7 @@ export WHITE
 export BOLD
 export RESET
 
-#better function for git 2.9.1
+# better function for git 2.9.1
 function parse_git_dirty() {
   status=$(git status 2> /dev/null)
   [[ "$status" != *"up-to-date"* || "$status" != *"clean"* ]] && echo "*"

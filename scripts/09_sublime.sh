@@ -7,11 +7,11 @@ function realpath {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-#change to sublime dir
+# change to sublime dir
 cd "$HOME/Library/Application Support/Sublime Text 3/Packages"
 
-#theme
+# theme
 ln -Ffs $HOME/osx-jump-start/configs/sublime/Dracula.tmTheme
-#settings
+# settings
 cd "User"
 ln -Ffs $HOME/osx-jump-start/configs/sublime/Preferences.sublime-settings
