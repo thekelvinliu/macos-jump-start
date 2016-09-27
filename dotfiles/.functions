@@ -11,12 +11,25 @@ function realpath {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
+# source a script and complain nicely if it doesn't exist
+function safesource {
+    if [ $# -eq 0 ]; then
+        echo "nothing to source!"
+    else
+        if [ -r $1 ]; then
+            . $1 && echo "${GREEN}done.${RESET}"
+        else
+            echo "could not find $1"
+        fi
+    fi
+}
+
 # quickly symlink dotfiles by running the linker script
 function relink {
-    script=$HOME/osx-jump-start/scripts/02_linker.sh
-    if [ -r $script ]; then
-        . $script
-    else
-        echo "Failed: could not find linker.sh"
-    fi
+    safesource $HOME/osx-jump-start/scripts/02_linker.sh
+}
+
+# quickly source ~/.bash_profile
+function sour {
+    safesource $HOME/.bash_profile
 }

@@ -31,6 +31,3 @@ alias clean_dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/
 
 # create a directory and immediately change to it
 alias mkcd='mkdir -p $1 && cd $1'
-
-# quickly source ~/.bash_profile
-alias sour='. $HOME/.bash_profile && echo "done."'
