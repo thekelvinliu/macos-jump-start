@@ -1,14 +1,12 @@
-# Add Homebrew `/usr/local/bin`
-PATH=/usr/local/bin:$PATH
+# setup PATH environment variable here
 
-# Add User `~/bin`
+# add user directory bin
 PATH=$HOME/bin:$PATH
 
-# Add npm `/usr/local/share/npm/bin`
-PATH=/usr/local/share/npm/bin:$PATH
-
-# Add sshd `/usr/local/sbin`
-PATH=/usr/local/sbin:$PATH
+# add homebrew if it has been installed
+if [[ -n $(brew --prefix 2> /dev/null) ]]; then
+    PATH="$(brew --prefix)/bin":$PATH
+fi
 
 # Export these paths
 export PATH
