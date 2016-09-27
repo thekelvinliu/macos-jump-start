@@ -1,4 +1,4 @@
-# Convert audio files in current directory to mp3
+# convert audio files in current directory to mp3 and save to ./output/
 function aconvert {
     mkdir output
     for file in *.$1; do
@@ -6,27 +6,22 @@ function aconvert {
     done
 }
 
-# Creates a directory and immediately cd's into it
-function mkcd {
-    mkdir -p $1 && cd $1
-}
-
-# Expand a path to an absolute path
+# expand a path to an absolute path
 function realpath {
     [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-# Quickly symlink dotfiles
+# quickly symlink dotfiles by running the linker script
 function relink {
     script=$HOME/osx-jump-start/scripts/02_linker.sh
     if [ -r $script ]; then
         . $script
     else
-        echo "Could not find linker.sh"
+        echo "Failed: could not find linker.sh"
     fi
 }
 
-# Quickly source ~/.bash_profile
+# quickly source ~/.bash_profile
 function sour {
-    . $HOME/.bash_profile && echo $PURPLE"sourced ~/.bash_profile"$RESET
+    . $HOME/.bash_profile && echo "done."
 }
