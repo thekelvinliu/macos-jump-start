@@ -33,7 +33,7 @@ if [[ -n $(which brew) ]]; then
     echo "homebrew is already installed"
 else
     echo "homebrew is not installed-- installing now!"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # check doctor
@@ -84,7 +84,9 @@ nvm use default && node_install_globals
 # web
 brew_install heroku
 brew_install mysql
+brew services start mysql
 brew_install mongodb
+brew services start mongodb
 brew_install sqlite
 
 # other
@@ -92,7 +94,7 @@ brew_install go
 # brew_install r
 # brew_install gnupg2
 # brew_install gpg-agent
-# brew_install pass
+brew_install pass
 
 # clean things up
 brew cleanup
