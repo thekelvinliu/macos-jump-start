@@ -71,10 +71,10 @@ brew_install "pillow --with-python3"
 # node
 brew_install nvm
 mkdir -p "$HOME/.nvm"
-nvm install v5
-nvm alias default v5
 nvm install v6
 nvm alias latest v6
+nvm install v5
+nvm alias default v5
 nvm alias node default
 nvm alias stable default
 alias node_install_globals='npm i -g bower gulp npm-check-updates yo'
@@ -82,13 +82,14 @@ nvm use latest && node_install_globals
 nvm use default && node_install_globals
 
 # web
-brew_install heroku-toolbelt
+brew_install heroku
 brew_install mysql
 brew_install mongodb
+brew_install sqlite
 
 # other
-brew_install r
-brew_install gnupg
+# brew_install r
+brew_install gnupg2
 brew_install gpg-agent
 brew_install pass
 
