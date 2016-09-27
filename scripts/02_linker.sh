@@ -8,7 +8,7 @@ function realpath {
 
 # check for $un and $email, if either is undefined, run 01_prompt.sh
 if [[ -z $un || -z $email ]]; then
-    echo Missing username and/or password!
+    echo "Missing username and/or password!"
     . $HOME/osx-jump-start/scripts/01_prompt.sh
 fi
 
