@@ -33,4 +33,3 @@ pip_install ipython && pip3_install ipython
 pip_install requests && pip3_install requests
 # pip_install beautifulsoup4 && pip3_install beautifulsoup4
 # pip_install Flask
-
