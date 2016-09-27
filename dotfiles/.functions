@@ -20,8 +20,3 @@ function relink {
         echo "Failed: could not find linker.sh"
     fi
 }
-
-# quickly source ~/.bash_profile
-function sour {
-    . $HOME/.bash_profile && echo "done."
-}
