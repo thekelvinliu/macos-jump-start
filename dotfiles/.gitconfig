@@ -41,7 +41,7 @@
   name = _un
   email = _email
 [push]
-  default = simple
+  default = current
 [core]
   excludesfile = _HOME/.gitignore
 [credential]
