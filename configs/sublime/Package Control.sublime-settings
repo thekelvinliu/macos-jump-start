@@ -1,17 +1,19 @@
 {
-    "bootstrapped": true,
-    "in_process_packages":
-    [
-    ],
-    "installed_packages":
-    [
-        "Gradle_Language",
-        "HTMLBeautify",
-        "Jade",
-        "LaTeXTools",
-        "Markdown Preview",
-        "Minify",
-        "Package Control",
-        "Pretty JSON"
-    ]
+  "bootstrapped": true,
+  "in_process_packages": [],
+  "installed_packages": [
+    "AppleScript Extensions",
+    "Babel",
+    "Dart",
+    "GAS-x86 (or x64) highlighting scheme",
+    "Gradle_Language",
+    "HTMLBeautify",
+    "Jade",
+    "LaTeXTools",
+    "Markdown Preview",
+    "Minify",
+    "Package Control",
+    "Pretty JSON",
+    "Sass"
+  ]
 }
