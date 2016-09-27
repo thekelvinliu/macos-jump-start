@@ -2,16 +2,14 @@
 # sublime.sh - symlink sublime user settings and color scheme
 # inspired by https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx
 
-# Expand a path to an absolute path
-function realpath {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
-}
-
 # change to sublime dir
 cd "$HOME/Library/Application Support/Sublime Text 3/Packages"
 
-# theme
+# symlink theme
 ln -Ffs $HOME/osx-jump-start/configs/sublime/Dracula.tmTheme
-# settings
+
+# symlink other settings
 cd "User"
-ln -Ffs $HOME/osx-jump-start/configs/sublime/Preferences.sublime-settings
+for file in $HOME/osx-jump-start/configs/sublime/*.sublime-settings; do
+  ln -Ffs "$file"
+done
