@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 # setup.sh - sets up scripts and dotfiles for a happy development environment
-# work in progress
 
-#check for xcode
+# ensure xcode is installed
 if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
-    #get colors
-    . $HOME/osx-jump-start/dotfiles/.bash_profile
+    # enable colors
+    . $HOME/osx-jump-start/dotfiles/.bash_prompt
 
-    #loop through scripts
+    # run the scripts
     for file in $HOME/osx-jump-start/scripts/[0-9]*; do
-        echo $'\nRunning'$YELLOW$file$RESET && . $file && sleep 2
+        echo "Running $YELLOW$file$RESET..."
+        . $file && sleep 2
     done
 else
-    echo "Follow the instructions-- install Xcode and agree to the liscence before doing this!"
+    echo "Install Xcode and agree to the liscence before running this script!"
 fi
-unset file un email
-echo $GREEN$BOLD$'\nD O N E'$RESET" -- Enjoy developing on your new system! -- "$GREEN$BOLD$'D O N E\n'$RESET
+
+echo "$GREEN$BOLD D O N E $RESET"
+echo "-- Enjoy developing on your new system! --"
+echo "$GREEN$BOLD D O N E $RESET"
