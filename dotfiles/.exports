@@ -2,7 +2,7 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# homebrew cask
+# make brew cask symlink apps to /Applications
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # custom python modules
