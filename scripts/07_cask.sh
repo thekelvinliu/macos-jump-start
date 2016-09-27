@@ -34,6 +34,10 @@ brew_cask_install virtualbox-extension-pack
 # brew_cask_install vagrant
 # brew_cask_install rstudio
 
+# passwords
+brew_cask_install gpgtools
+brew_cask_install qtpass
+
 # general apps
 brew_cask_install appcleaner
 brew_cask_install coconutbattery
