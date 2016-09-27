@@ -1,51 +1,26 @@
 #!/usr/bin/env bash
 # 04_homebrew.sh - script to install hombrew, basic tools, python, and web stuff
 
-# Installs a homebrew formula
-function brew_install {
-    if brew_installed $1; then
-        echo "$GREEN$1$RESET is already installed."
-    else
-        brew install $1
-    fi
-}
+# enable functions
+. $HOME/osx-jump-start/dotfiles/.functions
 
-# Checks whether given formula is already installed
-function brew_installed {
-    brew list -1 | fgrep -qx $1
-}
-
-# Taps a homebrew repo
-function brew_tap {
-    if brew_tapped $1; then
-        echo "$GREEN$1$RESET is already tapped."
-    else
-        brew tap $1
-    fi
-}
-
-# Checks whether given repo is already tapped
-function brew_tapped {
-    brew tap | fgrep -qx $1
-}
-
+# check for homebrew and install if necessary
 if [[ -n $(which brew) ]]; then
     echo "homebrew is already installed"
 else
-    echo "homebrew is not installed-- installing now!"
+    echo "homebrew is not installed -- installing now!"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# check doctor
+# run the doctor
 brew doctor
 
 # update formulae
 brew update
 
-# add other repos
+# add other taps
 brew_tap homebrew/python
-brew_tap caskroom/cask
-brew_tap caskroom/versions
+brew_tap homebrew/services
 
 # basics
 brew_install coreutils

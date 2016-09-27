@@ -1,30 +1,19 @@
 #!/usr/bin/env bash
 # cask.sh - script to install homebrew cask and apps
-# Assumes homebrew is already installed. If not, run 04_homebrew.sh
+# note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
 
-# Installs a homebrew cask formula
-function brew_cask_install {
-    if brew_cask_installed $1; then
-        echo "$GREEN$1$RESET is already installed."
-    else
-        brew cask install $1
-    fi
-}
-
-# Checks whether given app is already installed
-function brew_cask_installed {
-    brew cask list -1 | fgrep -qx $1
-}
+# enable functions
+. $HOME/osx-jump-start/dotfiles/.functions
 
 # ensure things are up-to-date
 brew update
 
 # install homebrew cask
-brew_install brew-cask
-brew cask update
+brew_tap caskroom/cask
+brew_tap caskroom/versions
 
-# install apps in order determined by me
-# important apps
+# install apps by category determined by me :)
+# important apps -- stuff i use a lot
 brew_cask_install iterm2
 brew_cask_install sublime-text
 brew_cask_install google-chrome
