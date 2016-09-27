@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# pip.sh - script to install python libraries via pip
+# 08_pip.sh - script to install python libraries via pip
 
 # Installs a library via pip
 function pip_install {

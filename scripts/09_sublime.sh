@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# sublime.sh - symlink sublime user settings and color scheme
-# inspired by https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx
+# 09_sublime.sh - symlink sublime user settings and color scheme
 
 # change to sublime dir
 cd "$HOME/Library/Application Support/Sublime Text 3/Packages"

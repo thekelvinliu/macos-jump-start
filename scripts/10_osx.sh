@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# osx.sh - changes osx system settings
-# inspired by https://raw.githubusercontent.com/mathiasbynens/dotfiles/master/.osx
+# 10_osx.sh - changes osx system settings
 
 # show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
