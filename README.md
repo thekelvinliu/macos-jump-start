@@ -14,5 +14,5 @@ Then, clone this git repository and run `setup.sh` by executing the following li
 ```bash
 $ cd
 $ git clone https://github.com/thekelvinliu/osx-jump-start.git
-$ . osx-jump-start/setup.sh
+$ ./osx-jump-start/setup.sh
 ```
