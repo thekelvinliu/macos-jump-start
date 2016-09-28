@@ -13,7 +13,7 @@ else
 fi
 
 # check for homebrew again in case user did not install
-if [ ! has_brew ]; then
+if ! has_brew; then
     echo "homebrew is still not installed -- exiting."
     return
 fi

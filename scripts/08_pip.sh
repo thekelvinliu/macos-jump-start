@@ -8,7 +8,7 @@
 
 # ensure homebrew is installed before continuing
 # pip might be installed by default, but only accept homebrew's python :)
-if [ ! has_brew ]; then
+if ! has_brew; then
     echo "homebrew is not installed -- exiting."
     return
 fi
