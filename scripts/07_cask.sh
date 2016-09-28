@@ -5,6 +5,12 @@
 # enable install functions
 . $HOME/osx-jump-start/scripts/00_install-functions.sh
 
+# ensure homebrew is installed before continuing
+if [ ! has_brew ]; then
+    echo "homebrew is not installed -- exiting."
+    return
+fi
+
 # ensure things are up-to-date
 brew update
 

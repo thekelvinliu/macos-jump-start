@@ -5,11 +5,17 @@
 . $HOME/osx-jump-start/scripts/00_install-functions.sh
 
 # check for homebrew and install if necessary
-if [[ -n $(which brew) ]]; then
+if has_brew; then
     echo "homebrew is already installed"
 else
     echo "homebrew is not installed -- installing now!"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# check for homebrew again in case user did not install
+if [ ! has_brew ]; then
+    echo "homebrew is still not installed -- exiting."
+    return
 fi
 
 # run the doctor

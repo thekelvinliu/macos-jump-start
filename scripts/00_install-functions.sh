@@ -2,6 +2,11 @@
 # install-functions.sh - script to install homebrew cask and apps
 # note: this script only defines functions for installing stuff in a nice way
 
+# check whether or not homebrew is installed
+function has_brew {
+    [[ -n $(which brew) ]]
+}
+
 # check whether a given cask is already installed
 function brew_cask_installed {
     brew cask list -1 | fgrep -qx $1
