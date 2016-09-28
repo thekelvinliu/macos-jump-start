@@ -14,21 +14,17 @@ fi
 # update formulae
 brew update
 
-# install bashf and bash-completion
+# install bash and bash-completion
 brew_install bash
 brew_install bash-completion
 brew_bash_path=$(which bash)
 
-# set login shell to /usr/local/bin/bash if it isn't
-if [[ $SHELL != $brew_bash_path ]]; then
-    if cat /etc/shells | grep -q $brew_bash_path; then
-        echo /etc/shells already has $brew_bash_path
-    else
-        echo $brew_bash_path >> /etc/shells
-    fi
-    chsh -s $brew_bash_path
+# change the default shell to homebrew-installed bash
+if [[ "$SHELL" != "$brew_bash_path" ]]; then
+    echo "changing the default shell -- you may need to enter your password"
+    sudo chsh -s "$brew_bash_path" $(whoami)
 else
-    echo "The login shell is already homebrew's bash"
+    echo "the default shell is already homebrew's bash"
 fi
 
 # clean things up
