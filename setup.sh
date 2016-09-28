@@ -9,7 +9,7 @@ if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
     # run the scripts
     for file in $HOME/osx-jump-start/scripts/[0-9]*; do
         echo "Running $YELLOW$file$RESET..."
-        . $file && sleep 2
+        . $file && sleep 1
     done
 else
     echo "Install Xcode and agree to the liscence before running this script!"
