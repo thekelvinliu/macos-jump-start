@@ -21,8 +21,9 @@ fi
 # run the doctor
 brew doctor
 
-# update formulae
+# update formulae and upgrade (for existing installations of homebrew)
 brew update
+brew upgrade
 
 # add other taps
 brew_tap homebrew/python
