@@ -6,7 +6,7 @@ sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"
 mkdir -p "$sublime_dir/User"
 
 # change to sublime directory
-cd $sublime_dir
+cd "$sublime_dir"
 
 # symlink theme
 ln -Ffs $HOME/osx-jump-start/configs/sublime/Dracula.tmTheme
