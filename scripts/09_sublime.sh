@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # 09_sublime.sh - symlink sublime user settings and color scheme
 
-# change to sublime dir
+# ensure directory stucture exists
 sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"
-mkdir -p $sublime_dir
+mkdir -p "$sublime_dir/User"
+
+# change to sublime directory
 cd $sublime_dir
 
 # symlink theme
