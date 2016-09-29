@@ -10,3 +10,6 @@ unset file
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+# enable nvm
+. $(brew --prefix nvm)/nvm.sh

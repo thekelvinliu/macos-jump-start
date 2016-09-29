@@ -17,4 +17,3 @@ export GOPATH=$HOME/go
 
 # nvm
 export NVM_DIR=$HOME/.nvm
-. $(brew --prefix nvm)/nvm.sh
