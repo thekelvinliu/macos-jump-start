@@ -16,3 +16,11 @@ $ cd
 $ git clone https://github.com/thekelvinliu/osx-jump-start.git
 $ ./osx-jump-start/setup.sh
 ```
+
+## Notes
+- This has been tested on fresh installs of OS X 10.11 El Capitan and macOS 10.12 Sierra.
+- You should be able to run the setup as many times as you want :)
+- In the installation scripts, some packages and libraries are commented out.
+  This is because I think they're definitely nice to have, but not essential.
+  I usually end up installing them later, so the initial installation takes as little time as possible.
+  Feel free to go through the `scripts` directory and un/comment as you see fit!
