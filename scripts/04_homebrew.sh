@@ -47,12 +47,15 @@ brew linkapps python3
 brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
-brew_install "pillow --with-python3"
+# brew_install "pillow --with-python3"
 # brew_install "pygame --with-python3"
 
 # node
 brew_install nvm
-mkdir -p "$HOME/.nvm"
+# enable nvm immediately
+export NVM_DIR="$HOME/.nvm"
+mkdir -p NVM_DIR
+. $(brew --prefix nvm)/nvm.sh
 nvm install v6
 nvm alias latest v6
 nvm install v5
