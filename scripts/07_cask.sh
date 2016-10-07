@@ -71,5 +71,9 @@ brew_cask_install imagealpha
 brew_cask_install minecraft
 brew_cask_install steam
 
+# tex
+brew_cask_install basictex
+brew_cask_install tex-live-utility
+
 #clean things up
 brew cask cleanup
