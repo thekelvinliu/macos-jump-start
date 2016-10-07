@@ -54,7 +54,7 @@ brew_install "matplotlib --with-python3"
 brew_install nvm
 # enable nvm immediately
 export NVM_DIR="$HOME/.nvm"
-mkdir -p NVM_DIR
+mkdir -p "$NVM_DIR"
 . $(brew --prefix nvm)/nvm.sh
 nvm install v6
 nvm alias latest v6
