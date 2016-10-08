@@ -40,9 +40,9 @@ brew_cask_install virtualbox-extension-pack
 # brew_cask_install vagrant
 # brew_cask_install rstudio
 
-# passwords
-brew_cask_install gpgtools
-brew_cask_install qtpass
+# tex
+brew_cask_install basictex
+brew_cask_install tex-live-utility
 
 # general apps
 brew_cask_install appcleaner
@@ -67,13 +67,13 @@ brew_cask_install vox-preferences-pane
 brew_cask_install imageoptim
 brew_cask_install imagealpha
 
+# passwords
+brew_cask_install gpgtools
+brew_cask_install qtpass
+
 # games
 brew_cask_install minecraft
 brew_cask_install steam
 
-# tex
-brew_cask_install basictex
-brew_cask_install tex-live-utility
-
-#clean things up
+# clean things up
 brew cask cleanup

@@ -77,8 +77,6 @@ brew_install sqlite
 # other
 brew_install go
 # brew_install r
-# brew_install gnupg2
-# brew_install gpg-agent
 brew_install pass
 
 # clean things up
