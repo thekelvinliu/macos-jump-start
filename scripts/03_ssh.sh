@@ -10,6 +10,7 @@ if [[ -z $email ]]; then
     . $HOME/osx-jump-start/scripts/01_prompt.sh
 fi
 
+# generate a key if necessary
 if [[ ! -e $SSH_PRIVATE_KEY || ! -e $SSH_PUBLIC_KEY ]]; then
     # generate an Ed25519 key
     ssh-keygen -t ed25519 -a 100 -C $email -f $SSH_PRIVATE_KEY
@@ -22,3 +23,6 @@ if [[ ! -e $SSH_PRIVATE_KEY || ! -e $SSH_PUBLIC_KEY ]]; then
 else
     echo "an Ed25519 keypair already exists."
 fi
+
+# symlink plist fix to ~/Library/LaunchAgents/
+ln -s "$HOME/osx-jump-start/configs/plists/ssh.add.plist" "$HOME/Library/LaunchAgents"
