@@ -57,7 +57,9 @@ export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
 . $(brew --prefix nvm)/nvm.sh
 nvm install node
-npm i -g bower gulp npm-check-updates yarn yo
+# update npm and install globals
+npm i -g npm
+npm i -g bower gulp-cli npm-check-updates yarn yo
 
 # web
 brew_install heroku
