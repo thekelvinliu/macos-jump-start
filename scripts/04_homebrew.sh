@@ -56,15 +56,8 @@ brew_install nvm
 export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
 . $(brew --prefix nvm)/nvm.sh
-nvm install v6
-nvm alias latest v6
-nvm install v5
-nvm alias default v5
-nvm alias node default
-nvm alias stable default
-alias node_install_globals='npm i -g bower gulp npm-check-updates yo'
-nvm use latest && node_install_globals
-nvm use default && node_install_globals
+nvm install node
+npm i -g bower gulp npm-check-updates yarn yo
 
 # web
 brew_install heroku
@@ -75,7 +68,7 @@ brew services start mongodb
 brew_install sqlite
 
 # other
-brew_install go
+# brew_install go
 # brew_install r
 brew_install pass
 
