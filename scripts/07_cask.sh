@@ -64,12 +64,12 @@ brew_cask_install vlc
 brew_cask_install vox
 brew_cask_install vox-preferences-pane
 # brew_cask_install handbrake
-brew_cask_install imageoptim
-brew_cask_install imagealpha
+# brew_cask_install imageoptim
+# brew_cask_install imagealpha
 
 # passwords
 brew_cask_install gpgtools
-brew_cask_install qtpass
+# brew_cask_install qtpass
 
 # games
 brew_cask_install minecraft
