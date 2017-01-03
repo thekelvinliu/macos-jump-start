@@ -25,4 +25,5 @@ else
 fi
 
 # symlink plist fix to ~/Library/LaunchAgents/
+mkdir -p "$HOME/Library/LaunchAgents"
 ln -s "$HOME/osx-jump-start/configs/plists/ssh.add.plist" "$HOME/Library/LaunchAgents"
