@@ -1,0 +1,3 @@
+# automatically source the .exports file when changing into a Dropbox directory
+enter ~/Dropbox/([^/]+)
+  [ -r ".exports" ] && . ".exports"

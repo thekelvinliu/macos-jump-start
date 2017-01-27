@@ -38,6 +38,7 @@ brew_install tree
 brew_install ffmpeg
 brew_install imagemagick
 brew_install cmake
+brew_install ondir
 
 # python
 brew_install python

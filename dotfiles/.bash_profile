@@ -13,3 +13,15 @@ fi
 
 # enable nvm
 . $(brew --prefix nvm)/nvm.sh
+
+# enable ondir
+cd() {
+  builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
+pushd() {
+  builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
+popd() {
+  builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
+eval "`ondir /`"
