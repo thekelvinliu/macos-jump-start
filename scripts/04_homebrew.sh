@@ -60,7 +60,7 @@ mkdir -p "$NVM_DIR"
 nvm install node
 # update npm and install globals
 npm i -g npm
-npm i -g bower gulp-cli npm-check-updates yarn yo
+npm i -g gulp-cli npm-check-updates serverless yarn yo
 
 # web
 brew_install heroku
