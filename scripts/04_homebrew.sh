@@ -26,7 +26,7 @@ brew update
 brew upgrade
 
 # add other taps
-brew_tap homebrew/python
+brew_tap homebrew/science
 brew_tap homebrew/services
 
 # basics
