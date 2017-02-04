@@ -28,3 +28,6 @@ alias stopftp='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.pli
 
 # removes all parent-most node_modules directories from $HOME/Dropbox
 alias clean_dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/node_modules/*" -print -exec rm -rf {} +'
+
+# installs useful npm packages globally
+alias install_npm_globals='npm i -g gulp-cli npm-check-updates serverless yarn yo'
