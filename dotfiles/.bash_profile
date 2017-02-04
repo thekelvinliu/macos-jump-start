@@ -24,4 +24,3 @@ pushd() {
 popd() {
   builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
 }
-eval "`ondir /`"
