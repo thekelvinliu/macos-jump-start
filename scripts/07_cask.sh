@@ -33,8 +33,8 @@ brew_cask_install osxfuse
 brew_cask_install ngrok
 brew_cask_install firefoxdeveloperedition
 brew_cask_install safari-technology-preview
-brew_cask_install sequel-pro
-brew_cask_install robomongo
+# brew_cask_install sequel-pro
+# brew_cask_install robomongo
 brew_cask_install virtualbox
 brew_cask_install virtualbox-extension-pack
 # brew_cask_install vagrant
@@ -54,7 +54,7 @@ brew_cask_install flux
 brew_cask_install skim
 brew_cask_install skype
 brew_cask_install the-unarchiver
-# brew_cask_install torbrowser
+brew_cask_install torbrowser
 brew_cask_install tunnelblick
 
 # media apps
@@ -63,8 +63,8 @@ brew_cask_install transmission
 brew_cask_install vlc
 brew_cask_install vox
 brew_cask_install vox-preferences-pane
+brew_cask_install imageoptim
 # brew_cask_install handbrake
-# brew_cask_install imageoptim
 # brew_cask_install imagealpha
 
 # passwords

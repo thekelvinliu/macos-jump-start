@@ -60,14 +60,13 @@ mkdir -p "$NVM_DIR"
 nvm install node
 # update npm and install globals
 npm i -g npm
-npm i -g gulp-cli npm-check-updates serverless yarn yo
+install_npm_globals
 
-# web
-brew_install heroku
-brew_install mysql
-brew services start mysql
-brew_install mongodb
-brew services start mongodb
+# databases
+# brew_install mysql
+# brew services start mysql
+# brew_install mongodb
+# brew services start mongodb
 brew_install sqlite
 
 # other
