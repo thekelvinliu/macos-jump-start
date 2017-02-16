@@ -19,10 +19,12 @@ brew_tap caskroom/cask
 brew_tap caskroom/versions
 
 # important
+brew_cask_install alfred
 brew_cask_install iterm2
 brew_cask_install sublime-text
 brew_cask_install google-chrome
 brew_cask_install dropbox
+brew_cask_install gpgtools
 # brew_cask_install slack
 
 # development-realted
@@ -65,10 +67,6 @@ brew_cask_install vox-preferences-pane
 brew_cask_install imageoptim
 # brew_cask_install handbrake
 # brew_cask_install imagealpha
-
-# passwords
-brew_cask_install gpgtools
-# brew_cask_install qtpass
 
 # games
 brew_cask_install minecraft
