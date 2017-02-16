@@ -70,9 +70,10 @@ install_npm_globals
 brew_install sqlite
 
 # other
+brew_install awscli
+brew_install platformio
 # brew_install go
 brew_install pass
-brew_install platformio
 
 # clean things up
 brew cleanup
