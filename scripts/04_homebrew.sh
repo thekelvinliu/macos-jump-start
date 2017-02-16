@@ -71,8 +71,8 @@ brew_install sqlite
 
 # other
 # brew_install go
-# brew_install r
 brew_install pass
+brew_install platformio
 
 # clean things up
 brew cleanup
