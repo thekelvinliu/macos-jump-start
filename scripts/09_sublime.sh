@@ -9,10 +9,13 @@ mkdir -p "$sublime_dir/User"
 cd "$sublime_dir"
 
 # symlink theme
-ln -Ffs $HOME/osx-jump-start/configs/sublime/Dracula.tmTheme
+ln -Ffs "$HOME/osx-jump-start/configs/sublime/Dracula.tmTheme"
+
+# symlink keymap
+cd "User"
+ln -Ffs "$HOME/osx-jump-start/configs/sublime/Default (OSX).sublime-keymap"
 
 # symlink other settings
-cd "User"
 for file in $HOME/osx-jump-start/configs/sublime/*.sublime-settings; do
     ln -Ffs "$file"
 done
