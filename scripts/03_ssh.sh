@@ -23,7 +23,3 @@ if [[ ! -e $SSH_PRIVATE_KEY || ! -e $SSH_PUBLIC_KEY ]]; then
 else
     echo "an Ed25519 keypair already exists."
 fi
-
-# symlink plist fix to ~/Library/LaunchAgents/
-mkdir -p "$HOME/Library/LaunchAgents"
-ln -s "$HOME/osx-jump-start/configs/plists/ssh.add.plist" "$HOME/Library/LaunchAgents"
