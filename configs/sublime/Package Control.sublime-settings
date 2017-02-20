@@ -6,7 +6,6 @@
   "installed_packages":
   [
     "AppleScript Extensions",
-    "Deviot",
     "Evernote",
     "Gradle_Language",
     "Insert Equation",
@@ -14,6 +13,7 @@
     "Markdown Preview",
     "Package Control",
     "Pretty JSON",
+    "Processing",
     "Pug",
     "Sass",
     "Vue Syntax Highlight"
