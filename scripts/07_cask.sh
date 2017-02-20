@@ -60,7 +60,8 @@ brew_cask_install tunnelblick
 
 # media apps
 brew_cask_install transmission
-brew_cask_install filebot
+# use the latest app version of filebot that actually works
+brew_cask_install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
 brew_cask_install vlc
 brew_cask_install vox
 brew_cask_install vox-preferences-pane
