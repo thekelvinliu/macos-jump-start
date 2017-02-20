@@ -3,12 +3,14 @@
 
 # show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# don't write .DS_Store to network drives
+# don't write .DS_Store to drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+# allow tabs for modals
+defaults write -g AppleKeyboardUIMode -int 3
 # fast key repeat
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g KeyRepeat -int 0
 
 # kill existing finder sessions
 killall Finder
@@ -21,6 +23,7 @@ path="$HOME/Library/LaunchAgents"
 plist="com.thekelvinliu.ssh-adder.plist"
 mkdir -p "$path"
 echo "symlinking ssh-adder launch agent"
+launchctl unload "$path/$plist" 2> /dev/null
 ln -Ffs "$base/$plist" "$path"
 launchctl load "$path/$plist"
 
@@ -29,6 +32,7 @@ path="/Library/LaunchAgents"
 plist="com.thekelvinliu.dsnuke.plist"
 mkdir -p "$path"
 echo "symlinking dsnuke launch agent"
+sudo launchctl unload "$path/$plist" 2> /dev/null
 sudo ln -Ffs "$base/$plist" "$path"
 sudo launchctl load "$path/$plist"
 

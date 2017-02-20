@@ -1,4 +1,4 @@
-<!-- dsnuke periodically removes .DS_Store hourly -->
+<!-- dsnuke removes .DS_Store hourly -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -7,12 +7,12 @@
   <string>com.thekelvinliu.dsnuke</string>
   <key>ProgramArguments</key>
   <array>
-    <string>find</string>
-    <string>/</string>
-    <string>-name</string>
-    <string>.DS_Store</string>
-    <string>-delete</string>
+    <string>bash</string>
+    <string>-c</string>
+    <string>find / -path /dev -prune -o -type f -name .DS_Store -print | xargs rm</string>
   </array>
+  <key>RunAtLoad</key>
+  <true/>
   <key>StartInterval</key>
   <integer>3600</integer>
 </dict>
