@@ -14,14 +14,22 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 killall Finder
 
 # launch agents
+
 # ssh-add plist
+base="$HOME/osx-jump-start/configs/launchd"
 path="$HOME/Library/LaunchAgents"
+plist="com.thekelvinliu.ssh-adder.plist"
 mkdir -p "$path"
 echo "symlinking ssh-adder launch agent"
-ln -Ffs "$HOME/osx-jump-start/configs/launchd/com.thekelvinliu.ssh-adder.plist" "$path"
+ln -Ffs "$base/$plist" "$path"
+launchctl load "$path/$plist"
+
 # dsnuke plist
 path="/Library/LaunchAgents"
+plist="com.thekelvinliu.dsnuke.plist"
 mkdir -p "$path"
 echo "symlinking dsnuke launch agent"
-sudo ln -Ffs "$HOME/osx-jump-start/configs/launchd/com.thekelvinliu.dsnuke.plist" "$path"
-unset path
+sudo ln -Ffs "$base/$plist" "$path"
+sudo launchctl load "$path/$plist"
+
+unset base path plist
