@@ -1,9 +1,10 @@
+<!-- ssh-adder makes osx remember your key's passphrase -->
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.thekelvinliu.ssh-add</string>
+  <string>com.thekelvinliu.ssh-adder</string>
   <key>ProgramArguments</key>
   <array>
     <string>ssh-add</string>
