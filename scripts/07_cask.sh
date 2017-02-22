@@ -61,11 +61,13 @@ brew_cask_install tunnelblick
 
 # media apps
 # a filebot that actually works
-if brew_cask_installed filebot; then
-    echo "$BLUEfilebot$RESET is already installed."
+app=filebot
+if brew_cask_installed $app; then
+    echo "$BLUE$app$RESET is already installed."
 else
     brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
 fi
+unset app
 brew_cask_install transmission
 brew_cask_install vlc
 brew_cask_install vox
