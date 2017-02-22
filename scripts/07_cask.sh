@@ -35,6 +35,7 @@ brew_cask_install ngrok
 brew_cask_install firefoxdeveloperedition
 brew_cask_install safari-technology-preview
 brew_cask_install arduino
+brew_cask_install processing
 # brew_cask_install sequel-pro
 # brew_cask_install robomongo
 brew_cask_install virtualbox
