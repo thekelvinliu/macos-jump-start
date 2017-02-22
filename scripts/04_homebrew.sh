@@ -42,9 +42,7 @@ brew_install ondir
 
 # python
 brew_install python
-brew linkapps python
 brew_install python3
-brew linkapps python3
 brew_install "numpy --with-python3"
 brew_install "scipy --with-python3"
 brew_install "matplotlib --with-python3"
