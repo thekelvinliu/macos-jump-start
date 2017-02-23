@@ -40,7 +40,7 @@ brew_cask_install processing
 # brew_cask_install robomongo
 brew_cask_install virtualbox
 brew_cask_install virtualbox-extension-pack
-# brew_cask_install vagrant
+brew_cask_install vagrant
 
 # tex
 brew_cask_install basictex
