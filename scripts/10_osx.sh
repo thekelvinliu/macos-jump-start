@@ -17,7 +17,6 @@ defaults write -g KeyRepeat -int 1
 killall Finder
 
 # launch agents
-
 # ssh-add plist
 base="$HOME/osx-jump-start/configs/launchd"
 path="$HOME/Library/LaunchAgents"
@@ -27,7 +26,6 @@ echo "symlinking ssh-adder launch agent"
 launchctl unload "$path/$plist" 2> /dev/null
 ln -Ffs "$base/$plist" "$path"
 launchctl load "$path/$plist"
-
 # dsnuke plist
 path="/Library/LaunchAgents"
 plist="com.thekelvinliu.dsnuke.plist"
@@ -36,5 +34,5 @@ echo "symlinking dsnuke launch agent"
 sudo launchctl unload "$path/$plist" 2> /dev/null
 sudo ln -Ffs "$base/$plist" "$path"
 sudo launchctl load "$path/$plist"
-
+# remove variables
 unset base path plist
