@@ -19,16 +19,16 @@ killall Finder
 # launch agents
 base="$HOME/osx-jump-start/configs/launchd"
 # ssh-add plist
-path="$HOME/Library/LaunchAgents"
 plist="com.thekelvinliu.ssh-adder.plist"
+path="$HOME/Library/LaunchAgents"
 mkdir -p "$path"
 echo "symlinking ssh-adder launch agent"
 launchctl unload "$path/$plist" 2> /dev/null
 ln -Ffs "$base/$plist" "$path"
 launchctl load "$path/$plist"
 # dsnuke plist -- needs to be owned by root
-path="/Library/LaunchAgents"
 plist="com.thekelvinliu.dsnuke.plist"
+path="/Library/LaunchDaemons"
 mkdir -p "$path"
 echo "symlinking dsnuke launch agent"
 sudo launchctl unload "$path/$plist" 2> /dev/null
