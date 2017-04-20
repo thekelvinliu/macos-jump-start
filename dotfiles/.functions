@@ -1,40 +1,40 @@
 # convert audio files in current directory to mp3 and save to ./output/
 function aconvert {
-    mkdir output
-    for file in *.$1; do
-        ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
-    done
+  mkdir output
+  for file in *.$1; do
+    ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
+  done
 }
 
 # create a directory and immediately change to it
 function mkcd {
-    mkdir -p $1 && cd $1
+  mkdir -p $1 && cd $1
 }
 
 # expand a path to an absolute path
 function realpath {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+  [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
 # source a script and complain nicely if it doesn't exist
 function safesource {
-    if [ $# -eq 0 ]; then
-        echo "nothing to source!"
+  if [ $# -eq 0 ]; then
+    echo "nothing to source!"
+  else
+    if [ -r $1 ]; then
+      . $1 && echo "${GREEN}done.${RESET}"
     else
-        if [ -r $1 ]; then
-            . $1 && echo "${GREEN}done.${RESET}"
-        else
-            echo "could not find $1"
-        fi
+      echo "could not find $1"
     fi
+  fi
 }
 
 # quickly symlink dotfiles by running the linker script
 function relink {
-    safesource $HOME/osx-jump-start/scripts/02_linker.sh
+  safesource $HOME/osx-jump-start/scripts/02_linker.sh
 }
 
 # quickly source ~/.bash_profile
 function sour {
-    safesource $HOME/.bash_profile
+  safesource $HOME/.bash_profile
 }

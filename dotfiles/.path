@@ -5,7 +5,7 @@ PATH=$HOME/bin:$PATH
 
 # add homebrew if it has been installed
 if [[ -n $(brew --prefix 2> /dev/null) ]]; then
-    PATH="$(brew --prefix)/bin":$PATH
+  PATH="$(brew --prefix)/bin":$PATH
 fi
 
 # Export these paths

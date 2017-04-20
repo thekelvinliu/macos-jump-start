@@ -2,7 +2,7 @@
 
 # load all other dotfiles
 for file in $HOME/.{path,bash_prompt,exports,aliases,functions,extra}; do
-    [ -r "$file" ] && . "$file"
+  [ -r "$file" ] && . "$file"
 done
 unset file
 
