@@ -16,7 +16,7 @@ brew update
 
 # install bash and bash-completion
 brew_install bash
-brew_install bash-completion
+brew_install bash-completion@2
 brew_bash_path=$(which bash)
 
 # change the default shell to homebrew-installed bash
