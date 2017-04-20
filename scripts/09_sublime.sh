@@ -17,6 +17,6 @@ ln -Ffs "$HOME/osx-jump-start/configs/sublime/Default (OSX).sublime-keymap"
 
 # symlink other settings
 for file in $HOME/osx-jump-start/configs/sublime/*.sublime-settings; do
-    ln -Ffs "$file"
+  ln -Ffs "$file"
 done
 unset sublime_dir

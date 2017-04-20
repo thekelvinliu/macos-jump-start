@@ -7,8 +7,8 @@
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
-    echo "homebrew is not installed -- exiting."
-    return
+  echo "homebrew is not installed -- exiting."
+  return
 fi
 
 # update formulae
@@ -21,10 +21,10 @@ brew_bash_path=$(which bash)
 
 # change the default shell to homebrew-installed bash
 if [[ "$SHELL" != "$brew_bash_path" ]]; then
-    echo "changing the default shell -- you may need to enter your password"
-    sudo chsh -s "$brew_bash_path" $(whoami)
+  echo "changing the default shell -- you may need to enter your password"
+  sudo chsh -s "$brew_bash_path" $(whoami)
 else
-    echo "the default shell is already homebrew's bash"
+  echo "the default shell is already homebrew's bash"
 fi
 
 # clean things up

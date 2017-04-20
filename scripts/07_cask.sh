@@ -7,8 +7,8 @@
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
-    echo "homebrew is not installed -- exiting."
-    return
+  echo "homebrew is not installed -- exiting."
+  return
 fi
 
 # ensure things are up-to-date
@@ -63,9 +63,9 @@ brew_cask_install tunnelblick
 # a filebot that actually works
 app=filebot
 if brew_cask_installed $app; then
-    echo "$BLUE$app$RESET is already installed."
+  echo "$BLUE$app$RESET is already installed."
 else
-    brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
+  brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
 fi
 unset app
 brew_cask_install transmission
