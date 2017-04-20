@@ -7,14 +7,14 @@
   "font_size": 12,
   "highlight_line": true,
   "highlight_modified_tabs": true,
-  "ignored_packages":
-  [
+  "ignored_packages": [
+    "JavaScript",
+    "Rails",
     "Vintage"
   ],
   "indent_to_bracket": true,
   "open_files_in_new_window": false,
-  "rulers":
-  [
+  "rulers": [
     80,
     120
   ],

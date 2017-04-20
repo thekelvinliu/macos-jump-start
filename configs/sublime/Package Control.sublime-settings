@@ -6,6 +6,9 @@
   "installed_packages":
   [
     "AppleScript Extensions",
+    "Babel",
+    "Babel Snippets",
+    "Ethereum",
     "Evernote",
     "Gradle_Language",
     "Insert Equation",
