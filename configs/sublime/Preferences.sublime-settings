@@ -1,4 +1,20 @@
 {
+  "binary_file_patterns": [
+    "node_modules/**",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.ttf",
+    "*.tga",
+    "*.dds",
+    "*.ico",
+    "*.eot",
+    "*.pdf",
+    "*.swf",
+    "*.jar",
+    "*.zip"
+  ],
   "bold_folder_labels": true,
   "color_scheme": "Packages/Dracula.tmTheme",
   "default_line_ending": "unix",
@@ -20,6 +36,7 @@
   ],
   "spell_check": false,
   "tab_size": 2,
+  "theme": "Default.sublime-theme",
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
   "word_wrap": false
