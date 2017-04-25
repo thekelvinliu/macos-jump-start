@@ -16,7 +16,7 @@
     "*.zip"
   ],
   "bold_folder_labels": true,
-  "color_scheme": "Packages/Dracula.tmTheme",
+  "color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
   "default_line_ending": "unix",
   "ensure_newline_at_eof_on_save": true,
   "font_face": "Monaco",
