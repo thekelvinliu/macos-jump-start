@@ -1,14 +1,12 @@
 {
   "bootstrapped": true,
-  "in_process_packages":
-  [
-  ],
-  "installed_packages":
-  [
+  "in_process_packages": [],
+  "installed_packages": [
     "A File Icon",
     "AppleScript Extensions",
     "Babel",
     "Babel Snippets",
+    "Dracula Color Scheme",
     "Ethereum",
     "Evernote",
     "Gradle_Language",
@@ -20,6 +18,9 @@
     "Processing",
     "Pug",
     "Sass",
+    "SublimeLinter",
+    "SublimeLinter-contrib-eslint",
+    "SublimeLinter-flow",
     "Vue Syntax Highlight"
   ]
 }
