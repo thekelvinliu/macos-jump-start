@@ -8,9 +8,6 @@ mkdir -p "$sublime_dir/User"
 # change to sublime directory
 cd "$sublime_dir"
 
-# symlink theme
-# ln -Ffs "$HOME/osx-jump-start/configs/sublime/Dracula.tmTheme"
-
 # symlink keymap
 cd "User"
 ln -Ffs "$HOME/osx-jump-start/configs/sublime/Default (OSX).sublime-keymap"
