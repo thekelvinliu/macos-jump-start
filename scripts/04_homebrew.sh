@@ -25,9 +25,11 @@ brew doctor
 brew update
 brew upgrade
 
-# add other taps
+# some more useful formulae
 brew_tap homebrew/science
 brew_tap homebrew/services
+# rmtree external command
+brew_tap beeftornado/rmtree
 
 # basics
 brew_install coreutils
