@@ -5,13 +5,13 @@
 . $HOME/osx-jump-start/dotfiles/.functions
 
 # check for $un and $email, if either is undefined, run 01_prompt.sh
-if [[ -z $un || -z $email ]]; then
+if [[ -z "$un" || -z "$email" ]]; then
   echo "Missing username and/or email!"
   . $HOME/osx-jump-start/scripts/01_prompt.sh
 fi
 
 # loop through bash-related dotfiles
-for file in $HOME/osx-jump-start/dotfiles/.[^.]*; do
+for file in "$HOME"/osx-jump-start/dotfiles/.[^.]*; do
   if [ -r "$file" ]; then
     file=$(realpath $file)
     # insert username and email into gitconfig
