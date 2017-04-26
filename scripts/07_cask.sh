@@ -21,7 +21,7 @@ brew_tap caskroom/versions
 # important
 brew_cask_install alfred
 brew_cask_install iterm2
-brew_cask_install sublime-text
+brew_cask_install sublime-text-dev
 brew_cask_install google-chrome
 brew_cask_install dropbox
 brew_cask_install gpgtools
