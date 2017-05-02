@@ -33,4 +33,4 @@ alias clean_dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/
 alias install_npm_globals='npm i -g gulp-cli npm-check-updates serverless yarn yo'
 
 # remove .DS_Store files on primary drive
-alias dsnuke='sudo find -x / -type f -name .DS_Store -delete && echo "done."'
+alias dsnuke='echo "dsnuke will search your disk and remove .DS_Store files -- you may need to enter your password." && sudo find -x / -type f -name .DS_Store -delete && echo "done."'
