@@ -5,7 +5,7 @@
 . $HOME/osx-jump-start/dotfiles/.exports
 
 # check for $email and run 01_prompt.sh if it is undefined
-if [[ -z $email ]]; then
+if [[ -z "$email" ]]; then
   echo "Missing email!"
   . $HOME/osx-jump-start/scripts/01_prompt.sh
 fi
