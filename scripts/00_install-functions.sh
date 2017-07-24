@@ -9,29 +9,29 @@ function has_brew {
 
 # check whether a given cask is already installed
 function brew_cask_installed {
-  brew cask list -1 | fgrep -qx $1
+  fgrep -qsx "$1" <(brew cask list -1)
 }
 
 # install a cask formula
 function brew_cask_install {
-  if brew_cask_installed $1; then
+  if brew_cask_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
   else
-    brew cask install $1
+    brew cask install "$1"
   fi
 }
 
-# check whether a given formula is already installed
+# check whether a given cask is already installed
 function brew_installed {
-  brew list -1 | fgrep -qx $1
+  fgrep -qsx "$1" <(brew list -1)
 }
 
 # install a homebrew formula
 function brew_install {
-  if brew_installed $1; then
+  if brew_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
   else
-    brew install $1
+    brew install "$1"
   fi
 }
 
