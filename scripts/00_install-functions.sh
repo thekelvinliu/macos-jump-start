@@ -2,17 +2,17 @@
 # install-functions.sh - script to install homebrew cask and apps
 # note: this script only defines functions for installing stuff in a nice way
 
-# check whether or not homebrew is installed
+# checks whether homebrew is installed
 function has_brew {
   [[ -n $(which brew) ]]
 }
 
-# check whether a given cask is already installed
+# checks whether a given cask is already installed
 function brew_cask_installed {
   fgrep -qsx "$1" <(brew cask list -1)
 }
 
-# install a cask formula
+# installs a cask
 function brew_cask_install {
   if brew_cask_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
@@ -21,12 +21,12 @@ function brew_cask_install {
   fi
 }
 
-# check whether a given cask is already installed
+# checks whether a given formula is already installed
 function brew_installed {
   fgrep -qsx "$1" <(brew list -1)
 }
 
-# install a homebrew formula
+# installs a homebrew formula
 function brew_install {
   if brew_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
@@ -35,44 +35,44 @@ function brew_install {
   fi
 }
 
-# check whether a given tap is already tapped
+# checks whether a given tap is already tapped
 function brew_tapped {
-  brew tap | fgrep -qx $1
+  fgrep -qsx "$1" <(brew tap)
 }
 
 # taps a homebrew tap
 function brew_tap {
-  if brew_tapped $1; then
+  if brew_tapped "$1"; then
     echo "$BLUE$1$RESET is already tapped."
   else
-    brew tap $1
+    brew tap "$1"
   fi
 }
 
-# check whether a given library is already installed with pip
-function pip_installed {
-  pip freeze --local | fgrep -q $1
+# checks whether a given library is already installed with pip2
+function pip2_installed {
+  pip2 show "$1" &> /dev/null
 }
 
-# installs a python library with pip
-function pip_install {
-  if pip_installed $1; then
+# installs a python library with pip2
+function pip2_install {
+  if pip2_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
   else
-    pip install $1
+    pip2 install "$1"
   fi
 }
 
-# check whether a given library is already installed with pip3
+# checks whether a given library is already installed with pip3
 function pip3_installed {
-  pip3 freeze --local | fgrep -q $1
+  pip3 show "$1" &> /dev/null
 }
 
 # installs a python library with pip3
 function pip3_install {
-  if pip3_installed $1; then
+  if pip3_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
   else
-    pip3 install $1
+    pip3 install "$1"
   fi
 }
