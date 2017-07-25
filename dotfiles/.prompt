@@ -1,0 +1,16 @@
+# sets the bash prompt
+# adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt
+
+# better function for git versions >2.9.1
+function parse_git_dirty() {
+  status=$(git status 2> /dev/null)
+  [[ "$status" == *"Your branch"* && "$status" != *"up-to-date"* || "$status" != *"clean"* ]] && echo "*"
+  unset status
+}
+
+function parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
+export PS2="\[$CYAN\]→ \[$RESET\]"

@@ -1,0 +1,39 @@
+# exports escape sequences for terminal colors
+
+# set colors with max compatibility
+if tput setaf 1 &> /dev/null; then
+  tput sgr0
+  BLACK=$(tput setaf 0)
+  RED=$(tput setaf 1)
+  GREEN=$(tput setaf 2)
+  YELLOW=$(tput setaf 3)
+  BLUE=$(tput setaf 4)
+  MAGENTA=$(tput setaf 5)
+  CYAN=$(tput setaf 6)
+  WHITE=$(tput setaf 7)
+  BOLD=$(tput bold)
+  RESET=$(tput sgr0)
+else
+  BLACK="\033[1;30m"
+  RED="\033[1;31m"
+  GREEN="\033[1;32m"
+  YELLOW="\033[1;33m"
+  BLUE="\033[1;34m"
+  MAGENTA="\033[1;35m"
+  CYAN="\033[1;36m"
+  WHITE="\033[1;37m"
+  BOLD=""
+  RESET="\033[m"
+fi
+
+# export environment variables
+export BLACK
+export RED
+export GREEN
+export YELLOW
+export BLUE
+export MAGENTA
+export CYAN
+export WHITE
+export BOLD
+export RESET
