@@ -1,6 +1,5 @@
-# adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_profile
+# simply load all other dotfiles
 
-# load all other dotfiles
 for file in "$HOME/".{path,bash_prompt,exports,aliases,functions,extra}; do
   [ -r "$file" ] && . "$file"
 done
