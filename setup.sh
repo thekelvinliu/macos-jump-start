@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setup.sh - sets up scripts and dotfiles for a happy development environment
+# scripts and dotfiles for a happy development environment
 
 # variables
 DONE="$GREEN$BOLDd o n e$RESET"
@@ -7,9 +7,8 @@ OJS="$HOME/osx-jump-start"
 
 # ensure xcode is installed
 if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
-  # enable install functions and prompt colors
+  # get a common execution environment
   . "$OJS/common.sh"
-  . "$OJS/dotfiles/.bash_prompt"
   # run scripts
   for script in "$OJS/scripts/"[0-9]*; do
     echo "running $YELLOW$script$RESET..."

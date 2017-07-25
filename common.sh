@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# common functions used during installation
+# bootstraps a common and minimal environment for scripts
+
+# get colors
+. "./dotfiles/.colors"
 
 # checks whether homebrew is installed
 function has_brew {
