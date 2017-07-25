@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# a common and minimal environment of functions and variables
+# common functions used during installation
 
 # checks whether homebrew is installed
 function has_brew {
@@ -45,33 +45,5 @@ function brew_tap {
     echo "$BLUE$1$RESET is already tapped."
   else
     brew tap "$1"
-  fi
-}
-
-# checks whether a given library is already installed with pip2
-function pip2_installed {
-  pip2 show "$1" &> /dev/null
-}
-
-# installs a python library with pip2
-function pip2_install {
-  if pip2_installed "$1"; then
-    echo "$BLUE$1$RESET is already installed."
-  else
-    pip2 install "$1"
-  fi
-}
-
-# checks whether a given library is already installed with pip3
-function pip3_installed {
-  pip3 show "$1" &> /dev/null
-}
-
-# installs a python library with pip3
-function pip3_install {
-  if pip3_installed "$1"; then
-    echo "$BLUE$1$RESET is already installed."
-  else
-    pip3 install "$1"
   fi
 }
