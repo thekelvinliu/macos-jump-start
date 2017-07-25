@@ -25,10 +25,8 @@ brew doctor
 brew update
 brew upgrade
 
-# some more useful formulae
+# add some taps
 brew_tap homebrew/science
-brew_tap homebrew/services
-# rmtree external command
 brew_tap beeftornado/rmtree
 
 # basics
@@ -43,6 +41,7 @@ brew_install cmake
 brew_install ondir
 
 # python
+# maybe change pip.sh to python.sh and move this stuff
 brew_install python
 brew_install python3
 brew_install "numpy --with-python3"
