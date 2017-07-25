@@ -8,12 +8,12 @@ function aconvert {
 
 # create a directory and immediately change to it
 function mkcd {
-  mkdir -p $1 && cd $1
+  mkdir -p "$1" && cd "$1"
 }
 
 # expand a path to an absolute path
 function realpath {
-  [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+  [[ "$1" = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
 # source a script and complain nicely if it doesn't exist
