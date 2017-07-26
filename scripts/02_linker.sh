@@ -24,4 +24,4 @@ done
 unset dot
 
 # source the dotfiles now
-ssource "$HOME/.bash_profile"
+. "$HOME/.bash_profile"
