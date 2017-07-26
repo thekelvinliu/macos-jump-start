@@ -32,10 +32,12 @@ function brew_installed {
 
 # installs a homebrew formula
 function brew_install {
-  if brew_installed "$1"; then
-    echo "$BLUE$1$RESET is already installed."
+  # get only the name of the formula
+  formula=$(echo "$1" | cut -d' ' -f1)
+  if brew_installed "$formula"; then
+    echo "$BLUE$formula$RESET is already installed."
   else
-    brew install "$1"
+    echo "$1" | xargs brew install
   fi
 }
 
