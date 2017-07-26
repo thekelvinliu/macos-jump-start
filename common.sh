@@ -2,7 +2,8 @@
 # bootstraps a common and minimal environment for scripts
 
 # get colors
-. "./dotfiles/.colors"
+OJS="$HOME/osx-jump-start"
+. "$OJS/dotfiles/.colors"
 
 # checks whether homebrew is installed
 function has_brew {
