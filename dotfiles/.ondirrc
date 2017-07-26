@@ -1,8 +1,8 @@
 # decentralize this configuration
 enter ~\/.*\/(.*)
   script="$PWD/.ondir/enter"
-  [ -r "$script" ] && . "$script"
+  [[ -r "$script" ]] && . "$script"
 
 leave ~\/.*\/(.*)
   script="$OLDPWD/.ondir/leave"
-  [ -r "$script" ] && . "$script"
+  [[ -r "$script" ]] && . "$script"
