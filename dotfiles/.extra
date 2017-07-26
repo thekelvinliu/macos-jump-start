@@ -1,6 +1,23 @@
 # contains extra/misc stuff
 
-# this file is used for extra stuff...
+# bash completion
+if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+  . $(brew --prefix)/share/bash-completion/bash_completion
+fi
+
+# nvm
+. $(brew --prefix nvm)/nvm.sh
+
+# ondir
+function cd {
+  builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
+function pushd {
+  builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
+function popd {
+  builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+}
 
 # gpg-agent
 # envfile="$HOME/.gnupg/gpg-agent.env"
@@ -11,28 +28,3 @@
 # fi
 # export GPG_AGENT_INFO
 # export SSH_AUTH_SOCK
-
-
-
-
-# enable bash completion
-# if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#   . $(brew --prefix)/etc/bash_completion
-# fi
-if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  . $(brew --prefix)/share/bash-completion/bash_completion
-fi
-
-# enable nvm
-. $(brew --prefix nvm)/nvm.sh
-
-# enable ondir
-cd() {
-  builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-}
-pushd() {
-  builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-}
-popd() {
-  builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-}
