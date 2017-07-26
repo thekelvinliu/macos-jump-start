@@ -22,3 +22,6 @@ for dot in "$OJS/dotfiles/".[^.]*; do
   fi
 done
 unset dot
+
+# source the dotfiles now
+ssource "$HOME/.bash_profile"
