@@ -36,8 +36,8 @@
 
 # Personal settings
 [user]
-  name = _un
-  email = _email
+  name = _USERNAME
+  email = _EMAIL
 [push]
   default = current
 [core]
