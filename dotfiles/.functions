@@ -1,6 +1,7 @@
 # fantastic bash functions
 
 # get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
 . "$OJS/common.sh"
 
 # finds and removes .DS_Store files (only on primary drive)

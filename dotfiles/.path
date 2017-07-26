@@ -1,6 +1,7 @@
 # specific PATH environment variable setup
 
 # get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
 . "$OJS/common.sh"
 
 # add user directory bin
