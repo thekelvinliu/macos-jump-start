@@ -31,6 +31,11 @@ function ssource {
   echo "$DONE_MSG"
 }
 
+# sources the .bash_profile
+function sour {
+  ssource "$HOME/.bash_profile"
+}
+
 # # convert audio files in current directory to mp3 and save to ./output/
 # function aconvert {
 #   mkdir output
@@ -39,12 +44,12 @@ function ssource {
 #   done
 # }
 
-# quickly symlink dotfiles by running the linker script
-function relink {
-  ssource $HOME/osx-jump-start/scripts/02_linker.sh
-}
+# # quickly symlink dotfiles by running the linker script
+# function relink {
+#   ssource $HOME/osx-jump-start/scripts/02_linker.sh
+# }
 
-# quickly source ~/.bash_profile
-function sour {
-  ssource $HOME/.bash_profile
-}
+# # quickly source ~/.bash_profile
+# function sour {
+#   ssource $HOME/.bash_profile
+# }
