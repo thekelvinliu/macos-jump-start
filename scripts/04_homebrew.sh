@@ -1,9 +1,8 @@
-# installs homebrew and some useful basics
+# installs homebrew and useful basics
 
-# 04_homebrew.sh - script to install hombrew, basic tools, python, and web stuff
-
-# enable install functions
-. $HOME/osx-jump-start/scripts/00_install-functions.sh
+# get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
+. "$OJS/common.sh"
 
 # check for homebrew and install if necessary
 if has_brew; then
@@ -30,49 +29,15 @@ brew upgrade
 brew_tap homebrew/science
 brew_tap beeftornado/rmtree
 
-# basics
-brew_install coreutils
-brew_install findutils
+# the basics
+brew_install awscli
+brew_install cmake
+brew_install gcc
 brew_install git
 brew_install htop-osx
 brew_install tree
-brew_install ffmpeg
-brew_install imagemagick
-brew_install cmake
-brew_install ondir
-
-# python
-# maybe change pip.sh to python.sh and move this stuff
-brew_install python
-brew_install python3
-brew_install "numpy --with-python3"
-brew_install "scipy --with-python3"
-brew_install "matplotlib --with-python3"
-# brew_install "pillow --with-python3"
-# brew_install "pygame --with-python3"
-
-# node
-brew_install nvm
-# enable nvm immediately
-export NVM_DIR="$HOME/.nvm"
-mkdir -p "$NVM_DIR"
-. $(brew --prefix nvm)/nvm.sh
-nvm install node
-# update npm and install globals
-npm i -g npm
-npm i -g gulp-cli npm-check-updates serverless yarn yo
-
-# databases
-# brew_install mysql
-# brew services start mysql
-# brew_install mongodb
-# brew services start mongodb
-brew_install sqlite
-
-# other
-brew_install awscli
-# brew_install go
-brew_install pass
+# brew_install coreutils
+# brew_install findutils
 
 # clean things up
 brew cleanup

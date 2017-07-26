@@ -1,10 +1,8 @@
 # installs homebrew's bash and sets it as the login shell
 
-# 06_bash.sh - script to install bash via homebrew and set it as the login shell
-# note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
-
-# enable install functions
-. $HOME/osx-jump-start/scripts/00_install-functions.sh
+# get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
+. "$OJS/common.sh"
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
