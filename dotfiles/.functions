@@ -1,40 +1,46 @@
-# convert audio files in current directory to mp3 and save to ./output/
-function aconvert {
-  mkdir output
-  for file in *.$1; do
-    ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
-  done
+# handy bash functions
+
+# finds and removes .DS_Store files (only on primary drive)
+function dsnuke {
+  echo "${RED}dsnuke$RESET finds and removes ${YELLOW}.DS_Store$RESET files (password required)"
+  sudo find -x / -type f -name .DS_Store -delete
+  echo "${GREEN}done.$RESET"
 }
 
-# create a directory and immediately change to it
+# creates and navigates to a new directory
 function mkcd {
-  mkdir -p "$1" && cd "$1"
+  mkdir -p "$1"
 }
 
-# expand a path to an absolute path
+# expands any path to an absolute
 function realpath {
   [[ "$1" = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
-# source a script and complain nicely if it doesn't exist
-function safesource {
-  if [ $# -eq 0 ]; then
-    echo "nothing to source!"
-  else
-    if [ -r $1 ]; then
-      . $1 && echo "${GREEN}done.${RESET}"
-    else
-      echo "could not find $1"
-    fi
-  fi
+# sources a given file by first checking if it is readable
+function ssource {
+  # ensure a single argument
+  [[ "$#" -ne 1 ]] && return 1
+  # ensure readable
+  [[ ! -r "$1" ]] && echo "could not source $1" && return 1
+  # source as normal
+  . "$1"
 }
+
+# # convert audio files in current directory to mp3 and save to ./output/
+# function aconvert {
+#   mkdir output
+#   for file in *.$1; do
+#     ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
+#   done
+# }
 
 # quickly symlink dotfiles by running the linker script
 function relink {
-  safesource $HOME/osx-jump-start/scripts/02_linker.sh
+  ssource $HOME/osx-jump-start/scripts/02_linker.sh
 }
 
 # quickly source ~/.bash_profile
 function sour {
-  safesource $HOME/.bash_profile
+  ssource $HOME/.bash_profile
 }
