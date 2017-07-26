@@ -25,7 +25,7 @@ GIT_USERNAME=$(git config --global user.name 2> /dev/null)
 [[ -n "$GIT_USERNAME" ]] && export GIT_USERNAME || unset GIT_USERNAME
 
 # nvm
-export NVM_DIR=$HOME/.nvm
+export NVM_DIR="$HOME/.nvm"
 
 # make brew cask symlink apps to /Applications
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
