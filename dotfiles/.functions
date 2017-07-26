@@ -28,6 +28,7 @@ function ssource {
   [[ ! -r "$1" ]] && echo "could not source $1" && return 1
   # source as normal
   . "$1"
+  echo "$DONE_MSG"
 }
 
 # symlinks the dotfiles by running the linker script
