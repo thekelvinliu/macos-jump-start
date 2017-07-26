@@ -1,4 +1,4 @@
-# 03_ssh.sh - creates ssh keys if none exist
+# creates a strong default ssh keypair
 
 # ensure $SSH_PRIVATE_KEY and $SSH_PUBLIC_KEY are set
 . $HOME/osx-jump-start/dotfiles/.exports

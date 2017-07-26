@@ -1,4 +1,4 @@
-# 09_sublime.sh - symlink sublime user settings and color scheme
+# symlinks sublime user settings and color scheme
 
 # ensure directory stucture exists
 sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"

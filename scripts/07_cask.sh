@@ -1,3 +1,5 @@
+# installs homebrew cask and apps
+
 # 07_cask.sh - script to install homebrew cask and apps
 # note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
 

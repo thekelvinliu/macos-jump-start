@@ -1,3 +1,5 @@
+# installs homebrew and some useful basics
+
 # 04_homebrew.sh - script to install hombrew, basic tools, python, and web stuff
 
 # enable install functions

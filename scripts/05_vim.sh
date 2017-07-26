@@ -1,3 +1,5 @@
+# installs vim, pathogen, and plugins
+
 # 05_vim.sh - script to install vim, pathogen, and some plugins
 # note: assumes homebrew is already installed -- if not, run 04_homebrew.sh
 

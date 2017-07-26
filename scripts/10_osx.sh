@@ -1,4 +1,4 @@
-# 10_osx.sh - changes osx system settings
+# changes osx system settings
 
 # show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles -bool true

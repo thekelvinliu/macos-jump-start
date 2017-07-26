@@ -1,3 +1,5 @@
+# installs python and python3 as well as some useful libraries
+
 # 08_pip.sh - script to install python libraries via pip
 # note: assumes both versions of python are already installed
 # if not, run 04_homebrew.sh
