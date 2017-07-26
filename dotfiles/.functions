@@ -28,7 +28,11 @@ function ssource {
   [[ ! -r "$1" ]] && echo "could not source $1" && return 1
   # source as normal
   . "$1"
-  echo "$DONE_MSG"
+}
+
+# symlinks the dotfiles by running the linker script
+function relink {
+  ssource "$OJS/scripts/02_linker.sh"
 }
 
 # sources the .bash_profile
@@ -42,14 +46,4 @@ function sour {
 #   for file in *.$1; do
 #     ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
 #   done
-# }
-
-# # quickly symlink dotfiles by running the linker script
-# function relink {
-#   ssource $HOME/osx-jump-start/scripts/02_linker.sh
-# }
-
-# # quickly source ~/.bash_profile
-# function sour {
-#   ssource $HOME/.bash_profile
 # }
