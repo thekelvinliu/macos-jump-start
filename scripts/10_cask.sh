@@ -53,7 +53,7 @@ brew_cask_install appcleaner
 brew_cask_install coconutbattery
 # brew_cask_install cyberduck
 brew_cask_install disk-inventory-x
-brew_cask_install evernote
+# brew_cask_install evernote
 brew_cask_install flux
 brew_cask_install skim
 # brew_cask_install skype
@@ -74,6 +74,7 @@ unset app
 # brew_cask_install handbrake
 # brew_cask_install imageoptim
 # brew_cask_install imagealpha
+brew_cask_install spotify
 brew_cask_install transmission
 brew_cask_install vlc
 # brew_cask_install vox
