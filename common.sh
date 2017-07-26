@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # bootstraps a common and minimal environment for scripts
 
 # variables
