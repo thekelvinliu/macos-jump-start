@@ -1,4 +1,4 @@
-# Adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.gitconfig
+# global git config
 
 [alias]
   # Show verbose output about tags, branches or remotes

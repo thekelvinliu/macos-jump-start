@@ -1,5 +1,4 @@
 # sets the bash prompt
-# adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.bash_prompt
 
 # better function for git versions >2.9.1
 function parse_git_dirty() {

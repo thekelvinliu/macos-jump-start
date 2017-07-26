@@ -1,4 +1,3 @@
-# adapted from https://raw.githubusercontent.com/nicolashery/mac-dev-setup/master/.gitignore
 # folder view configs
 .DS_Store
 Desktop.ini
