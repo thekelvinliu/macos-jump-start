@@ -2,7 +2,6 @@
 # scripts and dotfiles for a happy development environment
 
 # variables
-DONE="$GREEN$BOLD d o n e$RESET"
 OJS="$HOME/osx-jump-start"
 
 # ensure xcode is installed
@@ -19,8 +18,6 @@ else
   echo "install xcode and agree to the liscence before running this script."
 fi
 
-echo "$DONE"
+echo "$DONE_MSG"
 echo "system ready -- enjoy development!"
-echo "$DONE"
-
-unset DONE OJS
+echo "$DONE_MSG"

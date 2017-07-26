@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 # bootstraps a common and minimal environment for scripts
 
-# get colors
+# variables
 OJS="$HOME/osx-jump-start"
 . "$OJS/dotfiles/.colors"
+DONE_MSG="$GREEN$BOLD d o n e$RESET"
 
+# functions
 # checks whether homebrew is installed
 function has_brew {
   [[ -n $(which brew) ]]
