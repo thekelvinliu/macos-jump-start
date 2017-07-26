@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # 09_sublime.sh - symlink sublime user settings and color scheme
 
 # ensure directory stucture exists

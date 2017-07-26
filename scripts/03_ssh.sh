@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # 03_ssh.sh - creates ssh keys if none exist
 
 # ensure $SSH_PRIVATE_KEY and $SSH_PUBLIC_KEY are set

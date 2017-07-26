@@ -1,6 +1,11 @@
-#!/usr/bin/env bash
-# 02_linker.sh - script to symlink bash-related dotfiles in this repo to ~/
+# symlinks dotfiles to $HOME
 
+# get a common execution environment
+. "$OJS/common.sh"
+# enable functions
+. "$OJS"
+
+#
 # enable functions
 . $HOME/osx-jump-start/dotfiles/.functions
 

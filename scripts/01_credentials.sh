@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # sets git email and username environment variables
 
 while true; do

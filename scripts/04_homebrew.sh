@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # 04_homebrew.sh - script to install hombrew, basic tools, python, and web stuff
 
 # enable install functions

@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # 10_osx.sh - changes osx system settings
 
 # show hidden files in finder
