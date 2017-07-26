@@ -1,4 +1,4 @@
-# handy bash aliases
+# awesome bash aliases
 
 # detect correct color flag for directory listings
 colorflag=$(ls --color &> /dev/null && echo '--color' || echo '-G')

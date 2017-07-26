@@ -1,4 +1,5 @@
-# decentralize this configuration
+# decentralizes ondir to so that directories can have their own .ondir directory
+
 enter ~\/.*\/(.*)
   script="$PWD/.ondir/enter"
   [[ -r "$script" ]] && . "$script"

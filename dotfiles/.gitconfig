@@ -1,5 +1,3 @@
-# global git config
-
 [alias]
   # Show verbose output about tags, branches or remotes
   tags = tag -l

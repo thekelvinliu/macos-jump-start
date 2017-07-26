@@ -1,4 +1,4 @@
-# environment variables
+# exports environment variables
 
 # this repo!
 export OJS="$HOME/osx-jump-start"
