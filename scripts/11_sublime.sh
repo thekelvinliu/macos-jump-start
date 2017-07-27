@@ -1,18 +1,19 @@
 # symlinks sublime user settings and color scheme
 
-# ensure directory stucture exists
-sublime_dir="$HOME/Library/Application Support/Sublime Text 3/Packages"
-mkdir -p "$sublime_dir/User"
+# get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
+. "$OJS/common.sh"
 
-# change to sublime directory
-cd "$sublime_dir"
+# navigate to sublime directory
+sublime="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+mkdir -p "$sublime"
+cd "$sublime"
 
-# symlink keymap
-cd "User"
-ln -Ffs "$HOME/osx-jump-start/configs/sublime/Default (OSX).sublime-keymap"
-
-# symlink other settings
-for file in $HOME/osx-jump-start/configs/sublime/*.sublime-settings; do
-  ln -Ffs "$file"
+# symlink settings files
+for s in "$OJS/configs/sublime/"*.sublime-*; do
+  ln -Ffs "$s"
 done
-unset sublime_dir
+
+# reset
+unset sublime s
+cd - > /dev/null
