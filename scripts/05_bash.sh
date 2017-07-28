@@ -19,7 +19,6 @@ brew_install bash-completion@2
 
 # change shell if necessary
 brew_bash_path=$(which bash)
-echo "$brew_bash_path"
 shells="/etc/shells"
 if [[ "$SHELL" == "$brew_bash_path" ]]; then
   echo "the default shell is already homebrew's bash"
