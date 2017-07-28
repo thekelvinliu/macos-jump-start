@@ -1,5 +1,9 @@
 # changes osx system settings
 
+# get a common execution environment
+OJS=${OJS:-"$HOME/osx-jump-start"}
+. "$OJS/common.sh"
+
 # show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
 # don't write .DS_Store to drives
@@ -16,14 +20,15 @@ defaults write -g KeyRepeat -int 1
 killall Finder
 
 # launch agents
-base="$HOME/osx-jump-start/configs/launchd"
+agents="$HOME/Library/LaunchAgents"
+mkdir -p "$agents"
+base="$OJS/configs/launchd"
 # ssh-add plist
 plist="com.thekelvinliu.ssh-adder.plist"
-path="$HOME/Library/LaunchAgents"
-mkdir -p "$path"
-echo "symlinking ssh-adder launch agent"
-launchctl unload "$path/$plist" 2> /dev/null
-ln -Ffs "$base/$plist" "$path"
-launchctl load "$path/$plist"
+launchctl unload "$agents/$plist" 2> /dev/null
+ln -Ffs "$base/$plist" "$agents"
+echo "symlinked $MAGENTA$plist$RESET to $CYAN$agents$RESET"
+launchctl load "$agents/$plist"
+
 # remove variables
-unset base path plist
+unset agents base plist
