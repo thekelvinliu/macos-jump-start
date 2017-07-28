@@ -11,9 +11,10 @@ if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
   # run scripts
   for script in "$OJS/scripts/"[0-9]*; do
     echo "running $YELLOW$script$RESET..."
-    # . "$script"
-    # sleep 1
+    . "$script"
+    sleep 1
   done
+  unset script
 else
   echo "install xcode and agree to the liscence before running this script."
 fi
