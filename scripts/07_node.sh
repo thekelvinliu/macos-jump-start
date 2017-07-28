@@ -25,9 +25,13 @@ mkdir -p "$NVM_DIR"
 # install latest version of node
 nvm install node
 
-# update npm and install global packages
-npm i -g npm
-install-npm-globals
+# install/upgrade npm if it is outdated
+local_version=$(npm -v)
+[[ "$local_version" != $(npm v npm version) ]] && npm i -g npm
+# install/upgrade globals if yarn is outdated
+local_version=$(npm list -g --depth=0 | fgrep yarn | cut -d'@' -f2)
+[[ "$local_version" != $(npm v yarn version) ]] && install-npm-globals
+unset local_version
 
 # clean things up
 brew cleanup
