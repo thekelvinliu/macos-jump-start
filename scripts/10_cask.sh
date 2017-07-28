@@ -34,7 +34,6 @@ brew_cask_install virtualbox-extension-pack
 # brew_cask_install vagrant
 # brew_cask_install arduino
 # brew_cask_install processing
-# brew_cask_install gpgtools
 
 # other browsers
 brew_cask_install firefoxdeveloperedition
@@ -55,6 +54,7 @@ brew_cask_install coconutbattery
 brew_cask_install disk-inventory-x
 # brew_cask_install evernote
 brew_cask_install flux
+# brew_cask_install qtpass
 brew_cask_install skim
 # brew_cask_install skype
 # brew_cask_install slack
