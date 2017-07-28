@@ -59,7 +59,7 @@ brew_cask_install skim
 # brew_cask_install skype
 # brew_cask_install slack
 brew_cask_install the-unarchiver
-brew_cask_install torbrowser
+# brew_cask_install torbrowser
 brew_cask_install tunnelblick
 
 # media apps
