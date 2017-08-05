@@ -31,7 +31,7 @@ function imp {
 
 # creates and navigates to a new directory
 function mkcd {
-  mkdir -p "$1"
+  mkdir -p "$1" && cd "$1"
 }
 
 # expands any path to an absolute
