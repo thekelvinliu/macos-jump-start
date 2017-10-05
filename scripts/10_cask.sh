@@ -23,6 +23,7 @@ brew_cask_install iterm2
 brew_cask_install sublime-text-dev
 brew_cask_install dropbox
 brew_cask_install safari-technology-preview
+brew_cask_install spectacle
 
 # development-related
 brew_cask_install java
