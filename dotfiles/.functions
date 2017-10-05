@@ -36,7 +36,7 @@ function mkcd {
 
 # expands any path to an absolute
 function realpath {
-  [[ "$1" = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+  python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
 }
 
 # brings local homebrew up-to-date
@@ -49,6 +49,11 @@ function rebrew {
 # symlinks the dotfiles by running the linker script
 function relink {
   imp "$OJS/scripts/02_linker.sh"
+}
+
+# finds and removes node_modules directories that are grandchildren of the given path
+function rmnm {
+  find "$(realpath "$1")" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf
 }
 
 # sources the .bash_profile
