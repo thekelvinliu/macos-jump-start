@@ -42,5 +42,6 @@
   default = current
 [core]
   excludesfile = _HOME/.gitignore
+  ignorecase = false
 [credential]
   helper = osxkeychain
