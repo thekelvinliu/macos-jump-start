@@ -40,6 +40,11 @@ brew_cask_install virtualbox-extension-pack
 brew_cask_install firefoxdeveloperedition
 brew_cask_install google-chrome
 
+# backups
+brew_cask_install borgbackup
+brew_cask_install google-drive-file-stream
+brew_cask_install rclone
+
 # tex
 brew_cask_install basictex
 brew_cask_install tex-live-utility
