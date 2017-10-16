@@ -34,7 +34,7 @@ brew_install awscli
 brew_install cmake
 brew_install gcc
 brew_install git
-brew_install htop-osx
+brew_install htop
 brew_install tree
 # brew_install coreutils
 # brew_install findutils
