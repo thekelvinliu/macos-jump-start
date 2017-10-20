@@ -22,7 +22,6 @@
     "Sass",
     "SublimeLinter",
     "SublimeLinter-contrib-eslint",
-    "SublimeLinter-flow",
     "Vue Syntax Highlight"
   ]
 }
