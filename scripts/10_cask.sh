@@ -20,7 +20,7 @@ brew_tap caskroom/versions
 # important
 brew_cask_install alfred
 brew_cask_install iterm2
-brew_cask_install sublime-text-dev
+brew_cask_install sublime-text
 brew_cask_install dropbox
 brew_cask_install safari-technology-preview
 brew_cask_install spectacle
@@ -43,7 +43,6 @@ brew_cask_install google-chrome
 # backups
 brew_cask_install borgbackup
 brew_cask_install google-drive-file-stream
-brew_cask_install rclone
 
 # tex
 brew_cask_install basictex
