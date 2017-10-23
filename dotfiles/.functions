@@ -1,8 +1,8 @@
 # fantastic bash functions
 
 # get a common execution environment
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/common.sh"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/common.sh"
 
 # reviews installed homebrew formulae
 function brew-review {
@@ -48,7 +48,7 @@ function rebrew {
 
 # symlinks the dotfiles by running the linker script
 function relink {
-  imp "$OJS/scripts/02_linker.sh"
+  imp "$MJS_BASE/scripts/02_linker.sh"
 }
 
 # finds and removes node_modules directories that are grandchildren of the given path

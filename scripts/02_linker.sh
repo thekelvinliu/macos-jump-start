@@ -1,17 +1,17 @@
 # symlinks dotfiles to $HOME
 
 # enable functions
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/dotfiles/.functions"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/dotfiles/.functions"
 
 # check for GIT_EMAIL and GIT_USERNAME
 if [[ -z "$GIT_EMAIL" || -z "$GIT_USERNAME" ]]; then
   echo "missing git email and/or username"
-  . "$OJS/scripts/01_credentials.sh"
+  . "$MJS_BASE/scripts/01_credentials.sh"
 fi
 
 # loop over dotfiles directory
-for dot in "$OJS/dotfiles/".[^.]*; do
+for dot in "$MJS_BASE/dotfiles/".[^.]*; do
   # ensure readable
   [[ ! -r "$dot" ]] && continue
   # insert email and username into .gitconfig

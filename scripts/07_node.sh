@@ -1,9 +1,9 @@
 # installs nvm, node, and some global packages
 
 # get a common execution environment
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/common.sh"
-. "$OJS/dotfiles/.aliases"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/common.sh"
+. "$MJS_BASE/dotfiles/.aliases"
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then

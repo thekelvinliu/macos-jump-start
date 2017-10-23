@@ -1,8 +1,8 @@
 # bootstraps a common and minimal environment for scripts
 
 # variables
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/dotfiles/.colors"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/dotfiles/.colors"
 DONE_MSG="$GREEN$BOLD d o n e$RESET"
 
 # functions

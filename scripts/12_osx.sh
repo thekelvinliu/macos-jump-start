@@ -1,8 +1,8 @@
 # changes osx system settings
 
 # get a common execution environment
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/common.sh"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/common.sh"
 
 # show hidden files in finder
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -22,7 +22,7 @@ killall Finder
 # launch agents
 agents="$HOME/Library/LaunchAgents"
 mkdir -p "$agents"
-base="$OJS/configs/launchd"
+base="$MJS_BASE/configs/launchd"
 # ssh-add plist
 plist="com.thekelvinliu.ssh-adder.plist"
 launchctl unload "$agents/$plist" 2> /dev/null

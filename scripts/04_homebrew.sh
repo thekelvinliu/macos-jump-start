@@ -1,8 +1,8 @@
 # installs homebrew and useful basics
 
 # get a common execution environment
-OJS=${OJS:-"$HOME/osx-jump-start"}
-. "$OJS/common.sh"
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/common.sh"
 
 # check for homebrew and install if necessary
 if has_brew; then

@@ -2,14 +2,14 @@
 # scripts and dotfiles for a happy development environment
 
 # variables
-OJS="$HOME/osx-jump-start"
+MJS_BASE="$HOME/macos-jump-start"
 
 # ensure xcode is installed
 if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
   # get a common execution environment
-  . "$OJS/common.sh"
+  . "$MJS_BASE/common.sh"
   # run scripts
-  for script in "$OJS/scripts/"[0-9]*; do
+  for script in "$MJS_BASE/scripts/"[0-9]*; do
     echo "running $YELLOW$script$RESET..."
     . "$script"
     sleep 1
