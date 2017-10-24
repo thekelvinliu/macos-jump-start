@@ -25,4 +25,4 @@ brew_install imagemagick
 # other
 brew_install ondir
 brew_install pass
-brew_install rclone
+brew_install encfs
