@@ -47,10 +47,10 @@ brew_install python3
 
 # homebrew libraries
 # brew_install ipython
-brew_install "numpy --with-python3"
-brew_install "scipy --with-python3"
-brew_install "matplotlib --with-python3"
-# brew_install "pillow --with-python3"
+brew_install numpy
+brew_install scipy
+brew_install matplotlib
+# brew_install pillow
 
 # pip libraries
 # pip2_install Flask
