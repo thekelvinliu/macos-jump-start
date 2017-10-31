@@ -1,9 +1,9 @@
 # sets the bash prompt
 
-# better function for git versions >2.9.1
+# for git versions > 2.15.0
 function parse_git_dirty() {
   status=$(git status 2> /dev/null)
-  [[ "$status" == *"Your branch"* && "$status" != *"up-to-date"* || "$status" != *"clean"* ]] && echo "*"
+  [[ "$status" == *"Your branch"* && "$status" != *"up to date"* || "$status" != *"clean"* ]] && echo "*"
   unset status
 }
 
