@@ -36,7 +36,7 @@ function mkcd {
 
 # expands any path to an absolute
 function realpath {
-  python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
+  /usr/bin/python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
 }
 
 # brings local homebrew up-to-date
