@@ -15,7 +15,7 @@ alias ftp-stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.pl
 alias clean-dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf'
 
 # installs a set of global npm packages
-alias install-npm-globals='npm i -g gulp-cli npm-check-updates serverless yarn'
+alias install-npm-globals='npm i -g npm-check-updates serverless yarn'
 
 # empty user trash
 alias emptrash='shopt -s dotglob && rm -rf $HOME/.Trash/*'
