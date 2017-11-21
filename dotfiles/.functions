@@ -5,21 +5,21 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
 
 # reviews installed homebrew formulae
-function brew-review {
+breview() {
   for f in $(brew leaves); do
     brew rmtree "$f"
   done
 }
 
 # finds and removes .DS_Store files (only on primary drive)
-function dsnuke {
+dsnuke() {
   echo "${RED}dsnuke$RESET finds and removes ${YELLOW}.DS_Store$RESET files (password required)"
   sudo find -x / -type f -name .DS_Store -delete
   echo "$DONE_MSG"
 }
 
 # sources (imports) a given file by first checking if it is readable
-function imp {
+imp() {
   # ensure a single argument
   [[ "$#" -ne 1 ]] && return 1
   # ensure readable
@@ -30,41 +30,33 @@ function imp {
 }
 
 # creates and navigates to a new directory
-function mkcd {
+mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
 # expands any path to an absolute
-function realpath {
+realpath() {
   /usr/bin/python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
 }
 
 # brings local homebrew up-to-date
-function rebrew {
+rebrew() {
   for cmd in {up{date,grade},doctor,cleanup}; do
     brew "$cmd"
   done
 }
 
 # symlinks the dotfiles by running the linker script
-function relink {
+relink() {
   imp "$MJS_BASE/scripts/02_linker.sh"
 }
 
 # finds and removes node_modules directories that are grandchildren of the given path
-function rmnm {
+rmnm() {
   find "$(realpath "$1")" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf
 }
 
 # sources the .bash_profile
-function sour {
+sour() {
   imp "$HOME/.bash_profile"
 }
-
-# # convert audio files in current directory to mp3 and save to ./output/
-# function aconvert {
-#   mkdir output
-#   for file in *.$1; do
-#     ffmpeg -i "$file" -acodec libmp3lame -ab 320k "output/${file[@]/%$1/mp3}"
-#   done
-# }
