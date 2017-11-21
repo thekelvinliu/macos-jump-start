@@ -68,12 +68,19 @@ brew_cask_install the-unarchiver
 brew_cask_install tunnelblick
 
 # media apps
-# a filebot that actually works
+# install filebot version that actually works
 app=filebot
-if brew_cask_installed $app; then
+if brew_cask_installed "$app"; then
   echo "$BLUE$app$RESET is already installed."
 else
   brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
+fi
+# install airflow version that actually works
+app=airflow
+if brew_cask_installed "$app"; then
+  echo "$BLUE$app$RESET is already installed."
+else
+  brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/633b0e5c327b2641241949dc3b82e73c379df957/Casks/airflow.rb
 fi
 unset app
 # brew_cask_install handbrake
