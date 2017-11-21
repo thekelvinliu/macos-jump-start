@@ -1,13 +1,10 @@
 # sets the bash prompt
 
-# for git versions > 2.15.0
-function parse_git_dirty() {
-  status=$(git status 2> /dev/null)
-  [[ "$status" == *"Your branch"* && "$status" != *"up to date"* || "$status" != *"clean"* ]] && echo "*"
-  unset status
+parse_git_dirty() {
+  [[ -n $(git status --porcelain) ]] && echo "*"
 }
 
-function parse_git_branch() {
+parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
