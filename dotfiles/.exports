@@ -16,7 +16,7 @@ export HISTCONTROL=ignoreboth
 export HISTFILE="$HOME/.eternal_history"
 export HISTFILESIZE=
 export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
+export HISTTIMEFORMAT="[%FT%T%z]|"
 
 # primary ssh key pair
 export SSH_PRIVATE_KEY="$HOME/.ssh/id_ed25519"
