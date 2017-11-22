@@ -23,3 +23,4 @@ $ ./macos-jump-start/setup.sh
 - the scripts in this repo should be sourced; `setup.sh` is the only executable script
 - you should be able to source any script as many times as you want
 - a lot of packages are not installed by default, so feel free to go through the `scripts` directory and un/comment as you see fit!
+- the launchd stuff is pretty specific to my use case, so when prompted, you'll probably want to answer no
