@@ -10,6 +10,14 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 # colors
 . "$MJS_BASE/dotfiles/.colors"
 
+# hist
+shopt -s histappend
+export HISTCONTROL=ignoreboth
+export HISTFILE="$HOME/.eternal_history"
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+
 # primary ssh key pair
 export SSH_PRIVATE_KEY="$HOME/.ssh/id_ed25519"
 export SSH_PUBLIC_KEY="$HOME/.ssh/id_ed25519.pub"
