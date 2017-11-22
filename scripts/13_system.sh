@@ -18,17 +18,3 @@ defaults write -g KeyRepeat -int 1
 
 # kill existing finder sessions
 killall Finder
-
-# launch agents
-agents="$HOME/Library/LaunchAgents"
-mkdir -p "$agents"
-base="$MJS_BASE/configs/launchd"
-# ssh-add plist
-plist="com.thekelvinliu.ssh-adder.plist"
-launchctl unload "$agents/$plist" 2> /dev/null
-ln -Ffs "$base/$plist" "$agents"
-echo "symlinked $MAGENTA$plist$RESET to $CYAN$agents$RESET"
-launchctl load "$agents/$plist"
-
-# remove variables
-unset agents base plist
