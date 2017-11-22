@@ -15,10 +15,7 @@ else
   fi
   # generate an ed25519 key
   ssh-keygen -t ed25519 -a 100 -C "$GIT_EMAIL" -f "$SSH_PRIVATE_KEY"
-  # let osx keychain handle the key
-  echo "adding ssh key to keychain -- you may need to enter your password"
-  ssh-add -K "$SSH_PRIVATE_KEY"
-  # copy public key to clipboard and open github
+  # copy to clipboard
   pbcopy < "$SSH_PUBLIC_KEY"
-  open https://github.com/settings/ssh
+  echo "$SSH_PUBLIC_KEY was copied to the clipboard"
 fi
