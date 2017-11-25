@@ -10,8 +10,9 @@ mkdir -p "$sublime"
 
 # symlink settings
 for s in "$MJS_BASE/configs/sublime"/*; do
-  echo ln -Ffs "$s" "$sublime"
+  ln -Ffs "$s" "$sublime"
+  echo "symlinked $MAGENTA$(basename "$s")$RESET to $CYAN$sublime$RESET"
 done
 
 # remove variables
-unset sublime
+unset s sublime
