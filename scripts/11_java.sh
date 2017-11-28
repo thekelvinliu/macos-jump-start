@@ -1,18 +1,27 @@
-# symlinks sublime user settings
+# installs jenv, java, and gradle
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
 
-# setup
-sublime="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-mkdir -p "$sublime"
+# ensure homebrew is installed before continuing
+if ! has_brew; then
+  echo "homebrew is not installed -- exiting."
+  return
+fi
 
-# symlink settings
-for s in "$MJS_BASE/configs/sublime"/*; do
-  ln -Ffs "$s" "$sublime"
-  echo "symlinked $MAGENTA$(basename "$s")$RESET to $CYAN$sublime$RESET"
-done
+# update formulae
+brew update
 
-# remove variables
-unset s sublime
+# jenv
+brew_install jenv
+
+# install multiple java versions
+brew_cask_install java
+jenv add "$(/usr/libexec/java_home)"
+brew_cask_install java8
+jenv add "$(/usr/libexec/java_home)"
+jenv global 9.0
+
+# gradle
+brew_install gradle

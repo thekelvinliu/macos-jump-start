@@ -11,8 +11,15 @@ if has_brew; then
     . $(brew --prefix)/share/bash-completion/bash_completion
   fi
 
+  # jenv
+  if brew_installed jenv; then
+    eval "$(jenv init -)"
+  fi
+
   # nvm
-  . $(brew --prefix nvm)/nvm.sh
+  if brew_installed nvm; then
+    . $(brew --prefix nvm)/nvm.sh
+  fi
 
   # ondir
   if brew_installed ondir; then
