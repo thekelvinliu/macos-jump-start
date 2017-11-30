@@ -4,7 +4,7 @@
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/dotfiles/.functions"
 
-# check for GIT_EMAIL and GIT_USERNAME
+# ask for creds if they don't already exist
 if [[ -z "$GIT_EMAIL" || -z "$GIT_USERNAME" ]]; then
   echo "missing git email and/or username"
   . "$MJS_BASE/scripts/01_credentials.sh"
