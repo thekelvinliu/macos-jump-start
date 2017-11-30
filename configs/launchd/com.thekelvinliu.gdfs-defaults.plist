@@ -5,8 +5,6 @@
 <dict>
   <key>Label</key>
   <string>com.thekelvinliu.gdfs-defaults</string>
-  <key>LaunchOnlyOnce</key>
-  <true/>
   <key>ProgramArguments</key>
   <array>
     <string>sh</string>
