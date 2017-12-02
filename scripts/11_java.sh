@@ -16,12 +16,16 @@ brew update
 # jenv
 brew_install jenv
 
-# install multiple java versions
+# java 9
+vlist=$(jenv versions)
 brew_cask_install java
-jenv add "$(/usr/libexec/java_home)"
+jenv add "$(/usr/libexec/java_home -v 9.0)"
+
+# java 8
 brew_cask_install java8
-jenv add "$(/usr/libexec/java_home)"
+jenv add "$(/usr/libexec/java_home -v 1.8)"
 jenv global 9.0
+unset vlist
 
 # gradle
 brew_install gradle
