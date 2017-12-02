@@ -6,18 +6,22 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 DONE_MSG="$GREEN$BOLD d o n e$RESET"
 
 # functions
+# checks whether first arg is a command
+exists() {
+  command -v "$1" &> /dev/null
+}
 # checks whether homebrew is installed
-function has_brew {
-  [[ -n $(which brew) ]]
+has_brew() {
+  exists brew
 }
 
 # checks whether a given cask is already installed
-function brew_cask_installed {
+brew_cask_installed() {
   fgrep -qsx "$1" <(brew cask list -1)
 }
 
 # installs a cask
-function brew_cask_install {
+brew_cask_install() {
   if brew_cask_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
   else
@@ -26,12 +30,12 @@ function brew_cask_install {
 }
 
 # checks whether a given formula is already installed
-function brew_installed {
+brew_installed() {
   fgrep -qsx "$1" <(brew list -1)
 }
 
 # installs a homebrew formula
-function brew_install {
+brew_install() {
   # get only the name of the formula
   formula=$(echo "$1" | cut -d' ' -f1)
   if brew_installed "$formula"; then
@@ -42,12 +46,12 @@ function brew_install {
 }
 
 # checks whether a given tap is already tapped
-function brew_tapped {
+brew_tapped() {
   fgrep -qsx "$1" <(brew tap)
 }
 
 # taps a homebrew tap
-function brew_tap {
+brew_tap() {
   if brew_tapped "$1"; then
     echo "$BLUE$1$RESET is already tapped."
   else
