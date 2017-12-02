@@ -9,7 +9,7 @@ PATH="$HOME/bin:$PATH"
 
 # add homebrew if it has been installed
 if has_brew; then
-  PATH="$(brew --prefix)/bin:$PATH"
+  PATH="/usr/local/bin:$PATH"
 fi
 
 # export
