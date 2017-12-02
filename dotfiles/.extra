@@ -13,13 +13,13 @@ if has_brew; then
   fi
 
   # jenv
-  if exists jenv;
+  if exists jenv; then
     eval "$(jenv init -)"
   fi
 
   # nvm
   path="/usr/local/opt/nvm"
-  if [[ -s $path ]];then
+  if [[ -s $path ]]; then
     . "$path/nvm.sh"
   fi
 
