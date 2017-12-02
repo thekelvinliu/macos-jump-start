@@ -7,22 +7,24 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 # only run if bash is installed
 if has_brew; then
   # bash completion
-  if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-    . $(brew --prefix)/share/bash-completion/bash_completion
+  path="usr/local/share/bash-completion/bash_completion"
+  if [[ -s $path ]]; then
+    . "$path"
   fi
 
   # jenv
-  if brew_installed jenv; then
+  if exists jenv;
     eval "$(jenv init -)"
   fi
 
   # nvm
-  if brew_installed nvm; then
-    . $(brew --prefix nvm)/nvm.sh
+  path="/usr/local/opt/nvm"
+  if [[ -s $path ]];then
+    . "$path/nvm.sh"
   fi
 
   # ondir
-  if brew_installed ondir; then
+  if exists jenv; then
     function cd {
       builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
     }
@@ -33,5 +35,5 @@ if has_brew; then
       builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
     }
   fi
+  unset path
 fi
-
