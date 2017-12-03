@@ -7,7 +7,7 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 # only run if bash is installed
 if has_brew; then
   # bash completion
-  path="usr/local/share/bash-completion/bash_completion"
+  path="/usr/local/share/bash-completion/bash_completion"
   if [[ -s $path ]]; then
     . "$path"
   fi
