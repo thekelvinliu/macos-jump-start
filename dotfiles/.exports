@@ -17,6 +17,7 @@ export HISTFILE="$HOME/.eternal_history"
 export HISTFILESIZE=
 export HISTSIZE=
 export HISTTIMEFORMAT="[%FT%T%z]|"
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # primary ssh key pair
 export SSH_PRIVATE_KEY="$HOME/.ssh/id_ed25519"
