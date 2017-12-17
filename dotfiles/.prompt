@@ -4,15 +4,13 @@
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
 
-# basic functions
-
 # use powerline or custom fallback
-if exists powerline-daemon; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-else
+# if exists powerline-daemon; then
+#   powerline-daemon -q
+#   export POWERLINE_BASH_CONTINUATION=1
+#   export POWERLINE_BASH_SELECT=1
+#   . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+# else
   parse_git_dirty() {
     [[ -n $(git status --porcelain) ]] && echo "*"
   }
@@ -21,4 +19,4 @@ else
   }
   export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
   export PS2="\[$CYAN\]→ \[$RESET\]"
-fi
+# fi
