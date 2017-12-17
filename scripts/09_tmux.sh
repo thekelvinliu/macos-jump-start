@@ -13,9 +13,6 @@ fi
 # update formulae
 brew update
 
-# copy to system clipboard
-brew_install reattach-to-user-namespace
-
 # tmux
 brew_install tmux
 
