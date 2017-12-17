@@ -15,8 +15,9 @@ brew update
 
 # requirements
 brew_install coreutils
+brew_install libuv
 brew_install socat
-# pip2_install psutil
+pip2_install psutil
 pip2_install pyuv
 
 # powerline
