@@ -1,4 +1,4 @@
-# installs jenv, java, and gradle
+# install jenv, java, and gradle
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

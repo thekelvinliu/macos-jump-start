@@ -1,4 +1,4 @@
-# installs homebrew's bash and sets it as the login shell
+# install homebrew's bash and set it as the login shell
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

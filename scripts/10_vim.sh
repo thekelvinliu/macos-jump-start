@@ -1,4 +1,4 @@
-# installs vim, pathogen, and plugins
+# install vim and plugs
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

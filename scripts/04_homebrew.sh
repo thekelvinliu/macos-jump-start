@@ -1,4 +1,4 @@
-# installs homebrew and useful basics
+# install homebrew and useful basics
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

@@ -1,4 +1,4 @@
-# symlinks sublime user settings
+# symlink sublime user settings
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

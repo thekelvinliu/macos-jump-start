@@ -1,4 +1,4 @@
-# symlinks launchd plists
+# symlink launchd plists
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

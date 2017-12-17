@@ -1,4 +1,4 @@
-# installs extra and miscellaneous stuff
+# install extra and miscellaneous stuff
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

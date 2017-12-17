@@ -1,4 +1,4 @@
-# creates a strong default ssh keypair
+# create a strong default ssh keypair
 
 # ensure SSH_PRIVATE_KEY and SSH_PUBLIC_KEY are set
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

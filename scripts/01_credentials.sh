@@ -1,4 +1,4 @@
-# sets git email and username environment variables
+# set git email and username environment variables
 
 # ask for creds if they don't already exist
 if [[ -z "$GIT_EMAIL" || -z "$GIT_USERNAME" ]]; then

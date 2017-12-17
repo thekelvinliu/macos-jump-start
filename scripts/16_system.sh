@@ -1,4 +1,4 @@
-# changes osx system settings
+# change osx system settings
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

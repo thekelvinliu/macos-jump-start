@@ -1,4 +1,4 @@
-# symlinks dotfiles to $HOME
+# symlink dotfiles to $HOME directory
 
 # enable functions
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}

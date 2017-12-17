@@ -1,4 +1,4 @@
-# installs homebrew cask and apps
+# install homebrew cask and apps
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
@@ -68,12 +68,12 @@ brew_cask_install tunnelblick
 
 # media apps
 # install filebot version that actually works
-app=filebot
-if brew_cask_installed "$app"; then
-  echo "$BLUE$app$RESET is already installed."
-else
-  brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
-fi
+# app=filebot
+# if brew_cask_installed "$app"; then
+#   echo "$BLUE$app$RESET is already installed."
+# else
+#   brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/60531a2812005dd5f17dc92f3ce7419af3c5d019/Casks/filebot.rb
+# fi
 # install airflow version that actually works
 app=airflow
 if brew_cask_installed "$app"; then
