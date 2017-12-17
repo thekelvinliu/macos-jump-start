@@ -18,3 +18,12 @@ brew_install reattach-to-user-namespace
 
 # tmux
 brew_install tmux
+
+# tpm
+tpm_dir=$HOME/.tmux/plugins/tpm
+mkdir -p "$tpm_dir"
+if [[ ! -e $tpm_dir ]]; then
+  git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
+else
+  echo "${BLUE}tpm$RESET is already installed."
+fi
