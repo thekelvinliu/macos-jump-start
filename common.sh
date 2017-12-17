@@ -6,21 +6,21 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 DONE_MSG="$GREEN$BOLD d o n e$RESET"
 
 # functions
-# checks whether first arg is a command
+# check whether first argument is a command
 exists() {
-  command -v "$1" &> /dev/null
+  command -v $1 &> /dev/null
 }
-# checks whether homebrew is installed
+# check whether homebrew is installed
 has_brew() {
   exists brew
 }
 
-# checks whether a given cask is already installed
+# check whether a cask is installed
 brew_cask_installed() {
   fgrep -qsx "$1" <(brew cask list -1)
 }
 
-# installs a cask
+# install a cask
 brew_cask_install() {
   if brew_cask_installed "$1"; then
     echo "$BLUE$1$RESET is already installed."
@@ -29,12 +29,12 @@ brew_cask_install() {
   fi
 }
 
-# checks whether a given formula is already installed
+# check whether a formula is installed
 brew_installed() {
   fgrep -qsx "$1" <(brew list -1)
 }
 
-# installs a homebrew formula
+# install a homebrew formula
 brew_install() {
   # get only the name of the formula
   formula=$(echo "$1" | cut -d' ' -f1)
@@ -45,16 +45,44 @@ brew_install() {
   fi
 }
 
-# checks whether a given tap is already tapped
+# check whether a tap is tapped
 brew_tapped() {
   fgrep -qsx "$1" <(brew tap)
 }
 
-# taps a homebrew tap
+# tap a homebrew tap
 brew_tap() {
   if brew_tapped "$1"; then
     echo "$BLUE$1$RESET is already tapped."
   else
     brew tap "$1"
+  fi
+}
+
+# check whether a library is installed with pip2
+pip2_installed() {
+  pip2 show "$1" &> /dev/null
+}
+
+# install a python library with pip2
+pip2_install() {
+  if pip2_installed "$1"; then
+    echo "$BLUE$1$RESET is already installed."
+  else
+    pip2 install "$1"
+  fi
+}
+
+# check whether a library is installed with pip3
+pip3_installed() {
+  pip3 show "$1" &> /dev/null
+}
+
+# install a python library with pip3
+pip3_install() {
+  if pip3_installed "$1"; then
+    echo "$BLUE$1$RESET is already installed."
+  else
+    pip3 install "$1"
   fi
 }
