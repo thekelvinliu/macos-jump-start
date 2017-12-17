@@ -22,6 +22,13 @@ export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
 . $(brew --prefix nvm)/nvm.sh
 
+# default globals
+tee "$NVM_DIR/default-packages" <<EOF > /dev/null
+npm-check-updates
+serverless
+yarn
+EOF
+
 # install latest version of node
 nvm install node
 
