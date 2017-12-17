@@ -1,12 +1,24 @@
-# sets the bash prompt
+# set the bash prompt
 
-parse_git_dirty() {
-  [[ -n $(git status --porcelain) ]] && echo "*"
-}
+# get a common execution environment
+MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+. "$MJS_BASE/common.sh"
 
-parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
+# basic functions
 
-export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
-export PS2="\[$CYAN\]→ \[$RESET\]"
+# use powerline or custom fallback
+if exists powerline-daemon; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+else
+  parse_git_dirty() {
+    [[ -n $(git status --porcelain) ]] && echo "*"
+  }
+  parse_git_branch() {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+  }
+  export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
+  export PS2="\[$CYAN\]→ \[$RESET\]"
+fi
