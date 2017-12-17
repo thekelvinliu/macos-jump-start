@@ -1,4 +1,4 @@
-# exports escape sequences for terminal colors
+# export escape sequences for terminal colors
 
 # set colors with max compatibility
 if tput setaf 1 &> /dev/null; then

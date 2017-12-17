@@ -1,4 +1,4 @@
-# exports environment variables
+# export environment variables
 
 # this repo!
 export MJS_BASE="$HOME/macos-jump-start"

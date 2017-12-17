@@ -1,4 +1,4 @@
-# decentralizes ondir to so that directories can have their own .ondir directory
+# decentralize ondir so directories have their own .ondir directory
 
 enter ~\/.*\/(.*)
   script="$PWD/.ondir/enter"
