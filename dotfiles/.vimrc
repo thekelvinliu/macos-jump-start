@@ -5,9 +5,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " easily get out of insert mode
@@ -31,7 +33,32 @@ set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
 set splitbelow
 set splitright
 
-" powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" lightline config
+set laststatus=2
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'Dracula',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'gitbranch', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': ' %3l:%-2v',
+  \ },
+  \ 'component_function': {
+  \   'readonly': 'LightlineReadonly',
+  \   'gitbranch': 'LightlineFugitive'
+  \ },
+  \ 'separator': { 'left': '', 'right': '' },
+  \ 'subseparator': { 'left': '', 'right': '' }
+  \ }
+function! LightlineReadonly()
+  return &readonly ? '' : ''
+endfunction
+function! LightlineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ''.branch : ''
+  endif
+  return ''
+endfunction
