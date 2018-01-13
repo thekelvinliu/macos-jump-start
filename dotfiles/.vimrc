@@ -35,6 +35,9 @@ nmap <leader>k :bp<cr>
 " next
 nmap <leader>l :bn<cr>
 nmap <leader>j :bn<cr>
+" ctrlp
+nmap <leader>p <c-p>
+nmap <leader>P <c-p><f5><esc>
 
 " toggle line numbers and whitespace characters
 nmap <leader>N :set number! number?<cr>
