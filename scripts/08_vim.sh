@@ -1,4 +1,4 @@
-# install powerline
+# install vim and plugs
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
@@ -13,5 +13,11 @@ fi
 # update formulae
 brew update
 
+# install vim
+brew_install vim
+
 # patched font
 brew_cask_install font-roboto-mono-for-powerline
+
+# clean things up
+brew cleanup

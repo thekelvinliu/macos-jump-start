@@ -1,4 +1,4 @@
-# install vim and plugs
+# install jenv, java, and gradle
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
@@ -13,8 +13,17 @@ fi
 # update formulae
 brew update
 
-# install vim
-brew_install vim
+# jenv
+brew_install jenv
 
-# clean things up
-brew cleanup
+# java 9
+brew_cask_install java
+jenv add "$(/usr/libexec/java_home -v 9.0)"
+
+# java 8
+brew_cask_install java8
+jenv add "$(/usr/libexec/java_home -v 1.8)"
+jenv global 9.0
+
+# gradle
+brew_install gradle
