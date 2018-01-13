@@ -32,3 +32,4 @@ bower_components
 # other
 assets
 .sass-cache
+*.swp

@@ -16,13 +16,24 @@ Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " leader
-map <Space> <Leader>
+map <space> <leader>
+
+" source ~/.vimrc
+nmap <leader>r :so ~/.vimrc<cr>
 
 " save
-map <Leader>s :w<CR>
+map <leader>s :w<cr>
+
+" close
+map <leader>q :bd<cr>
+map <leader>Q :q<cr>
+
+" toggle line numbers and whitespace characters
+nmap <leader>n :set number! number?<cr>
+nmap <leader>c :set list! list?<cr>
 
 " easily get out of insert mode
-imap jj <ESC>
+imap jj <esc>
 
 " trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -57,19 +68,16 @@ set noshowmode
 set showtabline=2
 
 let g:lightline = {}
-let g:lightline.active = { 'left': [['mode', 'paste'], ['readonly', 'gitbranch', 'filename', 'modified']] }
+let g:lightline.active = { 'lejt': [['mode', 'paste'], ['filename', 'gitbranch']] }
 let g:lightline.colorscheme = 'Dracula'
 let g:lightline.component = { 'lineinfo': ' %3l:%-2v', 'separator': '' }
 let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
-let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive', 'readonly': 'LightlineReadonly' }
+let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive' }
 let g:lightline.component_type = { 'buffers': 'tabsel' }
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
 
-function! LightlineReadonly()
-  return &readonly ? '' : ''
-endfunction
 function! LightlineFugitive()
   if exists('*fugitive#head')
     let branch = fugitive#head()
@@ -78,9 +86,11 @@ function! LightlineFugitive()
   return ''
 endfunction
 
-let g:lightline#bufferline#unicode_symbols = 1
 let g:lightline#bufferline#modified = '•'
+let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#show_number = 2
+let g:lightline#bufferline#unicode_symbols = 1
+let g:lightline#bufferline#unnamed = '[No Name]'
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
