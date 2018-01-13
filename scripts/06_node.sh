@@ -3,7 +3,6 @@
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
-. "$MJS_BASE/dotfiles/.aliases"
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
