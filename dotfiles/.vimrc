@@ -8,12 +8,18 @@ call plug#begin()
 Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'taohex/lightline-buffer'
+Plug 'mgee/lightline-bufferline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
+
+" leader
+map <Space> <Leader>
+
+" save
+map <Leader>s :w<CR>
 
 " easily get out of insert mode
 imap jj <ESC>
@@ -25,6 +31,14 @@ autocmd BufWritePre * %s/\s\+$//e
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+
+" indentation
+vnoremap <Tab> >
+nnoremap <Tab> >>
+inoremap <Tab> <C-t>
+vnoremap <S-Tab> <
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
 
 " display settings
 set nowrap
@@ -41,40 +55,17 @@ set hidden
 set laststatus=2
 set noshowmode
 set showtabline=2
-let g:lightline = {
-  \ 'colorscheme': 'Dracula',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'gitbranch', 'filename', 'modified' ] ]
-  \ },
-  \ 'tabline': {
-  \   'left': [ [ 'bufferinfo' ],
-  \             [ 'separator' ],
-  \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-  \   'right': [ [ 'close' ], ],
-  \ },
-  \ 'component_expand': {
-  \   'buffercurrent': 'lightline#buffer#buffercurrent',
-  \   'bufferbefore': 'lightline#buffer#bufferbefore',
-  \   'bufferafter': 'lightline#buffer#bufferafter',
-  \ },
-  \ 'component_type': {
-  \   'buffercurrent': 'tabsel',
-  \   'bufferbefore': 'raw',
-  \   'bufferafter': 'raw',
-  \ },
-  \ 'component': {
-  \   'lineinfo': ' %3l:%-2v',
-  \   'separator': '',
-  \ },
-  \ 'component_function': {
-  \   'bufferinfo': 'lightline#buffer#bufferinfo',
-  \   'gitbranch': 'LightlineFugitive',
-  \   'readonly': 'LightlineReadonly',
-  \ },
-  \ 'separator': { 'left': '', 'right': '' },
-  \ 'subseparator': { 'left': '', 'right': '' },
-  \ }
+
+let g:lightline = {}
+let g:lightline.active = { 'left': [['mode', 'paste'], ['readonly', 'gitbranch', 'filename', 'modified']] }
+let g:lightline.colorscheme = 'Dracula'
+let g:lightline.component = { 'lineinfo': ' %3l:%-2v', 'separator': '' }
+let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
+let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive', 'readonly': 'LightlineReadonly' }
+let g:lightline.component_type = { 'buffers': 'tabsel' }
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
 
 function! LightlineReadonly()
   return &readonly ? '' : ''
@@ -87,29 +78,19 @@ function! LightlineFugitive()
   return ''
 endfunction
 
-" lightline-buffer ui
-let g:lightline_buffer_logo = ' '
-let g:lightline_buffer_readonly_icon = ''
-let g:lightline_buffer_modified_icon = '•'
-let g:lightline_buffer_git_icon = ' '
-let g:lightline_buffer_ellipsis_icon = '..'
-let g:lightline_buffer_expand_left_icon = '◀ '
-let g:lightline_buffer_expand_right_icon = ' ▶'
-let g:lightline_buffer_active_buffer_left_icon = ''
-let g:lightline_buffer_active_buffer_right_icon = ''
-let g:lightline_buffer_separator_icon = '  '
-
-" lightline-buffer function settings
-let g:lightline_buffer_show_bufnr = 1
-let g:lightline_buffer_rotate = 0
-let g:lightline_buffer_fname_mod = ':t'
-let g:lightline_buffer_excludes = ['vimfiler']
-
-let g:lightline_buffer_maxflen = 30
-let g:lightline_buffer_maxfextlen = 3
-let g:lightline_buffer_minflen = 16
-let g:lightline_buffer_minfextlen = 3
-let g:lightline_buffer_reservelen = 20
+let g:lightline#bufferline#unicode_symbols = 1
+let g:lightline#bufferline#modified = '•'
+let g:lightline#bufferline#show_number = 2
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " ctrlp
 let g:ctrlp_show_hidden = 1
