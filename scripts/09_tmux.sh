@@ -17,10 +17,11 @@ brew update
 brew_install tmux
 
 # tpm
-tpm_dir=$HOME/.tmux/plugins
-mkdir -p "$tpm_dir"
-if [[ ! -e "$tpm_dir/tpm" ]]; then
+tpm_dir=$HOME/.tmux/plugins/tpm
+mkdir -p "$(realpath "$tpm_dir/..")"
+if [[ ! -e "$tpm_dir" ]]; then
   git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
 else
   echo "${BLUE}tpm$RESET is already installed."
 fi
+unset tpm_dir
