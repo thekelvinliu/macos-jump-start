@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
@@ -19,7 +20,7 @@ call plug#end()
 map <space> <leader>
 
 " source ~/.vimrc
-nmap <leader>r :so ~/.vimrc<cr>
+nmap <leader>r :so $MYVIMRC<cr>
 
 " buffers
 " new
@@ -35,6 +36,7 @@ nmap <leader>k :bp<cr>
 " next
 nmap <leader>l :bn<cr>
 nmap <leader>j :bn<cr>
+
 " ctrlp
 nmap <leader>p <c-p>
 nmap <leader>P <c-p><f5><esc>
@@ -83,7 +85,7 @@ let g:lightline.active = { 'lejt': [['mode', 'paste'], ['filename', 'gitbranch']
 let g:lightline.colorscheme = 'Dracula'
 let g:lightline.component = { 'lineinfo': ' %3l:%-2v', 'separator': '' }
 let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
-let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive' }
+let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive', 'mode': 'LightlineMode' }
 let g:lightline.component_type = { 'buffers': 'tabsel' }
 let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '', 'right': '' }
@@ -95,6 +97,14 @@ function! LightlineFugitive()
     return branch !=# '' ? ''.branch : ''
   endif
   return ''
+endfunction
+function! LightlineMode()
+  return expand('%:t') ==# '__Tagbar__' ? 'Tagbar':
+        \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
+        \ &filetype ==# 'unite' ? 'Unite' :
+        \ &filetype ==# 'vimfiler' ? 'VimFiler' :
+        \ &filetype ==# 'vimshell' ? 'VimShell' :
+        \ lightline#mode()
 endfunction
 
 let g:lightline#bufferline#modified = '•'
