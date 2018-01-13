@@ -10,6 +10,7 @@ DONE_MSG="$GREEN$BOLD d o n e$RESET"
 exists() {
   command -v $1 &> /dev/null
 }
+
 # check whether homebrew is installed
 has_brew() {
   exists brew
@@ -85,4 +86,9 @@ pip3_install() {
   else
     pip3 install "$1"
   fi
+}
+
+# expand any path to an absolute
+realpath() {
+  /usr/bin/python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
 }
