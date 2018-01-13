@@ -21,12 +21,18 @@ map <space> <leader>
 " source ~/.vimrc
 nmap <leader>r :so ~/.vimrc<cr>
 
+" buffers
 " save
-map <leader>s :w<cr>
-
+nmap <leader>s :w<cr>
 " close
-map <leader>q :bd<cr>
-map <leader>Q :q<cr>
+nmap <leader>q :bd<cr>
+nmap <leader>Q :q<cr>
+" prev
+nmap <leader>h :bp<cr>
+nmap <leader>k :bp<cr>
+" next
+nmap <leader>l :bn<cr>
+nmap <leader>j :bn<cr>
 
 " toggle line numbers and whitespace characters
 nmap <leader>n :set number! number?<cr>
@@ -44,12 +50,12 @@ set shiftwidth=2
 set softtabstop=2
 
 " indentation
-vnoremap <Tab> >
-nnoremap <Tab> >>
-inoremap <Tab> <C-t>
-vnoremap <S-Tab> <
-nnoremap <S-Tab> <<
-inoremap <S-Tab> <C-d>
+vnoremap <tab> >
+nnoremap <tab> >>
+inoremap <tab> <c-t>
+vnoremap <s-tab> <
+nnoremap <s-tab> <<
+inoremap <s-tab> <c-d>
 
 " display settings
 set nowrap
