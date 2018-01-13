@@ -22,10 +22,12 @@ map <space> <leader>
 nmap <leader>r :so ~/.vimrc<cr>
 
 " buffers
+" new
+nmap <leader>o :e<space>
 " save
 nmap <leader>s :w<cr>
 " close
-nmap <leader>q :bd<cr>
+nmap <leader>a :bd<cr>
 nmap <leader>Q :q<cr>
 " prev
 nmap <leader>h :bp<cr>
@@ -35,8 +37,8 @@ nmap <leader>l :bn<cr>
 nmap <leader>j :bn<cr>
 
 " toggle line numbers and whitespace characters
-nmap <leader>n :set number! number?<cr>
-nmap <leader>c :set list! list?<cr>
+nmap <leader>N :set number! number?<cr>
+nmap <leader>C :set list! list?<cr>
 
 " easily get out of insert mode
 imap jj <esc>
