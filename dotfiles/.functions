@@ -4,21 +4,21 @@
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
 
-# reviews installed homebrew formulae
+# review installed homebrew formulae
 breview() {
   for f in $(brew leaves); do
     brew rmtree "$f"
   done
 }
 
-# finds and removes .DS_Store files (only on primary drive)
+# find and remove .DS_Store files (only on primary drive)
 dsnuke() {
   echo "${RED}dsnuke$RESET finds and removes ${YELLOW}.DS_Store$RESET files (password required)"
   sudo find -x / -type f -name .DS_Store -delete
   echo "$DONE_MSG"
 }
 
-# sources (imports) a given file by first checking if it is readable
+# source (imports) a given file by first checking if it is readable
 imp() {
   # ensure a single argument
   [[ "$#" -ne 1 ]] && return 1
@@ -29,34 +29,34 @@ imp() {
   echo "$DONE_MSG"
 }
 
-# creates and navigates to a new directory
+# create and navigate to a new directory
 mkcd() {
   mkdir -p "$1" && cd "$1"
 }
 
-# expands any path to an absolute
+# expand any path to an absolute
 realpath() {
   /usr/bin/python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
 }
 
-# brings local homebrew up-to-date
+# bring local homebrew up-to-date
 rebrew() {
   for cmd in {up{date,grade},doctor,cleanup}; do
     brew "$cmd"
   done
 }
 
-# symlinks the dotfiles by running the linker script
+# run linker script
 relink() {
   imp "$MJS_BASE/scripts/02_linker.sh"
 }
 
-# finds and removes node_modules directories that are grandchildren of the given path
+# find and remove node_modules directories that are grandchildren of the given path
 rmnm() {
   find "$(realpath "$1")" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf
 }
 
-# sources the .bash_profile
+# source ~/.bash_profile
 sour() {
   imp "$HOME/.bash_profile"
 }
