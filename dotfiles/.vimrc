@@ -12,6 +12,7 @@ Plug 'mgee/lightline-bufferline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
