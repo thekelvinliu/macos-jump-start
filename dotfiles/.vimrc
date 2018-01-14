@@ -58,6 +58,9 @@ imap jj <esc>
 " trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
+" system clipboard
+set clipboard+=unnamedplus
+
 " soft not hard tabs
 set expandtab
 set shiftwidth=2
