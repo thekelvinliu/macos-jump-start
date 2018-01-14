@@ -16,8 +16,5 @@ brew update
 # install vim
 brew_install "vim --with-python3"
 
-# patched font
-brew_cask_install font-roboto-mono-for-powerline
-
 # clean things up
 brew cleanup

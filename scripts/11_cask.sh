@@ -15,6 +15,7 @@ brew update
 
 # install homebrew cask
 brew_tap caskroom/cask
+brew_tap caskroom/fonts
 brew_tap caskroom/versions
 
 # important
@@ -94,6 +95,9 @@ brew_cask_install vlc
 # games
 # brew_cask_install minecraft
 # brew_cask_install steam
+
+# patched font
+brew_cask_install font-roboto-mono-for-powerline
 
 # clean things up
 brew cask cleanup
