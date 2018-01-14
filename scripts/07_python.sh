@@ -21,8 +21,6 @@ brew_install python3
 # brew_install ipython
 brew_install numpy
 brew_install scipy
-brew_install matplotlib
-# brew_install pillow
 
 # pip libraries
 # pip2_install Flask
