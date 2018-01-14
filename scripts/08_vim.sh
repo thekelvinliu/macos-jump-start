@@ -13,8 +13,14 @@ fi
 # update formulae
 brew update
 
-# install vim
+# vim
 brew_install "vim --with-python3"
+
+# neovim
+brew_install neovim
+pip2_install neovim
+pip3_install neovim
+npm i -g neovim
 
 # clean things up
 brew cleanup
