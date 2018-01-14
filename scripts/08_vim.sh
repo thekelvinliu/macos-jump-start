@@ -21,6 +21,12 @@ brew_install neovim
 pip2_install neovim
 pip3_install neovim
 npm i -g neovim
+# write config
+cat > "$HOME/.config/nvim/init.vim" <<EOF
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+EOF
 
 # clean things up
 brew cleanup
