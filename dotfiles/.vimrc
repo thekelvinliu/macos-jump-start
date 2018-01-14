@@ -8,6 +8,15 @@ call plug#begin()
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'mattn/emmet-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
 Plug 'edkolev/tmuxline.vim'
@@ -31,18 +40,13 @@ nmap <leader>o :e<space>
 nmap <leader>s :w<cr>
 " close
 nmap <leader>a :bd<cr>
+nmap <leader>A :bd!<cr>
 nmap <leader>q :q<cr>
 nmap <leader>Q :q!<cr>
 " prev
-nmap <leader>h :bp<cr>
 nmap <leader>k :bp<cr>
 " next
-nmap <leader>l :bn<cr>
 nmap <leader>j :bn<cr>
-
-" ctrlp
-nmap <leader>p <c-p>
-nmap <leader>P <c-p><f5><esc>
 
 " toggle line numbers and whitespace characters
 nmap <leader>N :set number! number?<cr>
@@ -115,16 +119,16 @@ let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#show_number = 2
 let g:lightline#bufferline#unicode_symbols = 1
 let g:lightline#bufferline#unnamed = '[No Name]'
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+nmap <leader>1 <plug>lightline#bufferline#go(1)
+nmap <leader>2 <plug>lightline#bufferline#go(2)
+nmap <leader>3 <plug>lightline#bufferline#go(3)
+nmap <leader>4 <plug>lightline#bufferline#go(4)
+nmap <leader>5 <plug>lightline#bufferline#go(5)
+nmap <leader>6 <plug>lightline#bufferline#go(6)
+nmap <leader>7 <plug>lightline#bufferline#go(7)
+nmap <leader>8 <plug>lightline#bufferline#go(8)
+nmap <leader>9 <plug>lightline#bufferline#go(9)
+nmap <leader>0 <plug>lightline#bufferline#go(10)
 
 " tmuxline
 let g:tmuxline_powerline_separators = 0
@@ -138,18 +142,42 @@ let g:tmuxline_preset.x = '#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)
 let g:tmuxline_preset.y = '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)'
 let g:tmuxline_preset.z = ['%a', '%Y-%m-%d', '%R']
 
-" ctrlp
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
 " ale
-let g:ale_fixers = {
-  \ 'javascript': ['eslint'],
-  \ }
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['eslint']
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '~~'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
+nmap <leader>f <plug>(ale_fix)
+nmap <leader>l <plug>(ale_lint)
+
+" ctrlp
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {}
+let g:ctrlp_custom_ignore.dir = '\v[\/]\.(git|hg|svn)|node_modules$'
+let g:ctrlp_custom_ignore.file = '\v\.(exe|so|dll)$'
+nmap <leader>p <c-p>
+nmap <leader>P <c-p><f5>
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
+inoremap <silent><expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
+inoremap <silent><expr><bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
+inoremap <silent><expr>jj pumvisible() ? "\<c-e>" : "\<esc>"
+" ternjs
+let g:deoplete#sources#ternjs#types = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
+
+" multiple cursors
+function! g:Multiple_cursors_before()
+  let g:deoplete#disable_auto_complete = 1
+endfunction
+function! g:Multiple_cursors_after()
+  let g:deoplete#disable_auto_complete = 0
+endfunction
