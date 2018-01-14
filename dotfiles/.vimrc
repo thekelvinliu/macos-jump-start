@@ -9,7 +9,7 @@ Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mgee/lightline-bufferline'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-sensible'
@@ -29,7 +29,8 @@ nmap <leader>o :e<space>
 nmap <leader>s :w<cr>
 " close
 nmap <leader>a :bd<cr>
-nmap <leader>Q :q<cr>
+nmap <leader>q :q<cr>
+nmap <leader>Q :q!<cr>
 " prev
 nmap <leader>h :bp<cr>
 nmap <leader>k :bp<cr>
@@ -81,20 +82,20 @@ set noshowmode
 set showtabline=2
 
 let g:lightline = {}
-let g:lightline.active = { 'lejt': [['mode', 'paste'], ['filename', 'gitbranch']] }
+let g:lightline.active = { 'left': [['mode', 'paste'], ['filename', 'gitbranch']] }
 let g:lightline.colorscheme = 'Dracula'
 let g:lightline.component = { 'lineinfo': ' %3l:%-2v', 'separator': '' }
 let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
 let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive', 'mode': 'LightlineMode' }
 let g:lightline.component_type = { 'buffers': 'tabsel' }
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
 
 function! LightlineFugitive()
   if exists('*fugitive#head')
     let branch = fugitive#head()
-    return branch !=# '' ? ''.branch : ''
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
@@ -122,6 +123,18 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" tmuxline
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = {}
+let g:tmuxline_preset.a = '#(whoami)@#h'
+let g:tmuxline_preset.b = '#S#F'
+let g:tmuxline_preset.c = '#W'
+let g:tmuxline_preset.win = ['#I', '#W']
+let g:tmuxline_preset.cwin = ['w #I', '#W']
+let g:tmuxline_preset.x = '#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)'
+let g:tmuxline_preset.y = '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)'
+let g:tmuxline_preset.z = ['%a', '%Y-%m-%d', '%R']
 
 " ctrlp
 let g:ctrlp_show_hidden = 1
