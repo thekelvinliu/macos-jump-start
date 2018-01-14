@@ -244,7 +244,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
+	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/macos-jump-start/configs/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -286,13 +286,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>852 413 613 263 0 0 2560 1080 </string>
+	<string>299 275 726 286 0 0 1440 900 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 516 620 392 0 0 2560 1080 </string>
+	<string>410 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>344 590 796 473 0 0 2560 1080 </string>
+	<string>269 266 796 473 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1 0 850 1080 0 0 2560 1080 </string>
+	<string>1 559 710 339 0 0 1440 900 </string>
 	<key>NeverWarnAboutShortLivedSessions_5CF70342-464E-4FDF-A9B1-D431328D284D</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_5CF70342-464E-4FDF-A9B1-D431328D284D_selection</key>
@@ -1509,6 +1509,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>4</integer>
 			<key>Transparency</key>
 			<real>0.063385262573964499</real>
 			<key>Unlimited Scrollback</key>
@@ -1534,7 +1536,7 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>708B2BFA-3BD3-4E89-9834-412ED2459F0B</string>
+	<string>4B8EA3B3-FF23-45C5-A4B6-C24022CBB82F</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1542,7 +1544,7 @@
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>530501189.05828601</real>
+	<real>530518044.67687201</real>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
@@ -1595,11 +1597,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=39</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=12</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-01-13T18:40:51Z</date>
+	<date>2018-01-14T06:17:39Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
