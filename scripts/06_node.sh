@@ -22,9 +22,11 @@ mkdir -p "$NVM_DIR"
 . $(brew --prefix nvm)/nvm.sh
 
 # default globals
-tee "$NVM_DIR/default-packages" <<EOF > /dev/null
+cat <<EOF > "$NVM_DIR/default-packages"
+neovim
 npm-check-updates
 serverless
+tern
 yarn
 EOF
 

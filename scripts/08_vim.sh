@@ -20,11 +20,10 @@ brew_install "vim --with-python3"
 brew_install neovim
 pip2_install neovim
 pip3_install neovim
-npm i -g neovim
 # write config
 nvim_path=$HOME/.config/nvim
 mkdir -p "$nvim_path"
-cat > "$nvim_path/init.vim" <<EOF
+cat <<EOF > "$nvim_path/init.vim"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
