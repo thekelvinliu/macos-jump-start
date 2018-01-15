@@ -25,6 +25,15 @@ Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
+" filetypes
+augroup filetypedetect
+  " plist as xml
+  au BufNew,BufNewFile,BufRead *.plist set filetype=xml
+  " markdown
+  au BufNew,BufNewFile,BufRead *.txt,*.text,*.md,*.markdown setfiletype markdown
+  au BufNew,BufNewFile,BufRead * if &ft == '' | set filetype=markdown | endif
+augroup END
+
 " leader
 map <space> <leader>
 
