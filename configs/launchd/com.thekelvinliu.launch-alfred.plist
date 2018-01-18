@@ -8,7 +8,7 @@
   <array>
     <string>sh</string>
     <string>-c</string>
-    <string>app=&quot;Alfred 3.app&quot; &amp;&amp; [ -r &quot;$app&quot; ] &amp;&amp; sleep 3 &amp;&amp; open -a &quot;$app&quot; &amp;&amp; unset app</string>
+    <string>app=&quot;Alfred 3.app&quot; &amp;&amp; [ -r &quot;$app&quot; ] &amp;&amp; sleep 8 &amp;&amp; open -a &quot;$app&quot; &amp;&amp; unset app</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
