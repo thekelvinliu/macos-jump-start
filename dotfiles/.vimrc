@@ -59,6 +59,9 @@ nmap <leader>j :bn<cr>
 nmap <leader>N :set number! number?<cr>
 nmap <leader>C :set list! list?<cr>
 
+" turn search highlight off
+nmap <leader>h :noh<cr>
+
 " easily get out of insert mode
 imap jj <esc>
 
@@ -86,6 +89,10 @@ set nowrap
 set number
 highlight LineNr ctermfg=grey
 set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
+highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 " natural splitting
 set splitbelow
@@ -144,13 +151,13 @@ nmap <leader>0 <plug>lightline#bufferline#go(10)
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {}
 let g:tmuxline_preset.a = '#(whoami)@#h'
-let g:tmuxline_preset.b = '#S#F'
-let g:tmuxline_preset.c = '#W'
+let g:tmuxline_preset.b = ['#S#F', '#W']
+" let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/spotify.applescript)'
 let g:tmuxline_preset.win = ['#I', '#W']
 let g:tmuxline_preset.cwin = ['w #I', '#W']
-let g:tmuxline_preset.x = '#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)'
-let g:tmuxline_preset.y = '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)'
-let g:tmuxline_preset.z = ['%a', '%Y-%m-%d', '%R']
+let g:tmuxline_preset.x = ''
+let g:tmuxline_preset.y = ['#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)', '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)']
+let g:tmuxline_preset.z = ['%a', '%Y-%m-%d %R']
 
 " ale
 let g:ale_fixers = {}

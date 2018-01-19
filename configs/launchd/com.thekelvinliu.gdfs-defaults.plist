@@ -8,7 +8,7 @@
   <array>
     <string>sh</string>
     <string>-c</string>
-    <string>cd &amp;&amp; mkdir -p enc mnt &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; rm -f &quot;Google Drive File Stream&quot;</string>
+    <string>cd &amp;&amp; mkdir -p enc mnt &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; sleep 8 &amp;&amp; rm -f &quot;Google Drive File Stream&quot;</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
