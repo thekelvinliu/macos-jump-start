@@ -63,7 +63,7 @@ nmap <leader>C :set list! list?<cr>
 nmap <leader>h :noh<cr>
 
 " easily get out of insert mode
-imap jj <esc>
+imap jk <esc>
 
 " trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -83,6 +83,9 @@ inoremap <tab> <c-t>
 vnoremap <s-tab> <
 nnoremap <s-tab> <<
 inoremap <s-tab> <c-d>
+
+" change dir based on file
+set autochdir
 
 " display settings
 set nowrap
@@ -152,7 +155,7 @@ let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {}
 let g:tmuxline_preset.a = '#(whoami)@#h'
 let g:tmuxline_preset.b = ['#S#F', '#W']
-" let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/spotify.applescript)'
+let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/track.applescript)'
 let g:tmuxline_preset.win = ['#I', '#W']
 let g:tmuxline_preset.cwin = ['w #I', '#W']
 let g:tmuxline_preset.x = ''
@@ -184,7 +187,7 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
 inoremap <silent><expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
 inoremap <silent><expr><bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
-inoremap <silent><expr>jj pumvisible() ? "\<c-e>" : "\<esc>"
+inoremap <silent><expr>jk pumvisible() ? "\<c-e>\<esc>" : "\<esc>"
 " ternjs
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#docs = 1
