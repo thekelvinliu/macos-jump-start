@@ -24,7 +24,7 @@ export SSH_PRIVATE_KEY="$HOME/.ssh/id_ed25519"
 export SSH_PUBLIC_KEY="$HOME/.ssh/id_ed25519.pub"
 
 # editors
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # git email and username
