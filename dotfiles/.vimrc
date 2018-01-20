@@ -84,6 +84,9 @@ vnoremap <s-tab> <
 nnoremap <s-tab> <<
 inoremap <s-tab> <c-d>
 
+" change dir based on file
+set autochdir
+
 " display settings
 set nowrap
 set number
