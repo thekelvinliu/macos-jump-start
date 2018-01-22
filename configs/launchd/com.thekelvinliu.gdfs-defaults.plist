@@ -4,11 +4,16 @@
 <dict>
   <key>Label</key>
   <string>com.thekelvinliu.gdfs-defaults</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>GDFS</key>
+    <string>Google Drive File Stream</string>
+  </dict>
   <key>ProgramArguments</key>
   <array>
     <string>sh</string>
     <string>-c</string>
-    <string>cd &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; mkdir -p gdrive/enc mnt &amp;&amp; sleep 30 &amp;&amp; rm -f &quot;Google Drive File Stream&quot;</string>
+    <string>cd &amp;&amp; while ! pgrep -q &quot;$GDFS&quot;; do sleep 1; done &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; mkdir -p gdrive/enc mnt &amp;&amp; sleep 10 &amp;&amp; rm -f &quot;$GDFS&quot;</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
