@@ -5,6 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
+Plug 'mileszs/ack.vim'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -38,29 +39,29 @@ augroup END
 map <space> <leader>
 
 " source ~/.vimrc
-nmap <leader>r :so $MYVIMRC<cr>
+nnoremap <leader>r :so $MYVIMRC<cr>
 
 " buffers
 " new
-nmap <leader>o :e<space>
+nnoremap <leader>n :e<space>
 " save
-nmap <leader>s :w<cr>
+nnoremap <leader>s :w<cr>
 " close
-nmap <leader>a :bd<cr>
-nmap <leader>A :bd!<cr>
-nmap <leader>q :q<cr>
-nmap <leader>Q :q!<cr>
+nnoremap <leader>a :bd<cr>
+nnoremap <leader>A :bd!<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :q!<cr>
 " prev
-nmap <leader>k :bp<cr>
+nnoremap <leader>k :bp<cr>
 " next
-nmap <leader>j :bn<cr>
+nnoremap <leader>j :bn<cr>
 
 " toggle line numbers and whitespace characters
-nmap <leader>N :set number! number?<cr>
-nmap <leader>C :set list! list?<cr>
+nnoremap <leader>N :set number! number?<cr>
+nnoremap <leader>C :set list! list?<cr>
 
 " turn search highlight off
-nmap <leader>h :noh<cr>
+nnoremap <leader>h :noh<cr>
 
 " easily get out of insert mode
 imap jk <esc>
@@ -162,6 +163,13 @@ let g:tmuxline_preset.x = ''
 let g:tmuxline_preset.y = ['#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)', '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)']
 let g:tmuxline_preset.z = ['%a', '%Y-%m-%d %R']
 
+" ack.vim
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading --hidden'
+elseif executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " ale
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = ['eslint']
@@ -169,16 +177,26 @@ let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '~~'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
-nmap <leader>f <plug>(ale_fix)
 nmap <leader>l <plug>(ale_lint)
+nmap <leader>L <plug>(ale_fix)
 
 " ctrlp
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {}
 let g:ctrlp_custom_ignore.dir = '\v[\/]\.(git|hg|svn)|node_modules$'
 let g:ctrlp_custom_ignore.file = '\v\.(exe|so|dll)$'
-nmap <leader>p <c-p>
-nmap <leader>P <c-p><f5>
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g ""'
+  let g:ctrlp_use_caching = 0
+else
+  let g:ctrlp_clear_cache_on_exit = 0
+endif
+nnoremap <leader>o :CtrlPMRU<cr>
+nnoremap <leader>p :CtrlP<cr>
+nnoremap <leader>f :Ack!<space>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -193,6 +211,8 @@ let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#sources#ternjs#include_keywords = 1
 let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
+" disable preview window
+set completeopt-=preview
 
 " multiple cursors
 function! g:Multiple_cursors_before()
