@@ -23,6 +23,7 @@ brew_install ffmpeg
 brew_install imagemagick
 
 # other
+brew_install awscli
 brew_install ondir
 brew_install pass
 brew_install encfs
