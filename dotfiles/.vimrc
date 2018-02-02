@@ -89,7 +89,7 @@ inoremap <s-tab> <c-d>
 set autochdir
 
 " display settings
-color slate
+color elford
 set nowrap
 set number
 highlight LineNr ctermfg=grey
