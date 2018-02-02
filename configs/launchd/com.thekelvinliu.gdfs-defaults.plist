@@ -13,7 +13,7 @@
   <array>
     <string>sh</string>
     <string>-c</string>
-    <string>cd &amp;&amp; while ! pgrep -q &quot;$GDFS&quot;; do sleep 1; done &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; mkdir -p gdrive/enc mnt &amp;&amp; sleep 10 &amp;&amp; rm -f &quot;$GDFS&quot;</string>
+    <string>cd &amp;&amp; while ! pgrep -q &quot;$GDFS&quot;; do sleep 1; done &amp;&amp; ln -hfs &quot;/Volumes/GoogleDrive/My Drive/space&quot; gdrive &amp;&amp; mkdir -p mnt &amp;&amp; sleep 10 &amp;&amp; rm -f &quot;$GDFS&quot;</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
