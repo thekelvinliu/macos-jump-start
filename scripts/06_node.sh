@@ -1,4 +1,4 @@
-# installs nvm, node, and some global packages
+# install nvm, node, and some global packages
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
@@ -13,8 +13,9 @@ fi
 # update formulae
 brew update
 
-# node
+# nvm and yarn
 brew_install nvm
+brew_install "yarn --without-node"
 
 # set up nvm now
 export NVM_DIR="$HOME/.nvm"
@@ -25,18 +26,16 @@ mkdir -p "$NVM_DIR"
 cat <<EOF > "$NVM_DIR/default-packages"
 neovim
 npm-check-updates
+serve
 serverless
 tern
-yarn
 EOF
 
 # install latest version of node
 nvm install node
 
 # install/upgrade npm if it is outdated
-local_version=$(npm -v)
-[[ "$local_version" != $(npm v npm version) ]] && npm i -g npm
-unset local_version
+[[ $(npm -v) != $(npm v npm version) ]] && npm i -g npm
 
 # clean things up
 brew cleanup
