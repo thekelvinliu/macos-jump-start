@@ -1,8 +1,8 @@
-# a nice sshd_config
-# harden
+# a hard sshd_config
+
+# basics
 Port 22
 Protocol 2
-ServerKeyBits 1024
 PermitRootLogin no
 
 # hostkey ordering and algorithms via mozilla infosec
@@ -13,20 +13,17 @@ KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 
-# auth
+# public keys woohoo
 AuthorizedKeysFile  %h/.ssh/authorized_keys
 AuthenticationMethods publickey
 PubkeyAuthentication yes
+
+# disable other auth
 ChallengeResponseAuthentication no
+HostbasedAuthentication no
+IgnoreRhosts yes
 PasswordAuthentication no
 PermitEmptyPasswords no
-
-# no rhosts
-IgnoreRhosts yes
-RhostsRSAAuthentication no
-
-# nonono
-HostbasedAuthentication no
 UsePam no
 
 # sftp
