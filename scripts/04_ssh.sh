@@ -28,7 +28,7 @@ fi
 # symlink sshd_config
 fname=/etc/ssh/sshd_config
 echo "requesting password to symlink sshd_config"
-[[ -f $fname ]] && sudo mv "$fname" "$fname.old"
+[[ ! -L $fname ]] && sudo mv "$fname" "$fname.old"
 sudo ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$fname"
 
 # symlink launchd plists
