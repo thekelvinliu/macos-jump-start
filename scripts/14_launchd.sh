@@ -30,7 +30,7 @@ if "$should_link"; then
     launchctl unload "$fout" 2> /dev/null
     ln -Ffs "$plist" "$agents"
     echo "symlinked $MAGENTA$fname$RESET to $CYAN$fout$RESET"
-    launchctl load "$agents/$fname"
+    launchctl load "$fout"
   done
 fi
 
