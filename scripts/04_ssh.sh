@@ -35,6 +35,7 @@ ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$fname"
 daemons="/Library/LaunchDaemons"
 sudo mkdir -p "$daemons"
 plist="$MJS_BASE/configs/ssh/sshd.plist"
+sudo chown root:wheel "$plist"
 fname=$(basename "$plist")
 fout=$daemons/$fname
 sudo launchctl unload "$fout" 2> /dev/null
