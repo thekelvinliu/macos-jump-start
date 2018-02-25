@@ -4,13 +4,13 @@
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 . "$MJS_BASE/common.sh"
 
+# add homebrew paths if installed
+if has_brew; then
+  PATH=/usr/local/bin:/usr/local/sbin:$PATH
+fi
+
 # add user directory bin
 PATH="$HOME/bin:$PATH"
-
-# add homebrew if it has been installed
-if has_brew; then
-  PATH="/usr/local/bin:$PATH"
-fi
 
 # export
 export PATH
