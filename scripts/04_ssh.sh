@@ -26,10 +26,10 @@ else
 fi
 
 # symlink sshd_config
-fname=/etc/ssh/sshd_config
+fname=/usr/local/etc/ssh/sshd_config
 echo "requesting password to symlink sshd_config"
 [[ ! -L $fname ]] && sudo mv "$fname" "$fname.old"
-sudo ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$fname"
+ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$fname"
 
 # symlink launchd plists
 daemons="/Library/LaunchDaemons"

@@ -8,6 +8,7 @@
   <string>/usr/local/sbin/sshd</string>
   <key>ProgramArguments</key>
   <array>
+    <string>/usr/local/sbin/sshd</string>
     <string>-i</string>
   </array>
   <key>Sockets</key>
