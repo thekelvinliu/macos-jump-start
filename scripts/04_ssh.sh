@@ -6,7 +6,7 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 # ensure SSH_PRIVATE_KEY and SSH_PUBLIC_KEY are set
 . "$MJS_BASE/dotfiles/.exports"
 
-# openssh
+# use homebrew openssh client (but system sshd)
 brew_install openssh
 
 # generate a key if necessary
@@ -26,22 +26,24 @@ else
 fi
 
 # symlink sshd_config
-fname=/usr/local/etc/ssh/sshd_config
+target=/etc/ssh/sshd_config
 echo "requesting password to symlink sshd_config"
-[[ ! -L $fname ]] && sudo mv "$fname" "$fname.old"
-ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$fname"
-
-# symlink launchd plists
-daemons="/Library/LaunchDaemons"
-sudo mkdir -p "$daemons"
-plist="$MJS_BASE/configs/ssh/sshd.plist"
-sudo chown root:wheel "$plist"
-fname=$(basename "$plist")
-fout=$daemons/$fname
-sudo launchctl unload "$fout" 2> /dev/null
-sudo ln -Ffs "$plist" "$daemons"
-echo "symlinked $MAGENTA$fname$RESET to $CYAN$fout$RESET"
-sudo launchctl load "$fout"
+[[ ! -L $target ]] && sudo mv "$target" "$target.old"
+fname=$MJS_BASE/configs/ssh/sshd_config
+sudo chown root:wheel "$fname"
+sudo ln -Ffs "$fname" "$target"
 
 # remove variables
-unset daemons fname fout
+unset fname target
+
+# symlink launchd plists
+# daemons="/Library/LaunchDaemons"
+# sudo mkdir -p "$daemons"
+# plist="$MJS_BASE/configs/ssh/sshd.plist"
+# sudo chown root:wheel "$plist"
+# fname=$(basename "$plist")
+# fout=$daemons/$fname
+# sudo launchctl unload "$fout" 2> /dev/null
+# sudo ln -Ffs "$plist" "$daemons"
+# echo "symlinked $MAGENTA$fname$RESET to $CYAN$fout$RESET"
+# sudo launchctl load "$fout"
