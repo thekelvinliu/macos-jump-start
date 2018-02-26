@@ -25,6 +25,7 @@ venv
 
 # node
 node_modules
+.tern-port
 
 # bower
 bower_components
