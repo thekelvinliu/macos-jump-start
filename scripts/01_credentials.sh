@@ -1,7 +1,7 @@
 # set git email and username environment variables
 
 # ask for creds if they don't already exist
-if [[ -z "$GIT_EMAIL" || -z "$GIT_USERNAME" ]]; then
+if [[ -z $GIT_EMAIL || -z $GIT_USERNAME ]]; then
   while true; do
     read -p "enter your git ${YELLOW}email$RESET: " GIT_EMAIL
     echo "your git ${YELLOW}email$RESET is $GREEN$GIT_EMAIL$RESET"

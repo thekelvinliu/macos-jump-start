@@ -6,24 +6,32 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 # ensure SSH_PRIVATE_KEY and SSH_PUBLIC_KEY are set
 . "$MJS_BASE/dotfiles/.exports"
 
-# use homebrew openssh client (but system sshd)
+# use homebrew openssh
 brew_install openssh
 
 # generate a key if necessary
 if [[ -e "$SSH_PRIVATE_KEY" && -e "$SSH_PUBLIC_KEY" ]]; then
-  echo "an ed25519 keypair already exists."
+  echo "a ssh keypair already exists."
 else
-  # check for GIT_EMAIL
-  if [[ -z "$GIT_EMAIL" ]]; then
-    echo "missing git email"
-    . "$MJS_BASE/scripts/01_credentials.sh"
-  fi
+  # ask for a comment
+  while true; do
+    read -p "enter a ${YELLOW}comment$RESET for your new keypair:" comment
+    echo "your ${YELLOW}comment$RESET is $GREEN$comment$RESET"
+    read -p "is that correct? (y/n) " yn
+    case "$yn" in
+      [Yy]*) break;;
+      [Nn]*) :;;
+      *) echo "please answer yes or no."
+    esac
+  done
+
   # generate an ed25519 key
-  ssh-keygen -t ed25519 -a 100 -C "$GIT_EMAIL" -f "$SSH_PRIVATE_KEY"
+  ssh-keygen -t ed25519 -a 100 -C "$comment" -f "$SSH_PRIVATE_KEY"
   # copy to clipboard
   pbcopy < "$SSH_PUBLIC_KEY"
   echo "$SSH_PUBLIC_KEY was copied to the clipboard"
 fi
+unset comment yn
 
 # symlink sshd_config
 target=/etc/ssh/sshd_config
