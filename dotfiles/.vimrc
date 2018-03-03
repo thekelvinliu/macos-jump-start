@@ -187,7 +187,7 @@ let g:ctrlp_custom_ignore = {}
 let g:ctrlp_custom_ignore.dir = '\v[\/]\.(git|hg|svn)|node_modules$'
 let g:ctrlp_custom_ignore.file = '\v\.(exe|so|dll)$'
 if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never -g "!.git" -g ""'
   let g:ctrlp_use_caching = 0
 elseif executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g ""'
