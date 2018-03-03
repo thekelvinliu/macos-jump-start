@@ -14,7 +14,8 @@ fi
 brew update
 
 # vim
-brew_install "vim --with-python3"
+brew_install nvim
+brew_install vim
 
 # neovim
 brew_install neovim

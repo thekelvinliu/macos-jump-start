@@ -7,6 +7,7 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 # add homebrew path if installed
 if has_brew; then
   PATH=/usr/local/bin:$PATH
+  PATH=/usr/local/opt/python@2/bin:$PATH
 fi
 
 # add user directory bin
