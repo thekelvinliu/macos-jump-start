@@ -15,7 +15,7 @@ if [[ -e "$SSH_PRIVATE_KEY" && -e "$SSH_PUBLIC_KEY" ]]; then
 else
   # ask for a comment
   while true; do
-    read -p "enter a ${YELLOW}comment$RESET for your new keypair:" comment
+    read -p "enter a ${YELLOW}comment$RESET for your new keypair: " comment
     echo "your ${YELLOW}comment$RESET is $GREEN$comment$RESET"
     read -p "is that correct? (y/n) " yn
     case "$yn" in
@@ -34,24 +34,27 @@ fi
 unset comment yn
 
 # symlink sshd_config
-target=/etc/ssh/sshd_config
-echo "requesting password to symlink sshd_config"
+target=/usr/local/etc/ssh/sshd_config
 [[ ! -L $target ]] && sudo mv "$target" "$target.old"
-fname=$MJS_BASE/configs/ssh/sshd_config
-sudo chown root:wheel "$fname"
-sudo ln -Ffs "$fname" "$target"
+ln -Ffs "$MJS_BASE/configs/ssh/sshd_config" "$target"
+
+# set up sshd.plist
+daemons=/Library/LaunchDaemons
+fname=sshd.plist
+fout=$daemons/$fname
+plist=$MJS_BASE/configs/ssh/$fname
+echo "requesting password to symlink $MAGENTA$fname$RESET"
+# file ownership
+sudo mkdir -p "$daemons"
+sudo chown root:wheel "$plist"
+# symlink and launchd
+sudo launchctl unload "$fout" 2> /dev/null
+sudo ln -Ffs "$plist" "$daemons"
+echo "symlinked $MAGENTA$fname$RESET to $CYAN$fout$RESET"
+sudo launchctl load "$fout"
 
 # remove variables
-unset fname target
+unset daemons fname fout plist target
 
-# symlink launchd plists
-# daemons="/Library/LaunchDaemons"
-# sudo mkdir -p "$daemons"
-# plist="$MJS_BASE/configs/ssh/sshd.plist"
-# sudo chown root:wheel "$plist"
-# fname=$(basename "$plist")
-# fout=$daemons/$fname
-# sudo launchctl unload "$fout" 2> /dev/null
-# sudo ln -Ffs "$plist" "$daemons"
-# echo "symlinked $MAGENTA$fname$RESET to $CYAN$fout$RESET"
-# sudo launchctl load "$fout"
+# add firewall rule for homebrew's sshd
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add /usr/local/sbin/sshd
