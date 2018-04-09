@@ -25,19 +25,18 @@
   "highlight_modified_tabs": true,
   "ignored_packages": [
     "JavaScript",
-    "Rails",
-    "Vintage"
+    "Rails"
   ],
   "indent_to_bracket": true,
   "open_files_in_new_window": false,
   "rulers": [
-    80,
-    120
+    100
   ],
   "spell_check": false,
   "tab_size": 2,
   "theme": "Default.sublime-theme",
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
+  "vintage_start_in_command_mode": true,
   "word_wrap": false
 }
