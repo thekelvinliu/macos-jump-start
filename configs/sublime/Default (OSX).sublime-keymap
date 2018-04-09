@@ -1,56 +1,25 @@
 [
   {
+    "keys": [
+      "j",
+      "k"
+    ],
+    "command": "exit_insert_mode",
+    "context": [
+      {
+        "key": "setting.command_mode",
+        "operand": false
+      },
+      {
+        "key": "setting.is_widget",
+        "operand": false
+      }
+    ]
+  },
+  {
     "command": "toggle_side_bar",
     "keys": [
       "super+shift+k"
-    ]
-  },
-  {
-    "command": "save_evernote_note",
-    "context": [
-      {
-        "key": "evernote_note"
-      },
-      {
-        "key": "evernote_has_guid"
-      }
-    ],
-    "keys": [
-      "super+s"
-    ]
-  },
-  {
-    "command": "send_to_evernote",
-    "context": [
-      {
-        "key": "evernote_note"
-      },
-      {
-        "key": "evernote_has_guid",
-        "operand": false,
-        "operator": "equal"
-      }
-    ],
-    "keys": [
-      "super+s"
-    ]
-  },
-  {
-    "args": {
-      "overlay": "command_palette",
-      "text": "Evernote: "
-    },
-    "command": "show_overlay",
-    "keys": [
-      "super+e",
-      "super+e"
-    ]
-  },
-  {
-    "command": "open_evernote_note",
-    "keys": [
-      "super+e",
-      "super+o"
     ]
   },
   {
