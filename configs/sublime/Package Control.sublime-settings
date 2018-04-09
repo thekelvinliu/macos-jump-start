@@ -3,25 +3,14 @@
   "in_process_packages": [],
   "installed_packages": [
     "A File Icon",
-    "AppleScript Extensions",
     "Babel",
-    "Babel Snippets",
+    "DocBlockr",
     "Dotfiles Syntax Highlighting",
     "Dracula Color Scheme",
-    "DocBlockr",
-    "Ethereum",
-    "Evernote",
-    "Gradle_Language",
-    "Insert Equation",
     "LaTeXTools",
     "Markdown Preview",
     "Package Control",
     "Pretty JSON",
-    "Processing",
-    "Pug",
-    "Sass",
-    "SublimeLinter",
-    "SublimeLinter-eslint",
-    "Vue Syntax Highlight"
+    "Sass"
   ]
 }
