@@ -25,7 +25,7 @@ mkdir -p "$NVM_DIR"
 # default globals
 cat <<EOF > "$NVM_DIR/default-packages"
 neovim
-npm-check-updates
+npm-check-updates-lite
 serve
 serverless
 tern
