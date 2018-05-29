@@ -31,11 +31,9 @@ serverless
 tern
 EOF
 
-# install latest version of node
-nvm install node
-
-# install/upgrade npm if it is outdated
-[[ $(npm -v) != $(npm v npm version) ]] && npm i -g npm
+# install latest lts and version
+nvm install --lts --latest-npm
+nvm install node --latest-npm
 
 # clean things up
 brew cleanup
