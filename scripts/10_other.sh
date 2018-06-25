@@ -26,4 +26,4 @@ brew_install imagemagick
 brew_install awscli
 brew_install ondir
 brew_install pass
-brew_install encfs
+brew_install gocryptfs
