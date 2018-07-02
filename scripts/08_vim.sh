@@ -1,4 +1,4 @@
-# install vim and plugs
+# install (n)vim
 
 # get a common execution environment
 MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
@@ -13,15 +13,11 @@ fi
 # update formulae
 brew update
 
-# vim
-brew_install nvim
+# vim and nvim
 brew_install vim
+brew_install nvim
 
-# neovim
-brew_install neovim
-pip2_install neovim
-pip3_install neovim
-# write config
+# write nvim config
 nvim_path=$HOME/.config/nvim
 mkdir -p "$nvim_path"
 cat <<EOF > "$nvim_path/init.vim"
