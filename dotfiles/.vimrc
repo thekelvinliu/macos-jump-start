@@ -1,39 +1,46 @@
-" plugins
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-call plug#begin()
-Plug 'mileszs/ack.vim'
-Plug 'w0rp/ale'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
-if !has('nvim')
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs'
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'mgee/lightline-bufferline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-sensible'
-Plug 'christoomey/vim-tmux-navigator'
-call plug#end()
+" SETTINGS
+
+" change dir based on file
+set autochdir
+set showcmd
+
+" system clipboard
+set clipboard+=unnamedplus
+
+" soft not hard tabs
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" additional display settings
+set nowrap
+set number
+set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
+
+" natural splitting
+set splitbelow
+set splitright
+
+" colorscheme
+let g:colors_name = 'dracula'
+let g:dracula_colorterm = 0
+" grey numbers
+highlight LineNr ctermfg=grey
 
 " filetypes
 augroup filetypedetect
   " plist as xml
   au BufNew,BufNewFile,BufRead *.plist set filetype=xml
   " markdown
-  au BufNew,BufNewFile,BufRead *.txt,*.text,*.md,*.markdown setfiletype markdown
-  au BufNew,BufNewFile,BufRead * if &ft == '' | set filetype=markdown | endif
+  au BufNew,BufNewFile,BufRead *.md,*.markdown setfiletype markdown
+  " text filetype by default
+  au BufNew,BufNewFile,BufRead * if &ft == '' | set filetype=text | endif
 augroup END
+" trim trailing whitespace for filetypes not in blacklist
+let blacklist = ['markdown']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
+
+" KEY BINDINGS
 
 " leader
 map <space> <leader>
@@ -66,16 +73,8 @@ nnoremap <leader>h :noh<cr>
 " easily get out of insert mode
 imap jk <esc>
 
-" trim trailing whitespace
-autocmd BufWritePre * %s/\s\+$//e
-
-" system clipboard
-set clipboard+=unnamedplus
-
-" soft not hard tabs
-set expandtab
-set shiftwidth=2
-set softtabstop=2
+" terminal
+tnoremap jk <c-\><c-n>
 
 " indentation
 vnoremap <tab> >
@@ -85,23 +84,36 @@ vnoremap <s-tab> <
 nnoremap <s-tab> <<
 inoremap <s-tab> <c-d>
 
-" change dir based on file
-set autochdir
+" PLUGINS
 
-" display settings
-color delek
-set nowrap
-set number
-highlight LineNr ctermfg=grey
-set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
-highlight DiffAdd cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-
-" natural splitting
-set splitbelow
-set splitright
+" vim plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+Plug 'mileszs/ack.vim'
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ctrlpvim/ctrlp.vim'
+if !has('nvim')
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'mattn/emmet-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-sensible'
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
 
 " lightline
 set hidden
