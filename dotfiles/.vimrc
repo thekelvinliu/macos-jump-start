@@ -24,8 +24,6 @@ set splitright
 " colorscheme
 let g:colors_name = 'dracula'
 let g:dracula_colorterm = 0
-" grey numbers
-highlight LineNr ctermfg=grey
 
 " filetypes
 augroup filetypedetect
@@ -234,3 +232,8 @@ endfunction
 function! g:Multiple_cursors_after()
   let g:deoplete#disable_auto_complete = 0
 endfunction
+
+" OVERRIDES
+
+" grey line numbers
+highlight LineNr ctermfg=grey
