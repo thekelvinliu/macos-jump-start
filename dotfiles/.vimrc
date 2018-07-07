@@ -236,4 +236,6 @@ endfunction
 " OVERRIDES
 
 " grey line numbers
-highlight LineNr ctermfg=grey
+hi LineNr ctermfg=grey
+hi DraculaSubtle ctermfg=cyan
+hi CtrlPMatch ctermfg=cyan
