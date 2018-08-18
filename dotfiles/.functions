@@ -60,3 +60,9 @@ rmnm() {
 sour() {
   imp "$HOME/.bash_profile"
 }
+
+# create new tmux session or attach to existing based on cwd
+tat() {
+  local name=$(basename "$PWD")
+  tmux attach -t "$name" 2> /dev/null || tmux new -s "$name"
+}

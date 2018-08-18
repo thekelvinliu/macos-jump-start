@@ -31,12 +31,13 @@ brew_tap beeftornado/rmtree
 
 # the basics
 brew_install cmake
+brew_install fd
+brew_install fzf
 brew_install gcc
 brew_install git
 brew_install htop
 brew_install tree
 brew_install ripgrep
-# brew_install findutils
 
 # clean things up
 brew cleanup

@@ -38,3 +38,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # make brew cask symlink apps to /Applications
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+fzf_cmd="fd -HL -E .git -E node_modules"
+# files in cwd
+export FZF_DEFAULT_COMMAND="$fzf_cmd -t f ."
+# anything in home
+export FZF_CTRL_T_COMMAND="$fzf_cmd . $HOME"
+# directories in home
+export FZF_ALT_C_COMMAND="$fzf_cmd -t d . $HOME"
+unset fzf_cmd

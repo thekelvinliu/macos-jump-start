@@ -1,21 +1,24 @@
 " SETTINGS
 
-" change dir based on file
-set autochdir
+set hidden
+set laststatus=2
+set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
+set noshowmode
+set nowrap
+set number
 set showcmd
+set showtabline=2
 
-" system clipboard
-set clipboard+=unnamedplus
+" autochdir but local
+autocmd BufEnter * silent! lcd %:p:h
 
 " soft not hard tabs
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 
-" additional display settings
-set nowrap
-set number
-set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
+" use system clipboard
+set clipboard+=unnamedplus
 
 " natural splitting
 set splitbelow
@@ -30,9 +33,7 @@ augroup filetypedetect
   " plist as xml
   au BufNew,BufNewFile,BufRead *.plist set filetype=xml
   " markdown
-  au BufNew,BufNewFile,BufRead *.md,*.markdown setfiletype markdown
-  " text filetype by default
-  au BufNew,BufNewFile,BufRead * if &ft == '' | set filetype=text | endif
+  au BufNew,BufNewFile,BufRead *.md,*.markdown set filetype=markdown
 augroup END
 " trim trailing whitespace for filetypes not in blacklist
 let blacklist = ['markdown']
@@ -47,8 +48,8 @@ map <space> <leader>
 nnoremap <leader>r :so $MYVIMRC<cr>
 
 " buffers
-" new
-nnoremap <leader>n :e<space>
+" edit/new
+nnoremap <leader>e :e<space>
 " save
 nnoremap <leader>s :w<cr>
 " close
@@ -66,13 +67,7 @@ nnoremap <leader>N :set number! number?<cr>
 nnoremap <leader>C :set list! list?<cr>
 
 " turn search highlight off
-nnoremap <leader>h :noh<cr>
-
-" easily get out of insert mode
-imap jk <esc>
-
-" terminal
-tnoremap jk <c-\><c-n>
+nnoremap <silent> <leader>h :noh<cr>
 
 " indentation
 vnoremap <tab> >
@@ -91,34 +86,57 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-Plug 'mileszs/ack.vim'
-Plug 'w0rp/ale'
+" basics
+Plug '/usr/local/opt/fzf'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ctrlpvim/ctrlp.vim'
-if !has('nvim')
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs'
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'mgee/lightline-bufferline'
-Plug 'edkolev/tmuxline.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
+
+" lint
+Plug 'w0rp/ale'
+
+" lightline
+Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
+
+" ncm2
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+
+" languages
+Plug 'sheerun/vim-polyglot'
+Plug 'plasticboy/vim-markdown'
+
+" other
+" uncomment when regenerating .tmuxline.conf
+" Plug 'edkolev/tmuxline.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
-" lightline
-set hidden
-set laststatus=2
-set noshowmode
-set showtabline=2
+" fugitive
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gvdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
 
+" fzf
+function! GitRoot()
+  let dir = system('git rev-parse --show-toplevel 2> /dev/null')
+  return !empty(dir) ? dir : "\<cr>"
+endfunction
+nnoremap <silent><expr> <leader>p ':FZF '.GitRoot()
+nnoremap <leader>o <c-^><cr>
+let g:fzf_layout = { 'down': '~20%' }
+
+" lightline
 let g:lightline = {}
 let g:lightline.active = { 'left': [['mode', 'paste'], ['filename', 'gitbranch']] }
 let g:lightline.colorscheme = 'Dracula'
@@ -140,6 +158,7 @@ endfunction
 function! LightlineMode()
   return expand('%:t') ==# '__Tagbar__' ? 'Tagbar':
         \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
+        \ &filetype ==# 'fzf' ? 'fzf' :
         \ &filetype ==# 'unite' ? 'Unite' :
         \ &filetype ==# 'vimfiler' ? 'VimFiler' :
         \ &filetype ==# 'vimshell' ? 'VimShell' :
@@ -162,80 +181,47 @@ nmap <leader>8 <plug>lightline#bufferline#go(8)
 nmap <leader>9 <plug>lightline#bufferline#go(9)
 nmap <leader>0 <plug>lightline#bufferline#go(10)
 
-" tmuxline
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_preset = {}
-let g:tmuxline_preset.a = '#(whoami)@#h'
-let g:tmuxline_preset.b = ['#S#F', '#W']
-let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/track.applescript)'
-let g:tmuxline_preset.win = ['#I', '#W']
-let g:tmuxline_preset.cwin = ['w #I', '#W']
-let g:tmuxline_preset.x = ''
-let g:tmuxline_preset.y = ['#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)', '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)']
-let g:tmuxline_preset.z = ['%a', '%Y-%m-%d %R']
-
-" ack.vim
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading --hidden'
-elseif executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
+" uncomment when regenerating .tmuxline.conf
+" let g:tmuxline_powerline_separators = 0
+" let g:tmuxline_preset = {}
+" let g:tmuxline_preset.a = '#(whoami)@#h'
+" let g:tmuxline_preset.b = ['#S#F', '#W']
+" let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/track.applescript)'
+" let g:tmuxline_preset.win = ['#I', '#W']
+" let g:tmuxline_preset.cwin = ['w #I', '#W']
+" let g:tmuxline_preset.x = ''
+" let g:tmuxline_preset.y = ['#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)', '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)']
+" let g:tmuxline_preset.z = ['%a', '%Y-%m-%d %R']
 
 " ale
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = ['eslint']
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '~~'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 1
+nmap <leader>n <plug>(ale_next_wrap)
 nmap <leader>l <plug>(ale_lint)
 nmap <leader>L <plug>(ale_fix)
 
-" ctrlp
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = {}
-let g:ctrlp_custom_ignore.dir = '\v[\/]\.(git|hg|svn)|node_modules$'
-let g:ctrlp_custom_ignore.file = '\v\.(exe|so|dll)$'
-if executable('rg')
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never -g "!.git" -g ""'
-  let g:ctrlp_use_caching = 0
-elseif executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g ""'
-  let g:ctrlp_use_caching = 0
-else
-  let g:ctrlp_clear_cache_on_exit = 0
-endif
-nnoremap <leader>o :CtrlPMRU<cr>
-nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>f :Ack!<space>
+" ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
+inoremap <silent><expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+inoremap <silent><expr> <bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
+inoremap <silent><expr> jk pumvisible() ? "\<c-e>\<esc>" : "\<esc>"
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
-inoremap <silent><expr><cr> pumvisible() ? "\<c-y>" : "\<cr>"
-inoremap <silent><expr><bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
-inoremap <silent><expr>jk pumvisible() ? "\<c-e>\<esc>" : "\<esc>"
-" ternjs
-let g:deoplete#sources#ternjs#types = 1
-let g:deoplete#sources#ternjs#docs = 1
-let g:deoplete#sources#ternjs#include_keywords = 1
-let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
-" disable preview window
-set completeopt-=preview
-
-" multiple cursors
-function! g:Multiple_cursors_before()
-  let g:deoplete#disable_auto_complete = 1
-endfunction
-function! g:Multiple_cursors_after()
-  let g:deoplete#disable_auto_complete = 0
-endfunction
+" language support
+let g:javascript_plugin_jsdoc = 1
+let g:vim_markdown_folding_disabled = 1
 
 " OVERRIDES
-
+" yellow ale warnings
+hi ALEWarningSign ctermfg=yellow
+" make a little less subtle
+hi DraculaSubtle ctermfg=yellow
 " grey line numbers
 hi LineNr ctermfg=grey
-hi DraculaSubtle ctermfg=cyan
-hi CtrlPMatch ctermfg=cyan

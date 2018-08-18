@@ -8,9 +8,11 @@ MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 if has_brew; then
   # bash completion
   path="/usr/local/share/bash-completion/bash_completion"
-  if [[ -s $path ]]; then
-    . "$path"
-  fi
+  [[ -r $path ]] && . "$path"
+
+  # fzf
+  path="$HOME/.fzf.bash"
+  [[ -r $path ]] && . "$path"
 
   # jenv
   if exists jenv; then
@@ -19,12 +21,10 @@ if has_brew; then
 
   # nvm
   path="/usr/local/opt/nvm"
-  if [[ -s $path ]]; then
-    . "$path/nvm.sh"
-  fi
+  [[ -r $path ]] && . "$path/nvm.sh"
 
   # ondir
-  if exists jenv; then
+  if exists ondir; then
     function cd {
       builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
     }
