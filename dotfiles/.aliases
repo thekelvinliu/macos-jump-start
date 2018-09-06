@@ -16,6 +16,3 @@ alias clean-dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/
 
 # empty user trash
 alias emptrash='shopt -s dotglob && rm -rf $HOME/.Trash/*'
-
-# reboots in windows on external ssd
-alias reboot-camp='sudo bless --device /dev/disk2s2 --setBoot && sudo reboot'
