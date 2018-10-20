@@ -14,8 +14,8 @@ fi
 brew update
 
 # databases
-# brew_install mysql
 # brew_install mongodb
+# brew_install mysql
 brew_install sqlite
 
 # media
@@ -24,6 +24,6 @@ brew_install imagemagick
 
 # other
 brew_install awscli
+brew_install gocryptfs
 brew_install ondir
 brew_install pass
-brew_install gocryptfs
