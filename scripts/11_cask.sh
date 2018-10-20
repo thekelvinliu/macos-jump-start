@@ -27,17 +27,19 @@ brew_cask_install safari-technology-preview
 brew_cask_install spectacle
 
 # development-related
-brew_cask_install xquartz
 brew_cask_install osxfuse
-brew_cask_install ngrok
+brew_cask_install xquartz
+
+# brew_cask_install arduino
+brew_cask_install docker
+# brew_cask_install ngrok
+# brew_cask_install processing
 brew_cask_install virtualbox
 brew_cask_install virtualbox-extension-pack
-# brew_cask_install arduino
-# brew_cask_install processing
 
 # other browsers
-brew_cask_install firefoxdeveloperedition
-brew_cask_install google-chrome
+brew_cask_install firefox-developer-edition
+brew_cask_install google-chrome-dev
 
 # backups
 brew_cask_install borgbackup

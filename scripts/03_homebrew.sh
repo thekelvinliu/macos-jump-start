@@ -36,6 +36,7 @@ brew_install fzf
 brew_install gcc
 brew_install git
 brew_install htop
+brew_install kubernetes-cli
 brew_install tree
 brew_install ripgrep
 
