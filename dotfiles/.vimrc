@@ -10,7 +10,7 @@ set showcmd
 set showtabline=2
 
 " autochdir but local
-autocmd BufEnter * silent! lcd %:p:h
+" autocmd BufEnter * silent! lcd %:p:h
 
 " soft not hard tabs
 set expandtab
@@ -50,6 +50,7 @@ nnoremap <leader>r :so $MYVIMRC<cr>
 " buffers
 " edit/new
 nnoremap <leader>e :e<space>
+nnoremap <leader>E :e<space>%:h/
 " save
 nnoremap <leader>s :w<cr>
 " close
