@@ -90,4 +90,4 @@ brew_cask_install vlc
 brew_cask_install font-roboto-mono-for-powerline
 
 # clean things up
-brew cask cleanup
+brew cleanup
