@@ -25,20 +25,19 @@ brew doctor
 brew update
 brew upgrade
 
-# add some taps
-brew_tap homebrew/science
-brew_tap beeftornado/rmtree
-
 # the basics
-brew_install cmake
+# brew_install cmake
 brew_install fd
 brew_install fzf
 brew_install gcc
 brew_install git
 brew_install htop
 brew_install kubernetes-cli
-brew_install tree
 brew_install ripgrep
+brew_install tree
+
+# rmtree
+brew_tap beeftornado/rmtree
 
 # clean things up
 brew cleanup
