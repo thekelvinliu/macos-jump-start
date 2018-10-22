@@ -1,54 +1,51 @@
+# shellcheck shell=bash
+# vim: ft=sh
 # fantastic bash functions
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "$MJS_BASE/common.sh"
 
-# review installed homebrew formulae
-breview() {
-  for f in $(brew leaves); do
-    brew rmtree "$f"
-  done
+# create new or attach to existing abduco session based on cwd
+abda() {
+  local name
+  name=$(basename "$PWD")
+  abduco -A "$name" "$@"
 }
 
 # find and remove .DS_Store files (only on primary drive)
 dsnuke() {
-  echo "${RED}dsnuke$RESET finds and removes ${YELLOW}.DS_Store$RESET files (password required)"
+  echo -e "${RED}dsnuke$RESET finds and removes ${YELLOW}.DS_Store$RESET files (password required)"
   sudo find -x / -type f -name .DS_Store -delete
-  echo "$DONE_MSG"
+  echo -e "$DONE_MSG"
 }
 
-# source (imports) a given file by first checking if it is readable
-imp() {
-  # ensure a single argument
-  [[ "$#" -ne 1 ]] && return 1
-  # ensure readable
-  [[ ! -r "$1" ]] && echo "could not source $1" && return 1
-  # source as normal
-  . "$1"
-  echo "$DONE_MSG"
+# install node_modules with bias towards yarn
+inm() {
+  # install using npm lock
+  if [[ -r package-lock.json ]]; then
+    npm ci
+  # install using yarn lock
+  elif [[ -r yarn.lock ]]; then
+    yarn install --frozen-lockfile
+  # just use yarn
+  else
+    yarn
+  fi
 }
 
 # create and navigate to a new directory
 mkcd() {
-  mkdir -p "$1" && cd "$1"
+  mkdir -p "$1" && cd "$1" || return 1
 }
 
-# expand any path to an absolute
-realpath() {
-  /usr/bin/python -c "import os,sys; print os.path.realpath(sys.argv[1])" "$1"
-}
-
-# bring local homebrew up-to-date
-rebrew() {
-  for cmd in {up{date,grade},doctor,cleanup}; do
-    brew "$cmd"
-  done
-}
-
-# run linker script
-relink() {
-  imp "$MJS_BASE/scripts/02_linker.sh"
+# change nvim's pwd relative to current shell's pwd
+ndir() {
+  local path=${1:-.}
+  if [[ $path != "-" ]]; then
+    nvr -c "cd $(realpath "$path")"
+  else
+    nvr -c "cd -"
+  fi
 }
 
 # find and remove node_modules directories that are grandchildren of the given path
@@ -56,13 +53,9 @@ rmnm() {
   find "$(realpath "$1")" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf
 }
 
-# source ~/.bash_profile
-sour() {
-  imp "$HOME/.bash_profile"
-}
-
 # create new tmux session or attach to existing based on cwd
 tat() {
-  local name=$(basename "$PWD")
+  local name
+  name=$(basename "$PWD")
   tmux attach -t "$name" 2> /dev/null || tmux new -s "$name"
 }

@@ -1,15 +1,15 @@
 [
   {
-    "shortcut_key_binding" : null,
-    "shortcut_name" : "MoveToPreviousThird"
+    "shortcut_key_binding" : "ctrl+alt+shift+delete",
+    "shortcut_name" : "RedoLastMove"
   },
   {
     "shortcut_key_binding" : "ctrl+alt+-",
     "shortcut_name" : "MakeSmaller"
   },
   {
-    "shortcut_key_binding" : "ctrl+alt+shift+delete",
-    "shortcut_name" : "RedoLastMove"
+    "shortcut_key_binding" : null,
+    "shortcut_name" : "MoveToPreviousThird"
   },
   {
     "shortcut_key_binding" : "alt+shift+cmd+right",
@@ -36,12 +36,12 @@
     "shortcut_name" : "MakeLarger"
   },
   {
-    "shortcut_key_binding" : "ctrl+alt+cmd+left",
-    "shortcut_name" : "MoveToPreviousDisplay"
-  },
-  {
     "shortcut_key_binding" : "ctrl+alt+delete",
     "shortcut_name" : "UndoLastMove"
+  },
+  {
+    "shortcut_key_binding" : "ctrl+alt+cmd+left",
+    "shortcut_name" : "MoveToPreviousDisplay"
   },
   {
     "shortcut_key_binding" : "ctrl+alt+return",

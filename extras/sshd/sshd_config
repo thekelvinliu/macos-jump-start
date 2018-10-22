@@ -26,7 +26,7 @@ PermitEmptyPasswords no
 UsePam no
 
 # sftp
-Subsystem sftp /usr/local/Cellar/openssh/7.6p1/libexec/sftp-server
+Subsystem sftp /usr/local/opt/openssh/libexec/sftp-server
 
 # x11
 X11Forwarding yes

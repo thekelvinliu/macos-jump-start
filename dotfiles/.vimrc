@@ -1,16 +1,19 @@
-" SETTINGS
+" vim: fdm=marker ft=vim
 
+" {{{ SETTINGS
+set noequalalways
 set hidden
 set laststatus=2
 set listchars=eol:¬,tab:>>,trail:~,extends:>,precedes:<,space:·
-set noshowmode
-set nowrap
 set number
 set showcmd
+set noshowmode
 set showtabline=2
+set nowrap
 
-" autochdir but local
-" autocmd BufEnter * silent! lcd %:p:h
+" natural splitting
+set splitbelow
+set splitright
 
 " soft not hard tabs
 set expandtab
@@ -19,56 +22,42 @@ set softtabstop=2
 
 " use system clipboard
 set clipboard+=unnamedplus
+" }}}
 
-" natural splitting
-set splitbelow
-set splitright
-
-" colorscheme
-let g:colors_name = 'dracula'
-let g:dracula_colorterm = 0
-
-" filetypes
-augroup filetypedetect
-  " plist as xml
-  au BufNew,BufNewFile,BufRead *.plist set filetype=xml
-  " markdown
-  au BufNew,BufNewFile,BufRead *.md,*.markdown set filetype=markdown
-augroup END
-" trim trailing whitespace for filetypes not in blacklist
-let blacklist = ['markdown']
-autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
-
-" KEY BINDINGS
-
+" {{{ KEY BINDINGS
 " leader
-map <space> <leader>
+let mapleader = " "
 
-" source ~/.vimrc
-nnoremap <leader>r :so $MYVIMRC<cr>
+" edit vimrc
+nnoremap <leader>ve :edit $MYVIMRC<cr>
+" source vimrc
+nnoremap <silent> <leader>r :source $MYVIMRC<bar>echo "reloaded vimrc"<cr>
 
-" buffers
 " edit/new
-nnoremap <leader>e :e<space>
-nnoremap <leader>E :e<space>%:h/
+nnoremap <leader>e :edit<space>
+nnoremap <leader>E :edit<space>%:h/
+
 " save
-nnoremap <leader>s :w<cr>
-" close
-nnoremap <leader>a :bd<cr>
-nnoremap <leader>A :bd!<cr>
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :q!<cr>
-" prev
-nnoremap <leader>k :bp<cr>
-" next
-nnoremap <leader>j :bn<cr>
+nnoremap <leader>s :write<cr>
+
+" keep window buffer delete
+nmap <leader>a <plug>(kwbd)
+
+" close window
+nnoremap <leader>w :close<cr>
+
+" safely quit
+nnoremap <leader>q :confirm quitall<cr>
+
+" toggle fold
+nnoremap <leader><space> za
 
 " toggle line numbers and whitespace characters
 nnoremap <leader>N :set number! number?<cr>
 nnoremap <leader>C :set list! list?<cr>
 
 " turn search highlight off
-nnoremap <silent> <leader>h :noh<cr>
+nnoremap <silent> <leader>h :nohlsearch<cr>
 
 " indentation
 vnoremap <tab> >
@@ -78,69 +67,148 @@ vnoremap <s-tab> <
 nnoremap <s-tab> <<
 inoremap <s-tab> <c-d>
 
-" PLUGINS
+" `jk` to get out of insert mode/popup menu
+inoremap <silent><expr> jk pumvisible() ? "\<c-e>\<esc>" : "\<esc>"
+inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
+inoremap <silent><expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
+inoremap <silent><expr> <bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
 
-" vim plug
+" resize
+nmap <silent> <c-space>h <plug>(tsize_h)<c-space>
+nmap <silent> <c-space>j <plug>(tsize_j)<c-space>
+nmap <silent> <c-space>k <plug>(tsize_k)<c-space>
+nmap <silent> <c-space>l <plug>(tsize_l)<c-space>
+
+" splits
+nnoremap <silent> <c-space>- :new<bar>set nobuflisted<cr>
+nnoremap <silent> <c-space>/ :vnew<bar>set nobuflisted<cr>
+nnoremap <leader>th :call TermHSplit('')<left><left>
+nnoremap <leader>tv :call TermVSplit('')<left><left>
+
+" window navigation
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+" }}}
+
+" {{{ TERMINAL
+if exists(':terminal')
+  " `;;` to get out of terminal mode
+  tnoremap ;; <c-\><c-n>
+
+  " resize
+  tmap <silent> <c-space>h <c-\><c-n><plug>(tsize_h)a<c-space>
+  tmap <silent> <c-space>j <c-\><c-n><plug>(tsize_j)a<c-space>
+  tmap <silent> <c-space>k <c-\><c-n><plug>(tsize_k)a<c-space>
+  tmap <silent> <c-space>l <c-\><c-n><plug>(tsize_l)a<c-space>
+
+  " splits
+  tnoremap <silent> <c-space>- <c-\><c-n>:call TermHSplit('')<cr>
+  tnoremap <silent> <c-space>/ <c-\><c-n>:call TermVSplit('')<cr>
+
+  " window navigation
+  tnoremap <c-h> <c-\><c-n><c-w>h
+  tnoremap <c-j> <c-\><c-n><c-w>j
+  tnoremap <c-k> <c-\><c-n><c-w>k
+  tnoremap <c-l> <c-\><c-n><c-w>l
+
+  augroup terminal_buffers
+    autocmd!
+    autocmd bufenter,termopen term://* call OnTerm()
+
+    " preserve fzf bindings
+    autocmd filetype fzf tnoremap <buffer> <c-j> <down>
+    autocmd filetype fzf tnoremap <buffer> <c-k> <up>
+  augroup end
+endif
+" }}}
+
+" {{{ PLUGINS
+" {{{ install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup install_plugins
+    autocmd!
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  augroup end
 endif
+" }}}
+
 call plug#begin()
-" basics
+" {{{ basics
 Plug '/usr/local/opt/fzf'
+let g:fzf_layout = { 'down': '~20%' }
+nnoremap <silent> <leader>o <c-^><cr>
+" git-aware fzf
+nnoremap <silent> <leader>p :execute ':FZF '.trim(system('git rev-parse --show-toplevel 2> /dev/null'))<cr>
+
 Plug 'jiangmiao/auto-pairs'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'thekelvinliu/kwbd'
+Plug 'thekelvinliu/tsize'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
+" }}}
 
-" lint
-Plug 'w0rp/ale'
+" {{{ colorscheme
+Plug 'thekelvinliu/stllrzd'
+let g:colors_name = 'stllrzd'
+set background=dark
+if exists('+termguicolors')
+  set termguicolors
+endif
 
-" lightline
-Plug 'itchyny/lightline.vim'
-Plug 'mgee/lightline-bufferline'
+Plug 'lifepillar/vim-colortemplate'
+" }}}
 
-" ncm2
+" {{{ completion
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-highprio-pop'
 Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-markdown-subscope'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+augroup enable_completion
+  autocmd!
+  autocmd bufenter * call ncm2#enable_for_buffer()
+augroup end
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+" }}}
 
-" languages
-Plug 'sheerun/vim-polyglot'
+" {{{ languages
+Plug 'w0rp/ale'
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.python = ['isort', 'yapf']
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '~~'
+nmap <leader>n <plug>(ale_next_wrap)
+nmap <leader>l <plug>(ale_lint)
+nmap <leader>L <plug>(ale_fix)
+
 Plug 'plasticboy/vim-markdown'
+let g:javascript_plugin_jsdoc = 1
+let g:vim_markdown_folding_disabled = 1
 
-" other
-" uncomment when regenerating .tmuxline.conf
-" Plug 'edkolev/tmuxline.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'christoomey/vim-tmux-navigator'
-call plug#end()
+Plug 'sheerun/vim-polyglot'
+" }}}
 
-" fugitive
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gvdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-
-" fzf
-function! GitRoot()
-  let dir = system('git rev-parse --show-toplevel 2> /dev/null')
-  return !empty(dir) ? dir : "\<cr>"
-endfunction
-nnoremap <silent><expr> <leader>p ':FZF '.GitRoot()
-nnoremap <leader>o <c-^><cr>
-let g:fzf_layout = { 'down': '~20%' }
-
-" lightline
+" {{{ ui
+Plug 'itchyny/lightline.vim'
 let g:lightline = {}
 let g:lightline.active = { 'left': [['mode', 'paste'], ['filename', 'gitbranch']] }
-let g:lightline.colorscheme = 'Dracula'
+let g:lightline.colorscheme = 'stllrzd'
 let g:lightline.component = { 'lineinfo': ' %3l:%-2v', 'separator': '' }
 let g:lightline.component_expand = { 'buffers': 'lightline#bufferline#buffers' }
 let g:lightline.component_function = { 'gitbranch': 'LightlineFugitive', 'mode': 'LightlineMode' }
@@ -149,23 +217,7 @@ let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
 
-function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
-function! LightlineMode()
-  return expand('%:t') ==# '__Tagbar__' ? 'Tagbar':
-        \ expand('%:t') ==# 'ControlP' ? 'CtrlP' :
-        \ &filetype ==# 'fzf' ? 'fzf' :
-        \ &filetype ==# 'unite' ? 'Unite' :
-        \ &filetype ==# 'vimfiler' ? 'VimFiler' :
-        \ &filetype ==# 'vimshell' ? 'VimShell' :
-        \ lightline#mode()
-endfunction
-
+Plug 'mgee/lightline-bufferline'
 let g:lightline#bufferline#modified = '•'
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#show_number = 2
@@ -181,48 +233,96 @@ nmap <leader>7 <plug>lightline#bufferline#go(7)
 nmap <leader>8 <plug>lightline#bufferline#go(8)
 nmap <leader>9 <plug>lightline#bufferline#go(9)
 nmap <leader>0 <plug>lightline#bufferline#go(10)
+" }}}
+call plug#end()
+" }}}
 
-" uncomment when regenerating .tmuxline.conf
-" let g:tmuxline_powerline_separators = 0
-" let g:tmuxline_preset = {}
-" let g:tmuxline_preset.a = '#(whoami)@#h'
-" let g:tmuxline_preset.b = ['#S#F', '#W']
-" let g:tmuxline_preset.c = '#(osascript ~/macos-jump-start/configs/tmuxline/track.applescript)'
-" let g:tmuxline_preset.win = ['#I', '#W']
-" let g:tmuxline_preset.cwin = ['w #I', '#W']
-" let g:tmuxline_preset.x = ''
-" let g:tmuxline_preset.y = ['#(bash ~/macos-jump-start/configs/tmuxline/uptime.sh)', '#(uptime | cut -d , -f 3- | cut -d : -f 2 | xargs)']
-" let g:tmuxline_preset.z = ['%a', '%Y-%m-%d %R']
+" {{{ AUTOCMDS
+" filetype overrides
+augroup ftdetect_overrides
+  autocmd!
+  " plist as xml
+  autocmd bufnew,bufnewfile,bufread *.plist set filetype=xml
+augroup end
 
-" ale
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['eslint']
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '~~'
-nmap <leader>n <plug>(ale_next_wrap)
-nmap <leader>l <plug>(ale_lint)
-nmap <leader>L <plug>(ale_fix)
+" trim trailing whitespace for filetypes not in blacklist
+let blacklist = ['markdown']
+augroup trim_whitespace_on_write
+  autocmd!
+  autocmd bufwritepre * if index(blacklist, &ft) < 0 | %s/\v\s+$//e
+augroup end
+" }}}
 
-" ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-inoremap <silent><expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<c-d>"
-inoremap <silent><expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
-inoremap <silent><expr> <bs> pumvisible() ? "\<c-e>\<bs>" : "\<bs>"
-inoremap <silent><expr> jk pumvisible() ? "\<c-e>\<esc>" : "\<esc>"
+" {{{ FUNCTIONS
+" return lightline git branch display
+function! LightlineFugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return !empty(branch) ? ' '.branch : ''
+  endif
+  return ''
+endfunction
 
-" language support
-let g:javascript_plugin_jsdoc = 1
-let g:vim_markdown_folding_disabled = 1
+" return lightline mode display
+function! LightlineMode()
+  return &filetype ==# 'fzf' ? 'fzf' : lightline#mode()
+endfunction
 
+" called when current buffer becomes a terminal
+function! OnTerm()
+  " change display name term title doesn't contain "fzf"
+  if b:term_title !~? "fzf"
+    execute 'keepalt file ['.split(expand(b:term_title), '/')[-1].']'
+  endif
+
+  " no line numbers
+  setlocal nonumber
+endfunction
+
+" return term buffer title
+function! TermBuffer(cmd)
+  return "term://".(!empty(a:cmd) ? a:cmd : 'bash')
+endfunction
+
+" terminal horizontal split
+function! TermHSplit(input)
+  execute 'sp '.TermBuffer(a:input)
+  startinsert
+endfunction
+
+" terminal vertical split
+function! TermVSplit(input)
+  execute 'vsp '.TermBuffer(a:input)
+  startinsert
+endfunction
+" }}}
+
+" {{{ NVIM
+if has('nvim')
+  let g:clipboard = {
+    \ 'name': 'macos',
+    \ 'copy': {
+    \   '+': 'pbcopy',
+    \   '*': 'pbcopy',
+    \ },
+    \ 'paste': {
+    \   '+': 'pbpaste',
+    \   '*': 'pbpaste',
+    \ },
+    \ 'cache_enabled': 0,
+    \ }
+  let g:loaded_python_provider = 1
+  let g:loaded_ruby_provider = 1
+  let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+" }}}
+
+" {{{ OLD STUFF
 " OVERRIDES
-" yellow ale warnings
-hi ALEWarningSign ctermfg=yellow
-" make a little less subtle
-hi DraculaSubtle ctermfg=yellow
-" grey line numbers
-hi LineNr ctermfg=grey
+" " yellow ale warnings
+" hi ALEWarningSign ctermfg=yellow
+" " make a little less subtle
+" hi DraculaSubtle ctermfg=yellow
+" " grey line numbers
+" hi LineNr ctermfg=grey
+" }}}

@@ -1,22 +1,14 @@
+#!/usr/bin/env bash
 # install extra and miscellaneous stuff
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "${MJS_BASE:-"$HOME/macos-jump-start"}/common.sh"
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
   echo "homebrew is not installed -- exiting."
-  return
+  exit 1
 fi
-
-# update formulae
-brew update
-
-# databases
-# brew_install mongodb
-# brew_install mysql
-brew_install sqlite
 
 # media
 brew_install ffmpeg
@@ -24,6 +16,10 @@ brew_install imagemagick
 
 # other
 brew_install awscli
+brew_install colordiff
 brew_install gocryptfs
-brew_install ondir
+brew_install kubernetes-cli
 brew_install pass
+brew_install rsync
+brew_install shellcheck
+brew_install yamllint

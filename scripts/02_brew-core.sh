@@ -1,8 +1,8 @@
+#!/usr/bin/env bash
 # install homebrew and useful basics
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "${MJS_BASE:-"$HOME/macos-jump-start"}/common.sh"
 
 # check for homebrew and install if necessary
 if has_brew; then
@@ -15,7 +15,7 @@ fi
 # check for homebrew again in case user did not install
 if ! has_brew; then
   echo "homebrew is still not installed -- exiting."
-  return
+  exit 1
 fi
 
 # run the doctor
@@ -26,18 +26,14 @@ brew update
 brew upgrade
 
 # the basics
-# brew_install cmake
+brew_install abduco
+brew_install coreutils
 brew_install fd
 brew_install fzf
-brew_install gcc
 brew_install git
 brew_install htop
-brew_install kubernetes-cli
 brew_install ripgrep
 brew_install tree
 
 # rmtree
 brew_tap beeftornado/rmtree
-
-# clean things up
-brew cleanup

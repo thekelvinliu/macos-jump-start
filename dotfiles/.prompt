@@ -1,15 +1,13 @@
+# shellcheck shell=bash
+# vim: ft=sh
 # set the bash prompt
 
-# get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
-
 parse_git_dirty() {
-  [[ -n $(git status --porcelain) ]] && echo "*"
+  [[ $(git status --porcelain) ]] && echo "*"
 }
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
-export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
-export PS2="\[$CYAN\]→ \[$RESET\]"
+export PS1="\[$BOLD$MAGENTA\]\u \[$RESET$BRIGHT_WHITE\]at \[$BOLD$YELLOW\]\h \[$RESET$BRIGHT_WHITE\]in \[$BOLD$CYAN\]\w\[$RESET$BRIGHT_WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$BOLD$BLUE\]\$(parse_git_branch 2> /dev/null)\[$RESET\]\n\$ "
+export PS2="\[$GREEN\]→ \[$RESET\]"

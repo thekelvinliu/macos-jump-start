@@ -1,8 +1,9 @@
+# shellcheck shell=bash
+# vim: ft=sh
 # contain extra/misc stuff
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "$MJS_BASE/common.sh"
 
 # only run if bash is installed
 if has_brew; then
@@ -14,26 +15,8 @@ if has_brew; then
   path="$HOME/.fzf.bash"
   [[ -r $path ]] && . "$path"
 
-  # jenv
-  if exists jenv; then
-    eval "$(jenv init -)"
-  fi
-
   # nvm
   path="/usr/local/opt/nvm"
   [[ -r $path ]] && . "$path/nvm.sh"
-
-  # ondir
-  if exists ondir; then
-    function cd {
-      builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
-    function pushd {
-      builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
-    function popd {
-      builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
-  fi
   unset path
 fi

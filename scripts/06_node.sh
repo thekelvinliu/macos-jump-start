@@ -1,26 +1,20 @@
-# install nvm, node, and some global packages
+#!/usr/bin/env bash
+# install nvm, some global packages, and yarn
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "${MJS_BASE:-"$HOME/macos-jump-start"}/common.sh"
 
 # ensure homebrew is installed before continuing
 if ! has_brew; then
   echo "homebrew is not installed -- exiting."
-  return
+  exit 1
 fi
 
-# update formulae
-brew update
-
-# nvm and yarn
+# nvm and setup
 brew_install nvm
-brew_install "yarn --without-node"
-
-# set up nvm now
-export NVM_DIR="$HOME/.nvm"
+NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
-. $(brew --prefix nvm)/nvm.sh
+. "$(brew --prefix nvm)/nvm.sh"
 
 # default globals
 cat <<EOF > "$NVM_DIR/default-packages"
@@ -35,5 +29,10 @@ EOF
 nvm install --lts --latest-npm
 nvm install node --latest-npm
 
-# clean things up
-brew cleanup
+# yarn without node
+formula=yarn
+if brew_installed "$formula"; then
+  echo -e "$BLUE$formula$RESET is already installed."
+else
+  brew install --ignore-dependencies "$formula"
+fi

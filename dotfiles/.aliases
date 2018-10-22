@@ -1,18 +1,33 @@
+# shellcheck shell=bash
+# vim: ft=sh
 # awesome bash aliases
 
-# detect correct color flag for directory listings
-colorflag=$(ls --color &> /dev/null && echo '--color' || echo '-G')
-# always use colorized output
-alias ls="command ls $colorflag"
-# list everything in long format
-alias la='ls -lha'
+# get a common execution environment
+[[ ! $MJS_COMMON_ENV ]] && . "$MJS_BASE/common.sh"
 
-# ftp server
-alias ftp-start='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
-alias ftp-stop='sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist'
-
-# removes top-level `node_modules` directoires from default dropbox location
+# removes top-level `node_modules` directories from default dropbox location
 alias clean-dropbox='find "$HOME/Dropbox" -type d -name node_modules ! -path "*/node_modules/*" -print0 | xargs -0 rm -rf'
 
 # empty user trash
-alias emptrash='shopt -s dotglob && rm -rf $HOME/.Trash/*'
+alias emptrash='rm -rf $HOME/.Trash/*'
+
+# homebrew helpers
+# review installed homebrew formulae
+alias breview='for f in $(brew leaves); do brew rmtree "$f"; done'
+# bring local homebrew up-to-date
+alias rebrew='for c in {up{date,grade},doctor,"cleanup -s"}; do brew $c; done'
+
+# list directories
+# long format
+alias la='ls -lha'
+# colorized output
+alias ls="command ls -G"
+
+# nvim ide
+alias nide='abda nvim term://bash'
+
+# run linker script
+alias relink='"$MJS_BASE/scripts/01_linker.sh" && sour'
+
+# source ~/.bash_profile
+alias sour='source "$HOME/.bash_profile" && echo -e "$DONE_MSG"'

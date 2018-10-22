@@ -1,13 +1,13 @@
+# shellcheck shell=bash
+# vim: ft=sh
 # specific PATH environment variable setup
 
 # get a common execution environment
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
-. "$MJS_BASE/common.sh"
+[[ ! $MJS_COMMON_ENV ]] && . "$MJS_BASE/common.sh"
 
 # add homebrew path if installed
 if has_brew; then
   PATH=/usr/local/bin:$PATH
-  PATH=/usr/local/opt/python@2/bin:$PATH
 fi
 
 # add user directory bin
