@@ -35,7 +35,7 @@ brew_install fzf
 brew_install git
 brew_install htop
 brew_install ripgrep
-brew_install rustup-init
+# brew_install rustup-init
 brew_install tree
 
 # rmtree

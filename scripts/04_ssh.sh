@@ -14,7 +14,7 @@ if ! has_brew; then
 fi
 
 # use homebrew openssh
-brew_install openssh
+# brew_install openssh
 
 # only generate an ed25519 keypair if necessary
 ssh_private_key="$HOME/.ssh/id_ed25519"

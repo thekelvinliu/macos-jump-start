@@ -32,6 +32,6 @@ else
 
   # install latest lts and version
   nvm install --lts --latest-npm
-  nvm install node --latest-npm
-  nvm alias default node
+  # nvm install node --latest-npm
+  # nvm alias default node
 fi

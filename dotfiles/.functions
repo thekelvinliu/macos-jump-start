@@ -93,7 +93,7 @@ crypt() {
   local mdir="$HOME/mnt/$name"
   echo "mounting $cdir"
   mkdir -p "$mdir"
-  gocryptfs "$cdir" "$mdir"
+  gocryptfs -allow_other "$cdir" "$mdir"
 }
 
 # launch gdfs and create gdrive symlink

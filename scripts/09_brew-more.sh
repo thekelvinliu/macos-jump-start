@@ -15,7 +15,7 @@ brew_install ffmpeg
 brew_install graphicsmagick
 
 # other
-brew_install awscli
+# brew_install awscli
 brew_install colordiff
 brew_install borgbackup
 brew_install gnupg

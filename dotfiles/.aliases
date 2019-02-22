@@ -46,3 +46,6 @@ alias pvim='fzf --preview "bat --style=numbers --color=always --line-range :500 
 
 # strip newlines in clipboard
 alias stripclip='pbpaste | tr -d "\n" | pbcopy'
+
+# reboots in windows on external ssd
+alias reboot-camp='sudo bless --device /dev/disk2s2 --nextonly --setBoot && sudo reboot'

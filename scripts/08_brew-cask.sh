@@ -14,7 +14,7 @@ fi
 brew_tap homebrew/cask-versions
 
 # important
-brew_cask_install alfred
+# brew_cask_install alfred
 brew_cask_install iterm2-beta
 brew_cask_install kitty
 brew_cask_install sublime-text
