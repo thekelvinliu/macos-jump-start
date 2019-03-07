@@ -189,6 +189,7 @@ Plug 'w0rp/ale'
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = ['eslint']
 let g:ale_fixers.python = ['isort', 'yapf']
+let g:ale_fixers.rust = ['rustfmt']
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_error = '>>'

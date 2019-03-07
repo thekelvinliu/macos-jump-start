@@ -13,5 +13,9 @@ fi
 # add user directory bin
 PATH=$HOME/bin:$PATH
 
+# rust toolchain
+cargo="$HOME/.cargo/bin"
+[[ -x "$cargo/cargo" ]] && PATH=$cargo:$PATH
+
 # export
 export PATH
