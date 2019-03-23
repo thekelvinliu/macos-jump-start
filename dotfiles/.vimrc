@@ -94,7 +94,7 @@ noremap <c-l> <c-w>l
 " }}}
 
 " {{{ TERMINAL
-if exists(':terminal')
+if exists(':terminal') && has('nvim')
   " `;;` to get out of terminal mode
   tnoremap ;; <c-\><c-n>
 
@@ -148,9 +148,10 @@ nnoremap <silent> <leader>p :execute ':FZF '.trim(system('git rev-parse --show-t
 Plug 'jiangmiao/auto-pairs'
 Plug 'thekelvinliu/kwbd'
 Plug 'thekelvinliu/tsize'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 " }}}
 
 " {{{ colorscheme
@@ -174,8 +175,9 @@ Plug 'ncm2/ncm2-highprio-pop'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'fgrsnau/ncm2-otherbuf'
 Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
+" Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
 augroup enable_completion
   autocmd!
   autocmd bufenter * call ncm2#enable_for_buffer()
@@ -186,17 +188,35 @@ set shortmess+=c
 
 " {{{ languages
 Plug 'w0rp/ale'
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['eslint']
-let g:ale_fixers.python = ['isort', 'yapf']
-let g:ale_fixers.rust = ['rustfmt']
+let g:ale_fixers = {
+  \ 'css': ['prettier'],
+  \ 'html': ['prettier'],
+  \ 'javascript': ['prettier', 'eslint'],
+  \ 'json': ['prettier'],
+  \ 'markdown': ['prettier'],
+  \ 'python': ['isort', 'yapf'],
+  \ 'rust': ['rustfmt'],
+  \ 'scss': ['prettier'],
+  \ 'yaml': ['prettier'],
+  \ '*': ['remove_trailing_lines'],
+  \ }
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '~~'
+let g:ale_sign_error = '🚫'
+let g:ale_sign_warning = '⚡'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 nmap <leader>n <plug>(ale_next_wrap)
+nmap <leader>f <plug>(ale_fix)
 nmap <leader>l <plug>(ale_lint)
-nmap <leader>L <plug>(ale_fix)
+
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+let g:LanguageClient_serverCommands = {
+  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'rust': ['rls'],
+  \ }
+nnoremap <leader>L :call LanguageClient_contextMenu()<cr>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
 
 Plug 'plasticboy/vim-markdown'
 let g:javascript_plugin_jsdoc = 1
@@ -313,17 +333,8 @@ if has('nvim')
     \ 'cache_enabled': 0,
     \ }
   let g:loaded_python_provider = 1
+  let g:loaded_node_provider = 1
   let g:loaded_ruby_provider = 1
   let g:python3_host_prog = '/usr/local/bin/python3'
 endif
-" }}}
-
-" {{{ OLD STUFF
-" OVERRIDES
-" " yellow ale warnings
-" hi ALEWarningSign ctermfg=yellow
-" " make a little less subtle
-" hi DraculaSubtle ctermfg=yellow
-" " grey line numbers
-" hi LineNr ctermfg=grey
 " }}}

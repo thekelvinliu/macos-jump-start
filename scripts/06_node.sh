@@ -18,16 +18,17 @@ mkdir -p "$NVM_DIR"
 
 # default globals
 cat <<EOF > "$NVM_DIR/default-packages"
+javascript-typescript-langserver
 neovim
-npm-check-updates-lite
+npm-check-updates
 serve
 serverless
-tern
 EOF
 
 # install latest lts and version
 nvm install --lts --latest-npm
 nvm install node --latest-npm
+nvm alias default node
 
 # yarn without node
 formula=yarn
