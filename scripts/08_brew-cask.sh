@@ -41,17 +41,12 @@ brew_cask_install google-chrome-dev
 brew_cask_install borgbackup
 brew_cask_install google-drive-file-stream
 
-# tex
-brew_cask_install basictex
-brew_cask_install tex-live-utility
-
 # general apps
 brew_cask_install appcleaner
 # brew_cask_install coconutbattery
 # brew_cask_install cyberduck
 brew_cask_install disk-inventory-x
 # brew_cask_install flux
-brew_cask_install skim
 # brew_cask_install slack
 brew_cask_install the-unarchiver
 # brew_cask_install torbrowser
