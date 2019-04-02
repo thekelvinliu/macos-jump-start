@@ -175,9 +175,8 @@ Plug 'ncm2/ncm2-highprio-pop'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-markdown-subscope'
-Plug 'fgrsnau/ncm2-otherbuf'
+Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-tern', { 'do': 'npm install' }
 augroup enable_completion
   autocmd!
   autocmd bufenter * call ncm2#enable_for_buffer()
@@ -187,6 +186,30 @@ set shortmess+=c
 " }}}
 
 " {{{ languages
+" langserver
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+let g:LanguageClient_serverCommands = {
+  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'rust': ['rls'],
+  \ 'vue': ['vls'],
+  \ }
+nnoremap <leader>L :call LanguageClient_contextMenu()<cr>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
+
+" language plugins
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
+
+Plug 'sheerun/vim-polyglot'
+let g:javascript_plugin_jsdoc = 1
+let g:polyglot_disabled = ['latex']
+
+Plug 'lervag/vimtex'
+let g:vimtex_compiler_method = 'latexmk'
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_method = 'skim'
+
+" lint
 Plug 'w0rp/ale'
 let g:ale_fixers = {
   \ 'css': ['prettier'],
@@ -197,6 +220,7 @@ let g:ale_fixers = {
   \ 'python': ['isort', 'yapf'],
   \ 'rust': ['rustfmt'],
   \ 'scss': ['prettier'],
+  \ 'vue': ['prettier'],
   \ 'yaml': ['prettier'],
   \ '*': ['remove_trailing_lines'],
   \ }
@@ -209,20 +233,6 @@ highlight clear ALEWarningSign
 nmap <leader>n <plug>(ale_next_wrap)
 nmap <leader>f <plug>(ale_fix)
 nmap <leader>l <plug>(ale_lint)
-
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-let g:LanguageClient_serverCommands = {
-  \ 'javascript.jsx': ['javascript-typescript-stdio'],
-  \ 'rust': ['rls'],
-  \ }
-nnoremap <leader>L :call LanguageClient_contextMenu()<cr>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
-
-Plug 'plasticboy/vim-markdown'
-let g:javascript_plugin_jsdoc = 1
-let g:vim_markdown_folding_disabled = 1
-
-Plug 'sheerun/vim-polyglot'
 " }}}
 
 " {{{ ui
@@ -308,13 +318,17 @@ endfunction
 " terminal horizontal split
 function! TermHSplit(input)
   execute 'sp '.TermBuffer(a:input)
-  startinsert
+  if a:input ==# ''
+    startinsert
+  endif
 endfunction
 
 " terminal vertical split
 function! TermVSplit(input)
   execute 'vsp '.TermBuffer(a:input)
-  startinsert
+  if a:input ==# ''
+    startinsert
+  endif
 endfunction
 " }}}
 
