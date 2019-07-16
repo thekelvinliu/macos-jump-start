@@ -8,8 +8,11 @@
 # only run if bash is installed
 if has_brew; then
   # bash completion
-  path="/usr/local/share/bash-completion/bash_completion"
-  [[ -r $path ]] && . "$path"
+  path="/usr/local/etc/profile.d/bash_completion.sh"
+  if [[ -r $path ]]; then
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    source "$path"
+  fi
 
   # fzf
   path="$HOME/.fzf.bash"

@@ -2,7 +2,7 @@
 # setup scripts and dotfiles for a happy development environment
 
 # allow custom location, but default to home directory
-MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
+export MJS_BASE=${MJS_BASE:-"$HOME/macos-jump-start"}
 
 # ensure xcode is installed
 if [[ -n $(xcode-select -p 2> /dev/null) ]]; then
