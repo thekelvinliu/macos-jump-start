@@ -19,7 +19,7 @@ alias rebrew='for c in {up{date,grade},doctor,"cleanup -s"}; do brew $c; done'
 
 # list directories
 # long format
-alias la='ls -lha'
+# alias la='ls -lha'
 # colorized output
 alias ls="command ls -G"
 
@@ -31,3 +31,8 @@ alias relink='"$MJS_BASE/scripts/01_linker.sh" && sour'
 
 # source ~/.bash_profile
 alias sour='source "$HOME/.bash_profile" && echo -e "$DONE_MSG"'
+
+# replacements
+alias cat='bat'
+alias la='exa -ahl'
+alias tree='exa -Ta'

@@ -27,7 +27,9 @@ brew upgrade
 
 # the basics
 brew_install abduco
+brew_install bat
 brew_install coreutils
+brew_install exa
 brew_install fd
 brew_install fzf
 brew_install git
