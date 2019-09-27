@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install and setup (neo)vim
+# install and setup neovim
 
 # get a common execution environment
 [[ ! $MJS_COMMON_ENV ]] && . "${MJS_BASE:-"$HOME/macos-jump-start"}/common.sh"
@@ -11,7 +11,6 @@ if ! has_brew; then
 fi
 
 # vim and nvim
-brew_install vim
 brew_install neovim
 
 # write nvim config that also uses .vimrc
@@ -22,3 +21,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 EOF
+
+# always use nvim
+ln -Ffs /usr/local/bin/nvim /usr/local/bin/neovim
+ln -Ffs /usr/local/bin/nvim /usr/local/bin/vim
