@@ -2,20 +2,17 @@
 # vim: ft=sh
 # specific PATH environment variable setup
 
-# get a common execution environment
-[[ ! $MJS_COMMON_ENV ]] && . "$MJS_BASE/common.sh"
+# add default homebrew bin
+PATH=/usr/local/bin:$PATH
 
-# add homebrew path if installed
-if has_brew; then
-  PATH=/usr/local/bin:$PATH
-fi
+# add unversioned python3
+PATH=/usr/local/opt/python/libexec/bin:$PATH
 
-# add user directory bin
+# add rust toolchain
+PATH=$HOME/.cargo/bin:$PATH
+
+# add home directory bin
 PATH=$HOME/bin:$PATH
-
-# rust toolchain
-cargo="$HOME/.cargo/bin"
-[[ -x "$cargo/cargo" ]] && PATH=$cargo:$PATH
 
 # export
 export PATH

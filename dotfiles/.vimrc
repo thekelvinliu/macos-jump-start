@@ -204,10 +204,10 @@ Plug 'sheerun/vim-polyglot'
 let g:javascript_plugin_jsdoc = 1
 let g:polyglot_disabled = ['latex']
 
-Plug 'lervag/vimtex'
-let g:vimtex_compiler_method = 'latexmk'
-let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_view_method = 'skim'
+" Plug 'lervag/vimtex'
+" let g:vimtex_compiler_method = 'latexmk'
+" let g:vimtex_compiler_progname = 'nvr'
+" let g:vimtex_view_method = 'skim'
 
 " lint
 Plug 'w0rp/ale'
@@ -217,7 +217,7 @@ let g:ale_fixers = {
   \ 'javascript': ['prettier', 'eslint'],
   \ 'json': ['prettier'],
   \ 'markdown': ['prettier'],
-  \ 'python': ['isort', 'yapf'],
+  \ 'python': ['black', 'isort'],
   \ 'rust': ['rustfmt'],
   \ 'scss': ['prettier'],
   \ 'vue': ['prettier'],

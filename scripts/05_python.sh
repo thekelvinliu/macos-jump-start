@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install python and core scientific libraries
+# install ipython and some pip packages
 
 # get a common execution environment
 [[ ! $MJS_COMMON_ENV ]] && . "${MJS_BASE:-"$HOME/macos-jump-start"}/common.sh"
@@ -24,20 +24,16 @@ pip3_install() {
   fi
 }
 
-# python
-brew_install python@2
+# python3 and ipython
 brew_install python
-
-# homebrew python libraries
 brew_install ipython
-brew_install numpy
-brew_install scipy
 
-# pip python libraries
+# pip packages
+pip3_install black
 pip3_install flake8
 pip3_install isort
+pip3_install jedi
 pip3_install neovim-remote
 pip3_install pip-autoremove
 pip3_install pynvim
 pip3_install virtualenv
-pip3_install yapf
