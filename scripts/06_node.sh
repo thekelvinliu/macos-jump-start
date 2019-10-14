@@ -18,11 +18,11 @@ mkdir -p "$NVM_DIR"
 
 # default globals
 cat <<EOF > "$NVM_DIR/default-packages"
-javascript-typescript-langserver
-neovim
 npm-check-updates
+prettier
 serve
-serverless
+typescript
+typescript-language-server
 EOF
 
 # install latest lts and version

@@ -189,8 +189,11 @@ set shortmess+=c
 " langserver
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 let g:LanguageClient_serverCommands = {
-  \ 'javascript.jsx': ['javascript-typescript-stdio'],
+  \ 'javascript': ['typescript-language-server', '--stdio'],
+  \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
   \ 'rust': ['rls'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
+  \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
   \ 'vue': ['vls'],
   \ }
 nnoremap <leader>L :call LanguageClient_contextMenu()<cr>
@@ -220,6 +223,7 @@ let g:ale_fixers = {
   \ 'python': ['black', 'isort'],
   \ 'rust': ['rustfmt'],
   \ 'scss': ['prettier'],
+  \ 'typescript': ['prettier', 'eslint'],
   \ 'vue': ['prettier'],
   \ 'yaml': ['prettier'],
   \ '*': ['remove_trailing_lines'],
