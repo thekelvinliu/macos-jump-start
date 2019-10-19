@@ -59,3 +59,59 @@ tat() {
   name=$(basename "$PWD")
   tmux attach -t "$name" 2> /dev/null || tmux new -s "$name"
 }
+
+# create and/or mount a crypt
+crypt() {
+  # ensure name is given
+  local name=$1
+  if [[ ! $name ]]; then
+    echo "usage: ${FUNCNAME[0]} <name>"
+    return 1
+  fi
+
+  # ensure gdrive symlink exists
+  local gdir="$HOME/gdrive"
+  if [[ ! -L $gdir ]]; then
+    echo "$gdir does not exist"
+    return 1
+  fi
+
+  # ensure gocryptfs is installed
+  if ! command -V gocryptfs &> /dev/null; then
+    echo "gocryptfs is required, but could not be found"
+    return 1
+  fi
+
+  # create crypt if it doesn't exit
+  local cdir="$gdir/crypt/$name"
+  if [[ ! -d $cdir ]]; then
+    echo "creating $cdir"
+    mkdir -p "$cdir"
+    gocryptfs -init "$cdir"
+  fi
+
+  # mount crypt
+  local mdir="$HOME/mnt/$name"
+  echo "mounting $cdir"
+  mkdir -p "$mdir"
+  gocryptfs "$cdir" "$mdir"
+}
+
+# launch gdfs and create gdrive symlink
+gdrive() {
+  local GDFS="Google Drive File Stream"
+
+  # ensure gdfs is running
+  open -a "$GDFS"
+  while ! pgrep -q "$GDFS"; do
+    sleep 1;
+  done
+
+  # make better symlink
+  ln -fhsv "/Volumes/GoogleDrive/My Drive/space" "$HOME/gdrive"
+  mkdir -p "$HOME/mnt"
+
+  # remove default symlink
+  sleep 5
+  rm -f "$HOME/$GDFS"
+}
