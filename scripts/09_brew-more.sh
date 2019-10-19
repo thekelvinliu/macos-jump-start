@@ -12,7 +12,7 @@ fi
 
 # media
 brew_install ffmpeg
-brew_install imagemagick
+brew_install graphicsmagick
 
 # other
 brew_install awscli

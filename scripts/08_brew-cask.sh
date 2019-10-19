@@ -63,6 +63,7 @@ brew_cask_install tunnelblick
 # brew_cask_install handbrake
 # brew_cask_install imagealpha
 # brew_cask_install imageoptim
+brew_cask_install mpv
 brew_cask_install spotify
 brew_cask_install transmission
-brew_cask_install vlc
+# brew_cask_install vlc
