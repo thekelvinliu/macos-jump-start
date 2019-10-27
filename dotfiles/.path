@@ -5,9 +5,6 @@
 # add default homebrew bin
 PATH=/usr/local/bin:$PATH
 
-# add unversioned python3
-PATH=/usr/local/opt/python/libexec/bin:$PATH
-
 # add rust toolchain
 PATH=$HOME/.cargo/bin:$PATH
 

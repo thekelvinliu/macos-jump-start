@@ -24,16 +24,18 @@ pip3_install() {
   fi
 }
 
-# python3 and ipython
+# python3 with unversioned symlinks
 brew_install python
-brew_install ipython
+ln -Ffs /usr/local/bin/python3 /usr/local/bin/python
+ln -Ffs /usr/local/bin/pip3 /usr/local/bin/pip
 
 # pip packages
 pip3_install black
 pip3_install flake8
+pip3_install ipython
 pip3_install isort
 pip3_install jedi
+pip3_install jupyterlab
 pip3_install neovim-remote
 pip3_install pip-autoremove
 pip3_install pynvim
-pip3_install virtualenv

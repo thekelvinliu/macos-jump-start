@@ -10,8 +10,10 @@ if ! has_brew; then
   exit 1
 fi
 
-# vim and nvim
+# always neovim
 brew_install neovim
+ln -Ffs /usr/local/bin/nvim /usr/local/bin/neovim
+ln -Ffs /usr/local/bin/nvim /usr/local/bin/vim
 
 # write nvim config that also uses .vimrc
 nvim_path=$HOME/.config/nvim
@@ -21,7 +23,3 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 EOF
-
-# always use nvim
-ln -Ffs /usr/local/bin/nvim /usr/local/bin/neovim
-ln -Ffs /usr/local/bin/nvim /usr/local/bin/vim
