@@ -17,6 +17,7 @@ brew_install graphicsmagick
 # other
 brew_install awscli
 brew_install colordiff
+brew_install gnupg
 brew_install gocryptfs
 brew_install kubernetes-cli
 brew_install pass
