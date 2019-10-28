@@ -175,7 +175,7 @@ Plug 'ncm2/ncm2-highprio-pop'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-markdown-subscope'
-Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+Plug 'fgrsnau/ncm2-otherbuf'
 Plug 'ncm2/ncm2-path'
 augroup enable_completion
   autocmd!
@@ -237,6 +237,13 @@ highlight clear ALEWarningSign
 nmap <leader>n <plug>(ale_next_wrap)
 nmap <leader>f <plug>(ale_fix)
 nmap <leader>l <plug>(ale_lint)
+" }}}
+
+" {{{ taskwarrior
+Plug 'xarthurx/taskwarrior.vim'
+let g:task_default_prompt = ['description', 'due', 'project', 'depends', 'priority', 'tag']
+nnoremap <leader>TA :call taskwarrior#action#new()<cr>
+nnoremap <leader>TT :new<bar>set nobuflisted<cr>:TW<cr>
 " }}}
 
 " {{{ ui

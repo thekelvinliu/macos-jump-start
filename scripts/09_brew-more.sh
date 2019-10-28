@@ -23,4 +23,5 @@ brew_install kubernetes-cli
 brew_install pass
 brew_install rsync
 brew_install shellcheck
+brew_install task
 brew_install yamllint
