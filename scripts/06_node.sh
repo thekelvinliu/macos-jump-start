@@ -10,30 +10,28 @@ if ! has_brew; then
   exit 1
 fi
 
-# nvm and setup
-brew_install nvm
+# default globals
 NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
-. "$(brew --prefix nvm)/nvm.sh"
-
-# default globals
 cat <<EOF > "$NVM_DIR/default-packages"
 npm-check-updates
 prettier
 serve
 typescript
 typescript-language-server
+yarn
 EOF
 
-# install latest lts and version
-nvm install --lts --latest-npm
-nvm install node --latest-npm
-nvm alias default node
-
-# yarn without node
-formula=yarn
+# nvm and setup
+formula=nvm
 if brew_installed "$formula"; then
   echo -e "$BLUE$formula$RESET is already installed."
 else
-  brew install --ignore-dependencies "$formula"
+  brew install "$formula"
+  . "$(brew --prefix nvm)/nvm.sh"
+
+  # install latest lts and version
+  nvm install --lts --latest-npm
+  nvm install node --latest-npm
+  nvm alias default node
 fi
