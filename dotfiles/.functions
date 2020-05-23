@@ -7,9 +7,8 @@
 
 # create new or attach to existing abduco session based on cwd
 abda() {
-  local name
-  name=$(basename "$PWD")
-  abduco -A "$name" "$@"
+  local name=${PWD//\//-}
+  abduco -A "${name:1}" "$@"
 }
 
 # find and remove .DS_Store files (only on primary drive)
