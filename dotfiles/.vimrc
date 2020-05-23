@@ -190,14 +190,15 @@ set shortmess+=c
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 let g:LanguageClient_serverCommands = {
   \ 'javascript': ['typescript-language-server', '--stdio'],
-  \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
+  \ 'javascriptreact': ['typescript-language-server', '--stdio'],
   \ 'rust': ['rls'],
   \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
   \ 'vue': ['vls'],
   \ }
 nnoremap <leader>L :call LanguageClient_contextMenu()<cr>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<cr>
+nnoremap <silent> gh :call LanguageClient#textDocument_hover()<cr>
 
 " language plugins
 Plug 'plasticboy/vim-markdown'
