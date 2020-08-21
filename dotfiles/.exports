@@ -18,7 +18,7 @@ export EDITOR=$([[ -z $NVIM_LISTEN_ADDRESS ]] && echo "nvim" || echo "nvr -l --r
 export VISUAL="$EDITOR"
 
 # fd-powered fzf
-fzf_cmd="fd -HL -E .git -E node_modules"
+fzf_cmd="fd -HL -E .git -E gdrive -E mnt -E node_modules"
 # files in cwd
 export FZF_DEFAULT_COMMAND="$fzf_cmd -t f ."
 # anything in home
