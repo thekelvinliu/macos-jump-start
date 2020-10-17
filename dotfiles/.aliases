@@ -36,3 +36,13 @@ alias sour='source "$HOME/.bash_profile" && echo -e "$DONE_MSG"'
 alias cat='bat'
 alias la='exa -ahl'
 alias tree='exa -Ta'
+
+# docker run remove
+alias dckrrr='docker run --rm -it -v "$PWD":/tmp/d -w /tmp/d'
+
+# fzf preview
+alias pvf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
+alias pvim='fzf --preview "bat --style=numbers --color=always --line-range :500 {}" | xargs nvim'
+
+# strip newlines in clipboard
+alias stripclip='pbpaste | tr -d "\n" | pbcopy'
