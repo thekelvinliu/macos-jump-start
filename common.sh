@@ -17,7 +17,7 @@ has_brew() {
 
 # check whether a cask is installed
 brew_cask_installed() {
-  grep -Fqsx "$1" <(brew cask list -1)
+  grep -Fqsx "$1" <(brew list -1 --cask)
 }
 
 # install a cask
