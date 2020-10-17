@@ -243,12 +243,12 @@ nmap <leader>f <plug>(ale_fix)
 nmap <leader>l <plug>(ale_lint)
 " }}}
 
-" {{{ taskwarrior
-Plug 'xarthurx/taskwarrior.vim'
-let g:task_default_prompt = ['description', 'due', 'project', 'depends', 'priority', 'tag']
-nnoremap <leader>TA :call taskwarrior#action#new()<cr>
-nnoremap <leader>TT :new<bar>set nobuflisted<cr>:TW<cr>
-" }}}
+" " {{{ taskwarrior
+" Plug 'xarthurx/taskwarrior.vim'
+" let g:task_default_prompt = ['description', 'due', 'project', 'depends', 'priority', 'tag']
+" nnoremap <leader>TA :call taskwarrior#action#new()<cr>
+" nnoremap <leader>TT :new<bar>set nobuflisted<cr>:TW<cr>
+" " }}}
 
 " {{{ ui
 Plug 'itchyny/lightline.vim'
