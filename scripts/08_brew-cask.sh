@@ -18,7 +18,7 @@ brew_cask_install alfred
 brew_cask_install iterm2-beta
 brew_cask_install kitty
 brew_cask_install sublime-text
-brew_cask_install dropbox
+# brew_cask_install dropbox
 brew_cask_install safari-technology-preview
 brew_cask_install spectacle
 
@@ -30,12 +30,12 @@ brew_cask_install xquartz
 brew_cask_install docker
 # brew_cask_install processing
 # brew_cask_install sequel-pro
-brew_cask_install virtualbox
-brew_cask_install virtualbox-extension-pack
+# brew_cask_install virtualbox
+# brew_cask_install virtualbox-extension-pack
 
 # other browsers
+brew_cask_install eloston-chromium
 brew_cask_install firefox-developer-edition
-brew_cask_install google-chrome-dev
 
 # backups
 brew_cask_install google-drive-file-stream
