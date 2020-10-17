@@ -38,8 +38,8 @@ brew_cask_install firefox-developer-edition
 brew_cask_install google-chrome-dev
 
 # backups
-brew_cask_install borgbackup
 brew_cask_install google-drive-file-stream
+brew_cask_install vorta
 
 # general apps
 brew_cask_install appcleaner
